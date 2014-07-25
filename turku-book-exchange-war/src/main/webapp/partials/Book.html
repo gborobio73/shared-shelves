@@ -1,0 +1,45 @@
+<div nav-menu></div>
+<img ng-show= "loading" src="../img/ajax-loader-big.gif" style="float: center;"/>
+<div class="container-fluid">
+	<div class="panel panel-default">
+	  <div class="panel-body" ng-hide = "loading" >
+			<form class="form-horizontal" role="form">		  	 
+			  	<div book-info></div>		
+			  	<div class="form-group">				  	
+				  	<div ng-show = "book.ownedByCurrentUser" >
+					  	<div class="col-sm-offset-2 col-sm-10">
+							<button ng-hide = "startedSaving" type="button" class="btn btn-primary btn-md" ng-click="saveBook(book)"  style="float: left;">Save changes</button>
+							<img ng-show = "savingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
+							<h5><span ng-show = "saved" class="label label-success" style="float: left; font-size: 100%">Saved!</span></h5>							
+							
+							<button ng-hide = "startedRemoving" type="button" class="btn btn-danger btn-xs" ng-click="removeBook(book.id)" style="float: right;">Remove from bookshelf</button>
+							<img ng-show = "removingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>							
+							<h6><span class="label label-success" ng-show = "removed" style="float: right; font-size: 100%">Removed!</span></h6>							
+						</div>												  	
+				  	</div>
+				  	<div ng-hide = "book.ownedByCurrentUser" >
+				  		<hr>
+				  		<div class="col-sm-10">
+				  			<div class="form-group">
+							    <label for="inputMessage" class="col-sm-2 control-label">Contact owner</label>
+							    <div class="col-sm-10">
+							      <textarea class="form-control" rows="4" ng-model ="message" id="inputMessage"></textarea>
+							    </div>
+							  </div>
+				  		</div>
+				  		<div class="col-sm-offset-2 col-sm-10">
+							<button ng-hide = "startedSending" type="button" class="btn btn-primary btn-md" ng-click="sendMessageToOwner(book.id, message)"  style="float: left;">Send message</button>
+							<img ng-show = "sendingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
+							<h5><span ng-show = "sent" class="label label-success" style="float: left; font-size: 100%">Message sent!</span></h5>
+							<div ng-show = "sendFailed" >
+								<h5><span class="label label-danger" style="float: left; font-size: 100%">Message could not be sent!</span></h5>
+								<h5><span class="label label-info" style="float: left; font-size: 100%">Copy your message and try again.</span></h5>
+							</div>
+																					
+						</div>
+				  	</div>
+				</div>  
+		  	</form>	
+		</div>
+	</div>
+</div>

@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    background: #EEE;
+    font: 10px/13px 'Lucida Sans',sans-serif;
+    padding-top: 4%;
+ }
+ .wrap {
+    overflow: hidden;
+    margin: 10px;
+ }
+ .box {
+    float: left;
+    position: relative;
+    width: 20%;
+ }
+ 
+ .pin {
+    /*display: inline-block;*/
+    display: block;
+    background: #FEFEFE;
+    border: 2px solid #FAFAFA;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 2px 15px;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    padding: 2px;
+    padding-bottom: 5px;
+    background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+    opacity: 1;    
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.pin img {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+}
+
+.pin .description{
+    font: 12px/18px Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.pin .user {
+    font: 12px/18px Arial, sans-serif;
+    color: #333;
+    margin: 0;
+}
+.footer {
+   position:absolute;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background:#999;
+}
+
+.panel {
+    	width: 50%;
+    }
+    
+ @media only screen and (max-width : 480px) {
+    /* Smartphone view: 2 tile */
+    body {
+        padding-top: 12%;
+    }
+    .box {
+       width: 50%;
+    }
+    .navbar {
+        font-size: 10px;
+    }
+    a, .navbar-brand {
+        font-size: 10px;
+    }
+    input[type="search"]
+    {
+        height: 25px;
+    }
+    .panel {
+    	width: 100%;
+    }
+    .hideForSmall{
+    	display:none;
+    }    
+ }
+ 
+ @media only screen and (max-width : 650px) and (min-width : 481px) {
+    /* Tablet view: 4 tiles */
+    body {
+        padding-top: 8%;
+    }
+    .box {
+       width: 25%;
+    }
+    .navbar {
+        font-size: 10px;
+    }
+    a, .navbar-brand {
+        font-size: 10px;
+    }
+    input[type="search"]
+    {
+        height: 25px;
+    }
+    .panel {
+    	width: 100%;
+    }
+ }
+ @media only screen and (max-width : 1050px) and (min-width : 651px) {
+    /* Small desktop / ipad view: 6 tiles */
+    body {
+        padding-top: 5%;
+    }
+    .box {
+       width: 16,65%;
+    }
+    .panel {
+    	width: 70%;
+    }
+ }
+ @media only screen and (max-width : 1290px) and (min-width : 1051px) {
+    /* Medium desktop: 8 tiles */
+    .box {
+       width: 12.5%;
+    }   
+ }
+
+@media only screen and (max-width : 1630px) and (min-width : 1291px) {
+    /* Big desktop: 10 tiles */
+    .box {
+       width: 10%;
+    }
+ }
+
+ @media only screen and (min-width : 1631px) {
+    /* XXL desktop: 12 tiles */
+    .box {
+       width: 8.3%;
+    }
+ }
