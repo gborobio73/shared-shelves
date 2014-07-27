@@ -117,21 +117,19 @@ angular.module('tbeControllers')
 	          }); 
 	    };
 	    
-	    $scope.sendMessageToOwner= function(bookId, message) {
-	    	if(message != undefined && message.trim().length >0){
-	    		$scope.startedSending = true;
-				$scope.sendingInProcess = true;			
-				services.sendMessageToOwner(bookId, message).then(
-						function(result) {		        	
-							$scope.sendingInProcess = false;
-							$scope.sent = true;	
-						},
-						function (error){
-							console.log("error: " + JSON.stringify(error));
-							$scope.sendingInProcess = false;
-							$scope.sendFailed = true;
-						});
-	    	}	    	
+	    $scope.sendMessageToOwner= function(bookId) {
+	    	$scope.startedSending = true;
+			$scope.sendingInProcess = true;			
+			services.sendMessageToOwner(bookId).then(
+					function(result) {		        	
+						$scope.sendingInProcess = false;
+						$scope.sent = true;	
+					},
+					function (error){
+						console.log("error: " + JSON.stringify(error));
+						$scope.sendingInProcess = false;
+						$scope.sendFailed = true;
+					});	    	
 	    };
 	    
 	    $scope.cities = cities;

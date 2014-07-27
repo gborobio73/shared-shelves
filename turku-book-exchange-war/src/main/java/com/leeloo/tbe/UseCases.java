@@ -41,13 +41,13 @@ public class UseCases {
 		
 	}
 
-	public void sendMessageToOwner(TbeUser currentUser, String bookId, String message) throws Exception {
+	public void sendMessageToOwner(TbeUser currentUser, String bookId) throws Exception {
 		Book book = repo.get(Long.parseLong(bookId));
 		
 		if(book != null)
 		{
 			if(!book.isItOwnedBy(currentUser)){
-				TbeEmail email = new TbeEmail(currentUser, book,message);
+				TbeEmail email = new TbeEmail(currentUser, book);
 				new MailService().send(email);
 			}
 		}

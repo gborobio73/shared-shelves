@@ -64,9 +64,8 @@ angular.module('tbeServices').factory('services', function($http, $http) {
 	         });
      };
      
-     services.sendMessageToOwner = function(bookId, message){
-    	 var data = {bookId: bookId, message: message};    	 
-    	 return $http.post('/rest/books/message', data)
+     services.sendMessageToOwner = function(bookId){
+    	 return $http.post('/rest/books/message', bookId)
          	.then(function(result) {
          		//console.log('post /rest/books/message -> ' + JSON.stringify(result));
          		return result;

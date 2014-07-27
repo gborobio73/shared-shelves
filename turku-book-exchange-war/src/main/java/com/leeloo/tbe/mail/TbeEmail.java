@@ -7,12 +7,10 @@ public class TbeEmail {
 
 	private TbeUser currentUser;
 	private Book book;
-	private String userMessage;
-
-	public TbeEmail(TbeUser currentUser, Book book, String message) {
+	
+	public TbeEmail(TbeUser currentUser, Book book) {
 		this.currentUser = currentUser ;
 		this.book = book;
-		this.userMessage = message;
 	}
 
 	public String getFrom() {
@@ -25,10 +23,7 @@ public class TbeEmail {
 		message.append(String.format("Hello %s,",book.owner.getName()));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
-		message.append(String.format("I am sending you this message regarding your book '%s' with price %s euros:", book.title, book.price));
-		message.append(System.lineSeparator());
-		message.append(System.lineSeparator());
-		message.append(userMessage);
+		message.append(String.format("I am contacting you regarding to your book '%s' with price %s euros:", book.title, book.price));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
 		message.append(String.format("Please, contact me by replying to this email.",currentUser.getEmail()));

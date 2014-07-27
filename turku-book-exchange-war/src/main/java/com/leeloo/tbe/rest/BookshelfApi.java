@@ -122,17 +122,17 @@ public class BookshelfApi {
     @Path("/message")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response messageOwner(Message message) {
+    public Response messageOwner(String bookId) {
     	if (!userService.isUserLoggedIn()) {
 	        return Response.status(Response.Status.UNAUTHORIZED).build();
 	    }     	
     	TbeUser user = userService.getCurrentUser();
     	try{
-    		new UseCases().sendMessageToOwner(user, message.bookId, message.message);
+    		new UseCases().sendMessageToOwner(user, bookId);
     	    return Response.ok().build();    	    
     	}
     	catch(Exception e){
-    		String header = String.format("Error sending message to owner: book id %s, message %s",message.bookId, message.message);
+    		String header = String.format("Error sending message to owner: book id %s",bookId );
     		new TbeLogger().severe(header, user, e);
     		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     	}
