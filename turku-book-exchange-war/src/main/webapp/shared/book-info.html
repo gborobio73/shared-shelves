@@ -1,4 +1,5 @@
- 			<div class="form-group">
+			
+			<div class="form-group">
 			    <label for="inputTitle" class="col-sm-2 control-label">Title</label>
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.title" id="inputTitle" readonly>
@@ -6,13 +7,14 @@
 			    <div class="col-sm-4">
 			      <img ng-src="{{book.imageUrl}}" alt="..." class="img-thumbnail">
 			    </div>
+			    
 			  </div>
 			  <div class="form-group">
-			    <label for="inputAuthors" class="col-sm-2 control-label">Authors</label>
+ 				<label for="inputAuthors" class="col-sm-2 control-label">Authors</label>
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.authors" id="inputAuthors" readonly>
-			    </div>
-			  </div>
+			    </div>	
+			</div>
 			  <div class="form-group" ng-hide = "book.subtitle != ''">
 			    <label for="inputSubtitle" class="col-sm-2 control-label">Subtitle</label>
 			    <div class="col-sm-10">

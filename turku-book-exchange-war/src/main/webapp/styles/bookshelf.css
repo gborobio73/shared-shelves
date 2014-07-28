@@ -61,7 +61,7 @@ body {
    bottom:0px;
    height:30px;
    width:100%;
-   background:#999;
+   background:-webkit-linear-gradient(45deg, #FFF, #F9F9F9);
 }
 
 .panel {

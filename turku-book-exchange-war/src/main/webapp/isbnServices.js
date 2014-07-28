@@ -1,12 +1,19 @@
 angular.module('tbeServices').factory('isbnSearchServices', function($http, $http) {
     var isbnSearchServices = new Object();
-
+    
+    function removeHtml(description)
+    {
+       var tmp = document.createElement("DIV");
+       tmp.innerHTML = description;
+       return tmp.textContent || tmp.innerText || "";
+    }
+    
     isbnSearchServices.searchBookInfoByISBN = function(isbn){
              isbnNoHyphens = isbn.replace(/-/g,"");
              var isbnUrlSearch = 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbnNoHyphens;
              return $http.get(isbnUrlSearch)
                        .then(function(result) {
-                            //console.log(isbnUrlSearch+' -> ' + JSON.stringify(result.data));
+                            console.log('isbnUrlSearch -> ' + JSON.stringify(result.data));
                             var book = {
                               "title":"",
                               "subtitle":"",
@@ -29,12 +36,10 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
                               var selfLink = result.data.items[0].selfLink;
                               return $http.get(selfLink)
                                 .then(function(result) {
-                                  //console.log(selfLink+' -> ' + JSON.stringify(result.data));
-
                                   var volumeInfo = result.data.volumeInfo;
                                   book.title = volumeInfo.title;
                                   book.subtitle = volumeInfo.subtitle;
-                                  book.description = volumeInfo.description;
+                                  book.description = removeHtml(volumeInfo.description);
                                   book.authors = volumeInfo.authors;
                                   book.publisherDate = volumeInfo.publisherDate;
                                   book.language = volumeInfo.language;
