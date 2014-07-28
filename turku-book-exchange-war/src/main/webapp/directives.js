@@ -9,3 +9,9 @@ angular.module('tbeDirectives').directive('bookInfo', function() {
       templateUrl: 'shared/book-info.html'
     };
 });
+
+angular.module('tbeDirectives').directive('errorLabels', function() {
+    return {
+      templateUrl: 'shared/error-labels.html'
+    };
+});

@@ -14,7 +14,10 @@
 							
 							<button ng-hide = "startedRemoving" type="button" class="btn btn-danger btn-xs" ng-click="removeBook(book.id)" style="float: right;">Remove from bookshelf</button>
 							<img ng-show = "removingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>							
-							<h6><span class="label label-success" ng-show = "removed" style="float: right; font-size: 100%">Removed from bookshelf!</span></h6>							
+							<h6><span class="label label-success" ng-show = "removed" style="float: right; font-size: 100%">Removed from bookshelf!</span></h6>
+							
+							<div error-labels ng-show = "updateFailed" >
+							</div>									
 						</div>												  	
 				  	</div>
 				  	<div ng-hide = "book.ownedByCurrentUser" >
@@ -23,13 +26,11 @@
 					    <div class="col-sm-10">
 							<button ng-hide = "startedSending" type="button" class="btn btn-primary btn-md" ng-click="sendMessageToOwner(book.id)"  style="float: left;">Let the owner know!</button>
 							<img ng-show = "sendingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
-							<h5><span ng-show = "sent" class="label label-success" style="float: left; font-size: 100%">An email has been sent to the book's owner.</span></h5>
+							<h5><span ng-show = "sent" class="label label-success" style="float: left; font-size: 100%">Email sent to book's owner.</span></h5>
 							<br>
-							<h6><span ng-show = "sent" class="label label-info" style="float: left; font-size: 100%">Please check your inbox for a copy of the email.</span></h6>
-							<div ng-show = "sendFailed" >
-								<h5><span class="label label-danger" style="float: left; font-size: 100%">Wops, could not send the message!</span></h5>
-								<h5><span class="label label-info" style="float: left; font-size: 100%">Hmm, could you try again later please?</span></h5>
-							</div>						      
+							<h6><span ng-show = "sent" class="label label-info" style="float: left; font-size: 100%">Check your inbox for a copy.</span></h6>
+							
+							<div error-labels ng-show = "sendFailed" ></div>						      
 					    </div>						
 				  	</div>
 				</div>  

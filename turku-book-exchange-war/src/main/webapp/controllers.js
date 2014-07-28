@@ -70,7 +70,12 @@ angular.module('tbeControllers')
 		          console.log ('addToBookshelf() returns: ' + JSON.stringify(result));
 		          $scope.inProcess = false;
 		          $scope.success = true;
-	        }); 
+				},
+				function (error){
+					console.log("error: " + JSON.stringify(error));
+					$scope.inProcess = false;
+					$scope.addFailed = true;
+				}); 
 	    };
 	    $scope.searching = false;
 	    resetAddButton();
@@ -99,10 +104,15 @@ angular.module('tbeControllers')
 			$scope.startedRemoving = true;
 			$scope.removingInProcess = true;
 			services.removeBook(bookId).then(
-	        function(result) {
-	        	$scope.removingInProcess = false;
-		        $scope.removed = true;	        	
-	          }); 
+		        function(result) {
+		        	$scope.removingInProcess = false;
+			        $scope.removed = true;	        	
+		          },
+				function (error){
+					console.log("error: " + JSON.stringify(error));
+					$scope.removingInProcess = false;
+					$scope.updateFailed = true;
+				});  
 	    };
 	    
 	    $scope.saveBook = function(book) {
@@ -111,10 +121,15 @@ angular.module('tbeControllers')
 			book.location = $scope.bookLocation;
 	    	book.price = $scope.bookPrice;
 			services.saveBook(book).then(
-	        function(result) {		        	
-	        	$scope.savingInProcess = false;
-		        $scope.saved = true;	
-	          }); 
+		        function(result) {		        	
+		        	$scope.savingInProcess = false;
+			        $scope.saved = true;	
+		          },
+				function (error){
+					console.log("error: " + JSON.stringify(error));
+					$scope.savingInProcess = false;
+					$scope.updateFailed = true;
+				}); 
 	    };
 	    
 	    $scope.sendMessageToOwner= function(bookId) {

@@ -22,7 +22,9 @@
 			  	<div class="col-sm-offset-2 col-sm-10">
 			  		<button ng-hide = "startedAdding" type="button" class="btn btn-primary btn-sm" ng-click="addToBookshelf(book)">Add to bookshelf</button>				  		
 			  		<img ng-show = "inProcess" src="../img/ajax-loader-small.gif"/>
-		  			<h5><span ng-show = "success" class="label label-success" style="float: left; font-size: 100%">Added to bookshelf!</span></h5>			  	
+		  			<h5><span ng-show = "success" class="label label-success" style="float: left; font-size: 100%">Added to bookshelf!</span></h5>
+		  			
+		  			<div error-labels ng-show = "addFailed" ></div>			  	
 			  	</div>
 			  </div>
 		  </form>

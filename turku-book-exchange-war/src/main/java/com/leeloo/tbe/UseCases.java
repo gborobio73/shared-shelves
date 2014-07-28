@@ -26,21 +26,20 @@ public class UseCases {
 		
 	}
 
-	public void saveBook(UiBook bookToSave, TbeUser user) {
-		Book book = repo.get(Long.parseLong(bookToSave.id));
+	public void updateBook(String bookId, String description, String location,int price, TbeUser user) {
+		Book book = repo.get(Long.parseLong(bookId));
 		
 		if(book != null)
 		{
 			if(book.isItOwnedBy(user)){
-				book.description = bookToSave.description;
-				book.location = bookToSave.location;
-				book.price = bookToSave.price;
+				book.description = description;
+				book.location = location;
+				book.price = price;
 				repo.save(book);
 			}
-		}
-		
+		}		
 	}
-
+	
 	public void sendMessageToOwner(TbeUser currentUser, String bookId) throws Exception {
 		Book book = repo.get(Long.parseLong(bookId));
 		
@@ -53,4 +52,6 @@ public class UseCases {
 		}
 		
 	}
+
+	
 }

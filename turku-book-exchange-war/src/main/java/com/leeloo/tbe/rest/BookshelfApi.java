@@ -55,9 +55,16 @@ public class BookshelfApi {
 	    } 
     	
     	TbeUser user = userService.getCurrentUser();
-    	Book book = new UiBookMapper().map(newBook);
-    	new UseCases().addToBookshelf(book, user);
-	    return Response.ok().build();
+    	try{
+	    	Book book = new UiBookMapper().map(newBook);
+	    	new UseCases().addToBookshelf(book, user);
+		    return Response.ok().build();
+    	}
+    	catch(Exception e){
+    		String header = String.format("Error adding book %s",gson.toJson(newBook) );
+    		new TbeLogger().severe(header, user, e);
+    		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+    	}
     }
     
     @GET
@@ -84,8 +91,15 @@ public class BookshelfApi {
 	    } 
     	
     	TbeUser user = userService.getCurrentUser();
-    	new UseCases().deleteBook(Long.parseLong(bookId), user);
-	    return Response.ok().build();
+    	try{
+    		new UseCases().deleteBook(Long.parseLong(bookId), user);
+    		return Response.ok().build();
+    	}
+		catch(Exception e){
+			String header = String.format("Error removing bookId %s",bookId);
+			new TbeLogger().severe(header, user, e);
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}	    
     }    
     
     @GET
@@ -114,8 +128,15 @@ public class BookshelfApi {
 	    } 
     	
     	TbeUser user = userService.getCurrentUser();
-    	new UseCases().saveBook(book, user);
-	    return Response.ok().build();
+    	try{
+    		new UseCases().updateBook(book.id, book.description, book.location, book.price, user);
+    		return Response.ok().build();
+	    }
+		catch(Exception e){
+			String header = String.format("Error saving bookId %s with %s, %s, %s.",book.id,book.description, book.location, book.price);
+			new TbeLogger().severe(header, user, e);
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}	    
     }
     
     @POST
