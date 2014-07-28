@@ -50,7 +50,7 @@ angular.module('tbeControllers')
 		        isbnSearchServices.searchBookInfoByISBN(isbn).then(
 			        function(result) {
 			          $scope.book = result;
-			          $scope.bookLocation =cities[0];					  
+			          $scope.bookLocation ="Turku";					  
 					  $scope.bookPrice=prices[2];
 			          if ($scope.book.title != "") {
 			            $scope.bookFound = true;			            
