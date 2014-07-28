@@ -18,7 +18,7 @@ public class BookshelfRepository {
 	}
 
 	public List<Book> getFromUser(TbeUser user)	{
-		return ofy().load().type(Book.class).filter("owner.email", user.getEmail()).list();
+		return ofy().load().type(Book.class).filter("owner.email", user.getEmail()).order("-created").list();
 	}
 	
 	public void save(Book book) {
