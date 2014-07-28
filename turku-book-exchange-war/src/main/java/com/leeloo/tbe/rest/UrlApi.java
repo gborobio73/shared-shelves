@@ -26,7 +26,7 @@ public class UrlApi {
         UserService userService = UserServiceFactory.getUserService();
         
         loginURL = userService.createLoginURL("/#/Bookshelf");
-        logoutURL = userService.createLogoutURL("/logout.html");
+        logoutURL = userService.createLogoutURL("/login.html");
       
         return Response.ok().entity(new Gson().toJson(new Url(loginURL, logoutURL))).build();
 

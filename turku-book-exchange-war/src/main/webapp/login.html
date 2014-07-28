@@ -9,25 +9,80 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
   </head>
-  <body>
-    <div class="jumbotron">
-        <h1>Welcome to Turku Book Exchange</h1>
-        <h3 >Please <a href ="">log in</a> using your google account.</h3>
-    </div>
-    
+  <style>
+  	body {
+  		background-color: #fff;
+  	}
+	.title	{
+		background-color: rgba(80, 82, 92, 0.92); 
+		padding-bottom: 1%;
+		padding-left: 5%;		 
+		font-size: 30; 
+		padding-top: 3%;
+		color: #FFF;
+	}
+	.subtitle	{
+		padding-bottom: 1%;
+		font-size: 30px; 
+		padding-top: 3%;
+		padding-left: 5%;		
+	}
+	.description	{		
+		padding-left: 5%;
+		padding-bottom: 1%;		
+		font-size: 24px;
+	}
+	.footer	{
+		position: absolute;		
+		padding-left: 5%;
+		bottom: 3%;		
+		font-size: 14px;
+	}
+</style>
+ <body>
+  	<div class="title">
+ 		Turku Book Exchange  		
+  	</div>  	
+   	<div class = "subtitle">A second hand book bookshelf in Finland.</div>
+    <div class = "description">
+    	<span class="glyphicon glyphicon-user"></span>
+	<a id ="login" href ="">Log in</a> using your google account.			
+    </div>       
+    <div class = "description">
+      	<span class="glyphicon glyphicon-book"></span>
+		Browse the bookshelf.
+	</div>
+    <div class = "description">
+    	<span class="glyphicon glyphicon-search"></span>
+       	Search by title, author, language, city, etc.
+   	</div>
+    <div class = "description">
+    	<span class="glyphicon glyphicon-shopping-cart"></span>
+       	Sell your books, buy someone else's.
+   	</div>
+    <div class = "description">
+        <span class="glyphicon glyphicon-heart"></span>
+        No transactions, meet real people.
+    </div>	    
+    <div class="footer">
+		Leeloo Inc © 2014	    	    
+	</div>
   </body>
+   
 
-   <script type="text/javascript">
+  <footer>
+  	
+	
+  </footer>
+  
+  <script type="text/javascript">
     $( window ).load(function() {
         $.getJSON("/rest/url",
         function(data){
-          $("a").attr("href", data.loginURL);
+          $("#login").attr("href", data.loginURL);
         });
     });
      
   </script>
-
-  <footer>
-    <p>Copyright 2014 Leeloo Inc.</p>
-  </footer>
+  
 </html>
