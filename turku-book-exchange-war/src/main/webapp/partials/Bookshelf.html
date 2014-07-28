@@ -5,7 +5,7 @@
 	  <div class="pin" >
 	    <a href="/#/Book/{{book.id}}"><img ng-src="{{book.imageUrl}}"/></a> 
 	    <div class = "description">{{book.title}}</div>      
-	    <div class = "description">{{book.authors}}</div>
+	    <div class = "description" ng-bind = "book.authors"></div>
 	    <div class = "description hideForSmall">{{book.description.substring(0,200)}}</div>
 	    <div class = "description">{{book.price}} &euro; in {{book.location}}</div>	    
 	  </div>
