@@ -1,0 +1,46 @@
+body {
+	background-color: #fff;
+ 	}
+.title	{
+	background-color: rgba(80, 82, 92, 0.92); 
+	padding-bottom: 1%;
+	padding-left: 5%;		 
+	font-size: 30; 
+	padding-top: 3%;
+	color: #FFF;
+}
+.subtitle	{
+	padding-bottom: 1%;
+	font-size: 30px; 
+	padding-top: 3%;
+	padding-left: 5%;		
+}
+.description	{		
+	padding-left: 5%;
+	padding-bottom: 1%;		
+	font-size: 24px;
+}
+.footer	{
+	position: absolute;		
+	padding-left: 5%;
+	bottom: 3%;		
+	font-size: 14px;
+}
+
+ @media only screen and (max-width : 480px) {
+    /* Smartphone view: 2 tile */
+    .title	{
+		font-size: 23; 
+	}
+	.subtitle	{
+		font-size: 23px; 
+	}
+	.description	{		
+		font-size: 18px;
+	}
+   .footer	{
+		font-size: 10px;
+	}
+ }
+ 
+ 
