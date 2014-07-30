@@ -14,7 +14,7 @@ public class LookupServiceTests {
 	public void findBook_english_book_findsBook()
 	{
 		LookupService service = new LookupService();
-		String isbn = "9780375726590";
+		String isbn = "9524831635";
 		//UiBook book = service.findBook(isbn );
 		
 		/*assertNotNull(book.title);

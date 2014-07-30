@@ -9,6 +9,11 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import com.google.gson.Gson;
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 
@@ -22,7 +27,7 @@ public class LookupService {
 	    //                    .request().get(String.class);
 		
 		try {
-			String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
+			String url = "http://www.adlibris.com/fi/product.aspx?isbn="+isbn;
 			 
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -45,11 +50,13 @@ public class LookupService {
 			}
 			in.close();
 			
-			Gson gson = new Gson();
-			@SuppressWarnings("unused")
-			UiBook book = gson.fromJson(response.toString(), UiBook.class);
-			//print result
 			System.out.println(response.toString());
+			
+			Document doc = Jsoup.parse(response.toString());
+			Element element = doc.getElementById("ctl00_main_frame_ctrlproduct_rptAuthor_ctl00_liAuthor");
+			
+			System.out.println("title ->" + element.attr("value"));
+			
 		} catch (Exception e)		{
 			System.out.println(e.getMessage());
 		}
