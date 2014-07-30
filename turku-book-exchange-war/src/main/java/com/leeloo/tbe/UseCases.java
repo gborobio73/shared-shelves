@@ -10,6 +10,11 @@ public class UseCases {
 	private BookshelfRepository repo = new BookshelfRepository();
 	
 	public void addToBookshelf(Book book, TbeUser user) {
+		if (book.imageUrl.trim().isEmpty())
+		{
+			book.imageUrl = "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
+		}
+		book.hasImage = true;
 		book.setOwner(user);		
 		repo.save(book);		
 	}

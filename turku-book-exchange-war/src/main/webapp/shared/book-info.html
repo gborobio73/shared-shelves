@@ -4,11 +4,27 @@
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.title" id="inputTitle" readonly>
 			    </div>
-			    <div class="col-sm-4">
-			      <img ng-src="{{book.imageUrl}}" alt="..." class="img-thumbnail">
-			    </div>
-			    
 			  </div>
+			  <div class="form-group">
+			  	<label for="imgCover" class="col-sm-2 control-label">Cover</label>
+			  	<div class="col-sm-4" id = "imgCover">
+			      <img ng-src="{{book.imageUrl}}" alt="..." class="img-thumbnail">			      
+			    </div>		
+			    <div class=" col-sm-offset-2 col-sm-10" ng-hide = "(book.hasImage || book.ownedByCurrentUser == false)">			      
+				  <h4><span class="label label-warning" >Could not find an proper cover.</span></h4>
+				  <h5>
+				  	<a href ="http://images.google.com/images?q={{book.title}}" target="_blank">Search</a> for a cover and copy image URL here.
+				  </h5>
+				  <div class="input-group">
+			      	<input type="text" class="form-control input-sm" ng-model ="book.imageUrl" id="inputImageUrl" >
+			       	<span class="input-group-btn">
+				        <button class="btn btn-default btn-sm" type="button" ng-click="book.imageUrl = ''">
+				        	 <span class="glyphicon glyphicon-remove"></span>
+				        </button>
+				   	</span>				   	
+				  </div>
+			    </div>	    
+			   </div>
 			  <div class="form-group">
  				<label for="inputAuthors" class="col-sm-2 control-label">Authors</label>
 			    <div class="col-sm-4">
@@ -45,8 +61,9 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="inputISBN" class="col-sm-2 control-label">ISBN</label>
-			    <div class="col-sm-4">
-			      <input type="text" class="form-control input-sm" ng-model ="book.isbn" id="inputISBN" readonly>
+			    <div class="col-sm-10">
+			      <!-- <input type="text" class="form-control input-sm" ng-model ="book.isbn" id="inputISBN" disabled> -->			      
+      				<p class="form-control-static" style = "font-size: 140%;">{{book.isbn}}</p>			      
 			    </div>
 			  </div>
 			  <div class="form-group">

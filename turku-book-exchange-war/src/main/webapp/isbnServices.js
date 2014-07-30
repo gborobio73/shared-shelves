@@ -3,9 +3,13 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
     
     function removeHtml(description)
     {
-       var tmp = document.createElement("DIV");
-       tmp.innerHTML = description;
-       return tmp.textContent || tmp.innerText || "";
+    	if(description == undefined){
+    		return "";
+    	}else{
+			var tmp = document.createElement("DIV");
+			tmp.innerHTML = description;
+			return tmp.textContent || tmp.innerText || "";
+    	}
     }
     
     isbnSearchServices.searchBookInfoByISBN = function(isbn){
