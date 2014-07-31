@@ -73,20 +73,20 @@ body {
 @media only screen and (max-width : 768px) {
       /* 768px is menu colapse point*/
 	.search-box{
-		width: 177px;
+		width: 150px;
 	}
 	.panel-body{
 		padding-top: 15%;
 	}
 	.spinner{
 		padding-top: 50%;
-	}
+	}	
  }
     
  @media only screen and (max-width : 480px) {
     /* Smartphone view: 2 tile */
     body {
-        padding-top: 12%;
+        padding-top: 20%;
     }
     .box {
        width: 50%;
@@ -112,7 +112,7 @@ body {
  @media only screen and (max-width : 650px) and (min-width : 481px) {
     /* Tablet view: 4 tiles */
     body {
-        padding-top: 8%;
+        padding-top: 15%;
     }
     .box {
        width: 25%;
