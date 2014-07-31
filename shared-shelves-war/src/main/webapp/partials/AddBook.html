@@ -1,0 +1,39 @@
+<div nav-menu></div>
+<div class="container-fluid">
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	  	<form class="form-inline" role="form">
+	  		<div class="form-group">
+		  		<label class="sr-only" for="isbnInput">ISBN</label>
+			    <input type="search" class="form-control" ng-model = "isbn" id="isbnInput" placeholder="ISBN ..."/>
+		   		<button type="button" class="btn btn-primary btn-sm" ng-click="searchBookInfoByISBN(isbn)">Find book</button>
+		   		<img ng-show = "searching" src="../img/ajax-loader-small.gif"/>
+		   		<div ng-hide = "book.title != ''">
+		   			<h4><span class="label label-warning">Sorry, could not find the book.</span></h4>
+		   			<h4><span class="label label-info">I am constantly improving the search. </span></h4>			  		
+		   			<h4><span class="label label-info">Please try again in a few days, thanks.</span></h4>
+				</div>
+			</div>
+		</form>
+	  </div>
+	  
+	  <div class="panel-body" ng-show = "bookFound">	  
+		  <form class="form-horizontal" role="form">		  	 
+			  <div book-info></div>		
+			  <div class="form-group">
+			  	<div class="col-sm-offset-2 col-sm-10">
+			  		<button ng-hide = "startedAdding" type="button" class="btn btn-primary btn-sm" ng-click="addToBookshelf(book)">Add to bookshelf</button>				  		
+			  		<img ng-show = "inProcess" src="../img/ajax-loader-small.gif"/>
+		  			<h4><span ng-show = "success" class="label label-success" style="float: left;">Added to bookshelf!</span></h4>
+		  			
+		  			<div error-labels ng-show = "addFailed" ></div>			  	
+			  	</div>
+			  </div>
+		  </form>
+		</div>
+	</div>
+</div>
+
+
+
+
