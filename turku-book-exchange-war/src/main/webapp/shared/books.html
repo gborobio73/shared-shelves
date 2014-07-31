@@ -1,5 +1,5 @@
 <div class="wrap" >
-    <img ng-show= "loading" src="../img/ajax-loader-big.gif" style="float: center;"/>
+    <img ng-show= "loading" class ="spinner" src="../img/ajax-loader-big.gif" style="float: center;"/>
 	<div class="box" ng-repeat="book in books | filter:b" >
 	  <div class="pin" >
 	    <a href="/#/Book/{{book.id}}"><img ng-src="{{book.imageUrl}}"/></a> 

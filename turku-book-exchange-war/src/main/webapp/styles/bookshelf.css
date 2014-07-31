@@ -69,13 +69,18 @@ body {
     }
 
 
-/* menu bar */
+/* menu bar colapsed*/
 @media only screen and (max-width : 768px) {
       /* 768px is menu colapse point*/
 	.search-box{
 		width: 177px;
 	}
-	
+	.panel-body{
+		padding-top: 15%;
+	}
+	.spinner{
+		padding-top: 50%;
+	}
  }
     
  @media only screen and (max-width : 480px) {
