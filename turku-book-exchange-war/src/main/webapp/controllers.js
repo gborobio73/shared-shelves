@@ -29,6 +29,20 @@ angular.module('tbeControllers').controller(
     getAllBooks();
   });
 
+angular.module('tbeControllers').controller(
+		  'mybooksController', function ($scope, $location,services) {
+
+	var getUserBooks = function() {
+		$scope.loading= true;
+	  	services.getUserBooks().then(
+		          function(result) {
+		        	  $scope.loading= false;
+		              $scope.books = result;
+		          });
+	    };
+	 getUserBooks();
+  });
+
 
 angular.module('tbeControllers')
 	.controller('addBookController', function ($scope, $location, services, isbnSearchServices) {

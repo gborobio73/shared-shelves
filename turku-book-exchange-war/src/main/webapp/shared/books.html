@@ -1,0 +1,12 @@
+<div class="wrap" >
+    <img ng-show= "loading" src="../img/ajax-loader-big.gif" style="float: center;"/>
+	<div class="box" ng-repeat="book in books | filter:b" >
+	  <div class="pin" >
+	    <a href="/#/Book/{{book.id}}"><img ng-src="{{book.imageUrl}}"/></a> 
+	    <div class = "description">{{book.title}}</div>      
+	    <div class = "description" ng-bind = "book.authors"></div>
+	    <div class = "description hideForSmall">{{book.description.substring(0,200)}}</div>
+	    <div class = "description">{{book.price}} &euro; in {{book.location}}</div>	    
+	  </div>
+	</div>
+</div>

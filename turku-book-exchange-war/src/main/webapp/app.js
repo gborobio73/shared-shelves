@@ -19,6 +19,11 @@ tbeApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/Bookshelf.html',
       controller: 'bookshelfController'
     })
+    .state('MyBooks', {
+      url: '/MyBooks',
+      templateUrl: 'partials/MyBooks.html',
+      controller: 'mybooksController'
+    })
     .state('AddBook', {
       url: '/AddBook',
       templateUrl: 'partials/AddBook.html',

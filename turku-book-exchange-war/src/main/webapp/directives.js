@@ -15,3 +15,9 @@ angular.module('tbeDirectives').directive('errorLabels', function() {
       templateUrl: 'shared/error-labels.html'
     };
 });
+
+angular.module('tbeDirectives').directive('books', function() {
+    return {
+      templateUrl: 'shared/books.html'
+    };
+});

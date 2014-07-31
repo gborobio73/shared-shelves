@@ -67,6 +67,16 @@ body {
 .panel {
     	width: 50%;
     }
+
+
+/* menu bar */
+@media only screen and (max-width : 768px) {
+      /* 768px is menu colapse point*/
+	.search-box{
+		width: 177px;
+	}
+	
+ }
     
  @media only screen and (max-width : 480px) {
     /* Smartphone view: 2 tile */
@@ -80,7 +90,7 @@ body {
         font-size: 10px;
     }
     a, .navbar-brand {
-        font-size: 10px;
+        font-size: 15px;
     }
     input[type="search"]
     {
@@ -106,7 +116,7 @@ body {
         font-size: 10px;
     }
     a, .navbar-brand {
-        font-size: 10px;
+        font-size: 15px;
     }
     input[type="search"]
     {

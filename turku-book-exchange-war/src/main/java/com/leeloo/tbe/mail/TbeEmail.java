@@ -23,7 +23,7 @@ public class TbeEmail {
 		message.append(String.format("Hello %s,",book.owner.getName()));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
-		message.append(String.format("I am contacting you regarding to your book '%s' with price %s euros:", book.title, book.price));
+		message.append(String.format("I am contacting you regarding your book '%s' with price %s euros:", book.title, book.price));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
 		message.append(String.format("Please, contact me by replying to this email.",currentUser.getEmail()));
@@ -32,7 +32,7 @@ public class TbeEmail {
 		message.append(String.format("Thank you,"));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
-		message.append(String.format("%s (via Turku Book Exchange)", currentUser.getName()));
+		message.append(String.format("%s (via Shared Shelves)", currentUser.getName()));
 		
 		return message.toString();
 	}
