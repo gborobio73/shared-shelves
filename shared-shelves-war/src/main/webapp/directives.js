@@ -21,3 +21,8 @@ angular.module('tbeDirectives').directive('books', function() {
       templateUrl: 'shared/books.html'
     };
 });
+angular.module('tbeDirectives').directive('faqDetails', function() {
+    return {
+      templateUrl: 'shared/faq-details.html'
+    };
+});

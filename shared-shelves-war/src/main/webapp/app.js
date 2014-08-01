@@ -33,6 +33,11 @@ tbeApp.config(function($stateProvider, $urlRouterProvider) {
       url: '/Book/:bookId',
       templateUrl: 'partials/Book.html',
       controller: 'bookController'
+    })
+  	.state('FAQ', {
+      url: '/FAQ',
+      templateUrl: 'partials/faq.html',
+      controller: ''
     });
 });
 

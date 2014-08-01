@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background: #EEE;
-    font: 10px/13px 'Lucida Sans',sans-serif;
+    font: 12px/18px 'Lucida Sans', sans-serif;
     padding-top: 4%;
  }
  .wrap {
@@ -11,7 +11,7 @@ body {
  .box {
     float: left;
     position: relative;
-    width: 20%;
+    width: 20%;    
  }
  
  .pin {
@@ -31,37 +31,46 @@ body {
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
     -o-transition: all .2s ease;
-    transition: all .2s ease;
+    transition: all .2s ease;    
+    height: 565px;
+    font: 12px/18px Arial, sans-serif;
 }
 
 .pin img {
-    width: 100%;
-    border-bottom: 1px solid #ccc;
+    width: 100%;    
     padding-bottom: 15px;
     margin-bottom: 5px;
-}
-
-.pin .description{
-    font: 12px/18px Arial, sans-serif;
-    color: #333;
-    margin: 0;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
+    /*height: 235px;*/
 }
 
+.pin .description{    
+    color: #333;
+    margin: 0;
+    padding-bottom: 5px;
+    margin-bottom: 5px;    
+}
+
+.pin .line{
+	border-bottom: 1px solid #ccc;
+}
+.pin .price{
+	color: #333;
+    padding-bottom: 0px;
+    margin-bottom: 0px;    
+    bottom: 25px;
+	position: absolute;
+}
+
+.pin a{
+	font: 12px/18px Arial, sans-serif
+}
 .pin .user {
-    font: 12px/18px Arial, sans-serif;
     color: #333;
     margin: 0;
 }
-.footer {
-   position:absolute;
-   left:0px;
-   bottom:0px;
-   height:30px;
-   width:100%;
-   background:-webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+.contact-info {
+   font: 10px/13px 'Lucida Sans',sans-serif;
 }
 
 .panel {
@@ -80,13 +89,45 @@ body {
 	}	
  }
     
- @media only screen and (max-width : 480px) {
+ @media only screen and (max-width : 380px) {
     /* Smartphone view: 2 tile */
     body {
         padding-top: 20%;
     }
+    .pin{
+    	height: 350px;
+    }
     .box {
        width: 50%;
+    }
+    .navbar {
+        font-size: 10px;
+    }
+    a, .navbar-brand {
+        font-size: 10px;
+    }
+    input[type="search"]
+    {
+        height: 25px;
+    }
+    .panel {
+    	width: 100%;
+    }
+    .hideForSmall{
+    	display:none;
+    }    
+ }
+ 
+ @media only screen and (max-width : 481px) and (min-width : 380px) {
+    /* Smartphone view: 32 tile */
+    body {
+        padding-top: 20%;
+    }
+    .pin{
+    	height: 350px;
+    }
+    .box {
+       width: 33.3%;
     }
     .navbar {
         font-size: 10px;

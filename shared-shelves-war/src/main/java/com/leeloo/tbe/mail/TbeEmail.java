@@ -23,10 +23,10 @@ public class TbeEmail {
 		message.append(String.format("Hello %s,",book.owner.getName()));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
-		message.append(String.format("I am contacting you regarding your book '%s' with price %s euros:", book.title, book.price));
+		message.append(String.format("I am contacting you regarding your book '%s' with the price of %s euros.", book.title, book.price));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
-		message.append(String.format("Please, contact me by replying to this email.",currentUser.getEmail()));
+		message.append(String.format("Please, contact me by replying to this email."));
 		message.append(System.lineSeparator());
 		message.append(System.lineSeparator());
 		message.append(String.format("Thank you,"));
