@@ -11,11 +11,11 @@
 				  		<div class="col-sm-offset-2 col-sm-10">
 							<button ng-hide = "(startedSaving ||startedRemoving) " type="button" class="btn btn-primary btn-md" ng-click="saveBook(book)"  style="float: left;">Save changes</button>
 							<img ng-show = "savingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
-							<h4><span ng-show = "saved" class="label label-success" style="float: left;">Changes saved!</span></h4>							
+							<h4><span ng-show = "saved" class="label label-success" style="float: left;">Changes saved.</span></h4>							
 
 							<button ng-hide = "(startedSaving ||startedRemoving)" type="button" class="btn btn-danger btn-xs" ng-click="removeBook(book.id)" style="float: right;">Remove</button>
 							<img ng-show = "removingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>							
-							<h4><span class="label label-success" ng-show = "removed" style="float: right;">Removed from bookshelf!</span></h4>
+							<h4><span class="label label-success" ng-show = "removed" style="float: right;">Removed from bookshelf.</span></h4>
 							
 							<div error-labels ng-show = "updateFailed" >
 							</div>									
