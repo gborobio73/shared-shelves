@@ -66,6 +66,7 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
                                   }
                                   book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn; 
                                   //console.log('returning book -> ' + JSON.stringify(book));
+                                  book.ownedByCurrentUser = true;
                                   return book;
                                 });
                             }

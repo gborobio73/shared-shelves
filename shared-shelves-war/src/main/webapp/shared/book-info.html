@@ -63,18 +63,20 @@
 			    <label for="inputISBN" class="col-sm-2 control-label">ISBN</label>
 			    <div class="col-sm-10">
 			      <!-- <input type="text" class="form-control input-sm" ng-model ="book.isbn" id="inputISBN" disabled> -->			      
-      				<p class="form-control-static" style = "font-size: 140%;">{{book.isbn}}</p>			      
+      				<p class="form-control-static" style = "font-size: 120%;">{{book.isbn}}</p>			      
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="selectLocation" class="col-sm-2 control-label">Book's location</label>
 			    <div class="col-sm-4">
-			       <select class="form-control" ng-model="bookLocation" ng-options="city for city in cities" id="selectLocation"></select>			      
+			       <select class="form-control" ng-show="book.ownedByCurrentUser" ng-model="bookLocation" ng-options="city for city in cities" id="selectLocation"></select>
+			       <input type="text" ng-hide="book.ownedByCurrentUser" class="form-control input-sm" ng-model ="book.location" id="selectLocation" readonly>			      
 			    </div>
 			  </div>
 			  <div class="form-group">
 			  	<label for="selectPrice" class="col-sm-2 control-label">Price <span class="glyphicon glyphicon-euro"></span></label>
 			    <div class="col-sm-2">
-			       <select class="form-control" ng-model="bookPrice" ng-options="price for price in prices" id="selectPrice"></select>			       
+			       <select class="form-control" ng-show="book.ownedByCurrentUser" ng-model="bookPrice" ng-options="price for price in prices" id="selectPrice"></select>
+			       <input type="text" ng-hide="book.ownedByCurrentUser" class="form-control input-sm" ng-model ="book.price" id="selectPrice" readonly>			       
 			    </div>			    
 			  </div>
