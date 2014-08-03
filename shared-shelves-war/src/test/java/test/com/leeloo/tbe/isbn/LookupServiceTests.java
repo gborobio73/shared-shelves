@@ -58,5 +58,18 @@ public class LookupServiceTests {
 			//System.out.println(e.getMessage());
 		}
 	}
+	@Test
+	public void findBook_DoesNotFindTheBook()
+	{
+		LookupService service = new LookupService();
+		String isbn = "9788497597210";
+		try {
+			UiBook book = service.findBook(isbn );
+			fail("Should have thrown book not found exception");
+			
+		} catch (Exception e)		{
+			
+		}
+	}
 	
 }

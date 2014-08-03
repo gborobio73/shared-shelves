@@ -25,14 +25,17 @@ public class LookupService {
 		UiBook uiBook = new UiBook();
 		uiBook.ownedByCurrentUser=true;
 		
-		Element desc = doc.getElementsByAttributeValue("itemprop", "description").first();
-		uiBook.description = desc.text().trim();
-		
 		Element title = doc.getElementsByAttributeValue("itemprop", "name").first();
+		if ( title == null){
+			throw new Exception(String.format("Adlibris does not have the book isbn %s", isbn));
+		}
 		uiBook.title = title.text().trim();
 		
 		Element author = doc.getElementById("ctl00_main_frame_ctrlproduct_rptAuthor_ctl00_linkAuthor");
 		uiBook.authors = Arrays.asList(author.text().trim());
+		
+		Element desc = doc.getElementsByAttributeValue("itemprop", "description").first();
+		uiBook.description = desc.text().trim();
 		
 		Element language = doc.getElementById("ctl00_main_frame_ctrlproduct_lblLanguage");
 		if( language.text().trim().equals("espanja")){
