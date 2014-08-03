@@ -8,7 +8,6 @@ import com.leeloo.tbe.TbeUser;
 import com.leeloo.tbe.book.Book;
 
 public class UiBookMapper {
-	int descriptionLength = 193;
 	
 	public List<UiBook> map (List<Book> books, TbeUser user)
 	{
@@ -61,9 +60,9 @@ public class UiBookMapper {
 	}
 	
 	private String getLanguage(Book book) {
-		if(book.language.toUpperCase().equals("EN")) return "english";
-		if(book.language.toUpperCase().equals("ES")) return "spanish";
-		if(book.language.toUpperCase().equals("FI")) return "finnish";
+		if(book.language.toUpperCase().equals("EN")) return "English";
+		if(book.language.toUpperCase().equals("ES")) return "Spanish";
+		if(book.language.toUpperCase().equals("FI")) return "Finnish";
 		
 		return book.language;
 	
