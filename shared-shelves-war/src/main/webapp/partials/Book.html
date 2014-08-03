@@ -9,13 +9,13 @@
 			  		<hr>				  	
 				  	<div ng-show = "book.ownedByCurrentUser" >
 				  		<div class="col-sm-offset-2 col-sm-10">
-							<button ng-hide = "(startedSaving ||startedRemoving) " type="button" class="btn btn-primary btn-md" ng-click="saveBook(book)"  style="float: left;">Save changes</button>
+							<button ng-hide = "(startedSaving ||startedRemoving) " type="button" class="btn btn-primary btn-md" ng-click="saveBook(book)"  style="float: left;">{{texts.book.saveChangesBtn}}</button>
 							<img ng-show = "savingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
-							<h4><span ng-show = "saved" class="label label-success" style="float: left;">Changes saved</span></h4>							
+							<h4><span ng-show = "saved" class="label label-success" style="float: left;">{{texts.book.changesSaved}}</span></h4>							
 
-							<button ng-hide = "(startedSaving ||startedRemoving)" type="button" class="btn btn-danger btn-xs" ng-click="removeBook(book.id)" style="float: right;">Remove</button>
+							<button ng-hide = "(startedSaving ||startedRemoving)" type="button" class="btn btn-danger btn-xs" ng-click="removeBook(book.id)" style="float: right;">{{texts.book.removeBtn}}</button>
 							<img ng-show = "removingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>							
-							<h4><span class="label label-success" ng-show = "removed" style="float: right;">Removed from bookshelf</span></h4>
+							<h4><span class="label label-success" ng-show = "removed" style="float: right;">{{texts.book.removedFromBookshelf}}</span></h4>
 							
 							<div error-labels ng-show = "updateFailed" >
 							</div>									
@@ -24,11 +24,11 @@
 				  	<div ng-hide = "book.ownedByCurrentUser" >
 				  		<label for="inputCategories" class="col-sm-2 control-label">Interested?</label>
 					    <div class="col-sm-10">
-							<button ng-hide = "startedSending" type="button" class="btn btn-primary btn-md" ng-click="sendMessageToOwner(book.id)"  style="float: left;">Let the owner know!</button>
+							<button ng-hide = "startedSending" type="button" class="btn btn-primary btn-md" ng-click="sendMessageToOwner(book.id)"  style="float: left;">{{texts.book.letOwnerKnowBtn}}</button>
 							<img ng-show = "sendingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
-							<h4><span ng-show = "sent" class="label label-success" style="float: left;">Email sent to book's owner</span></h4>
+							<h4><span ng-show = "sent" class="label label-success" style="float: left;">{{texts.book.emailSentToOwner}}</span></h4>
 							<br>
-							<h5><span ng-show = "sent" class="label label-info" style="float: left;">Check your inbox for a copy</span></h5>							
+							<h5><span ng-show = "sent" class="label label-info" style="float: left;">{{texts.book.checkInboxForCopy}}</span></h5>							
 							<div error-labels ng-show = "sendFailed" ></div>						      
 					    </div>						
 				  	</div>

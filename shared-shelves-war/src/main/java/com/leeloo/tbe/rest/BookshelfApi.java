@@ -19,6 +19,7 @@ import com.leeloo.tbe.TbeUser;
 import com.leeloo.tbe.TbeUserService;
 import com.leeloo.tbe.UseCases;
 import com.leeloo.tbe.book.Book;
+import com.leeloo.tbe.isbn.LookupService;
 import com.leeloo.tbe.repository.BookshelfRepository;
 import com.leeloo.tbe.rest.jsonpojos.Message;
 import com.leeloo.tbe.rest.jsonpojos.NewBook;
@@ -144,6 +145,7 @@ public class BookshelfApi {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response messageOwner(String bookId) {
+    	
     	if (!userService.isUserLoggedIn()) {
 	        return Response.status(Response.Status.UNAUTHORIZED).build();
 	    }     	
@@ -157,6 +159,30 @@ public class BookshelfApi {
     		new TbeLogger().severe(header, user, e);
     		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
     	}
+    }
+    
+    @GET
+    @Path("/search/{isbn}")
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Response searchBook(@PathParam("isbn") String isbn) {
+    	if (!userService.isUserLoggedIn()) {
+             return Response.status(Response.Status.UNAUTHORIZED).build();
+        } 
+        
+    	try{
+    		LookupService service = new LookupService();
+    		UiBook uiBook = service.findBook(isbn);
+    		
+    		return Response.ok().entity(gson.toJson(uiBook)).build();    		
+    	}
+    	catch(Exception e){
+    		TbeUser user = userService.getCurrentUser();
+    		String header = String.format("Error searching for book %s",isbn );
+    		new TbeLogger().severe(header, user, e);
+    		
+    		return Response.status(Response.Status.NOT_FOUND).build();
+    	}
+    	        
     }
     
 }

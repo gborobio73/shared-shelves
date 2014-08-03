@@ -81,12 +81,10 @@ angular.module('tbeControllers')
 	    	book.price = $scope.bookPrice;
 	    	services.addToBookshelf(book).then(
 				function(result) {
-		          console.log ('addToBookshelf() returns: ' + JSON.stringify(result));
 		          $scope.inProcess = false;
 		          $scope.success = true;
 				},
 				function (error){
-					console.log("error: " + JSON.stringify(error));
 					$scope.inProcess = false;
 					$scope.addFailed = true;
 				}); 
@@ -97,7 +95,7 @@ angular.module('tbeControllers')
 );
 
 angular.module('tbeControllers')
-	.controller('bookController', function ($scope, $stateParams, services) {
+	.controller('bookController', function ($scope, $stateParams, services,textsServices) {
 			
 		var getBook = function(bookId) {
 			$scope.loading= true;
@@ -123,7 +121,6 @@ angular.module('tbeControllers')
 			        $scope.removed = true;	        	
 		          },
 				function (error){
-					console.log("error: " + JSON.stringify(error));
 					$scope.removingInProcess = false;
 					$scope.updateFailed = true;
 				});  
@@ -140,7 +137,6 @@ angular.module('tbeControllers')
 			        $scope.saved = true;	
 		          },
 				function (error){
-					console.log("error: " + JSON.stringify(error));
 					$scope.savingInProcess = false;
 					$scope.updateFailed = true;
 				}); 
@@ -155,7 +151,6 @@ angular.module('tbeControllers')
 						$scope.sent = true;	
 					},
 					function (error){
-						console.log("error: " + JSON.stringify(error));
 						$scope.sendingInProcess = false;
 						$scope.sendFailed = true;
 					});	    	
@@ -177,6 +172,8 @@ angular.module('tbeControllers')
 	    $scope.startedSending = false;
 	    $scope.sendingInProcess= false;
 	    $scope.sent = false;
+	    
+	    $scope.texts = textsServices.getTexts("en");
 	    
 		getBook(bookId);
 	}

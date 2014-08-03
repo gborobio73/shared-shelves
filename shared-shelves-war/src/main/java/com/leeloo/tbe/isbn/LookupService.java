@@ -1,66 +1,72 @@
 package com.leeloo.tbe.isbn;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
+import java.util.Arrays;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import com.google.gson.Gson;
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 
 public class LookupService {
 
-	public UiBook findBook(String isbn)
+	public UiBook findBook(String isbn) throws Exception
 	{
 		
-		//String responseEntity = ClientBuilder.newClient()
-	    //        .target("https://www.googleapis.com").path("/books/v1/volumes").queryParam("q", isbn)
-	    //                    .request().get(String.class);
+		String url = "http://www.adlibris.com/fi/product.aspx?isbn="+isbn;
+		 
+		Document doc = Jsoup.connect(url)
+				  .data("query", "Java")
+				  .userAgent("Mozilla")
+				  .cookie("auth", "token")
+				  .timeout(7000)
+				  .post();			
 		
-		try {
-			String url = "http://www.adlibris.com/fi/product.aspx?isbn="+isbn;
-			 
-			URL obj = new URL(url);
-			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-	 
-			// optional default is GET
-			con.setRequestMethod("GET");
-	 
-			//add request header
-			con.setRequestProperty("User-Agent", "Mozilla/5.0");
-	 
-			int responseCode = con.getResponseCode();
-			System.out.println("\nSending 'GET' request to URL : " + url);
-			System.out.println("Response Code : " + responseCode);
-	 
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			String inputLine;
-			StringBuffer response = new StringBuffer();	 
-			while ((inputLine = in.readLine()) != null) {
-				response.append(inputLine);
-			}
-			in.close();
-			
-			System.out.println(response.toString());
-			
-			Document doc = Jsoup.parse(response.toString());
-			Element element = doc.getElementById("ctl00_main_frame_ctrlproduct_rptAuthor_ctl00_liAuthor");
-			
-			System.out.println("title ->" + element.attr("value"));
-			
-		} catch (Exception e)		{
-			System.out.println(e.getMessage());
+		UiBook uiBook = new UiBook();
+		uiBook.ownedByCurrentUser=true;
+		
+		Element desc = doc.getElementsByAttributeValue("itemprop", "description").first();
+		uiBook.description = desc.text().trim();
+		
+		Element title = doc.getElementsByAttributeValue("itemprop", "name").first();
+		uiBook.title = title.text().trim();
+		
+		Element author = doc.getElementById("ctl00_main_frame_ctrlproduct_rptAuthor_ctl00_linkAuthor");
+		uiBook.authors = Arrays.asList(author.text().trim());
+		
+		Element language = doc.getElementById("ctl00_main_frame_ctrlproduct_lblLanguage");
+		if( language.text().trim().equals("espanja")){
+			uiBook.language="es";
 		}
-		return new UiBook();
+		else if( language.text().trim().equals("suomi")){
+			uiBook.language="fi";
+		}			
+		else if( language.text().trim().equals("englanti")){
+			uiBook.language="en";
+		}
+		else {
+			uiBook.language=language.text().trim();
+		}
+		
+		Element pageCount = doc.getElementById("ctl00_main_frame_ctrlproduct_lblPages");
+		uiBook.pageCount = pageCount.text().trim();
+				
+		Element image = doc.getElementById("ctl00_main_frame_ctrlproduct_imgProduct_ProductImageNotLinked");
+		if(image.attr("src").trim().contains("noimage"))
+		{
+			uiBook.imageUrl = "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
+			uiBook.hasImage=false;
+		}else{
+			uiBook.imageUrl = image.attr("src").trim();
+			uiBook.hasImage=true;
+		}	
+		uiBook.isbn = isbn;
+		
+		Element subtitle = doc.getElementById("ctl00_main_frame_ctrlproduct_lblSubtitle");
+		if (subtitle!= null){
+			uiBook.subtitle = subtitle.text().trim();
+		}
+				
+		return uiBook;
 	}
-	
 }

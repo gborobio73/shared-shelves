@@ -17,7 +17,6 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
              var isbnUrlSearch = 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbnNoHyphens;
              return $http.get(isbnUrlSearch)
                        .then(function(result) {
-                            console.log('isbnUrlSearch -> ' + JSON.stringify(result.data));
                             var book = {
                               "title":"",
                               "subtitle":"",
@@ -64,13 +63,22 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
                                   else{
                                     book.isbn = volumeInfo.industryIdentifiers[0].identifier;
                                   }
-                                  book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn; 
-                                  //console.log('returning book -> ' + JSON.stringify(book));
+                                  book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn;                                   
                                   book.ownedByCurrentUser = true;
                                   return book;
                                 });
                             }
-                            return book;
+                            else{
+                            	//could not find the book
+                            	var searchUrl ="/rest/books/search/"+isbnNoHyphens;
+                            	return $http.get(searchUrl).then(
+                        			function(result) {
+                        				return result.data;
+                        			},
+                        			function (error){
+                        				return book;
+                        			}); 
+                            }                            
                         });
         };
 
