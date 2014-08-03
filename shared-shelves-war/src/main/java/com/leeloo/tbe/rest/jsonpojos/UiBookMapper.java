@@ -62,7 +62,7 @@ public class UiBookMapper {
 	
 	private String getLanguage(Book book) {
 		if(book.language.toUpperCase().equals("EN")) return "english";
-		if(book.language.toUpperCase().equals("ES")) return "espanish";
+		if(book.language.toUpperCase().equals("ES")) return "spanish";
 		if(book.language.toUpperCase().equals("FI")) return "finnish";
 		
 		return book.language;
