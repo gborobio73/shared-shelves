@@ -37,7 +37,7 @@ tbeApp.config(function($stateProvider, $urlRouterProvider) {
   	.state('FAQ', {
       url: '/FAQ',
       templateUrl: 'partials/faq.html',
-      controller: ''
+      controller: 'faqController'
     });
 });
 

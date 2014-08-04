@@ -1,9 +1,6 @@
 package com.leeloo.tbe.rest;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -21,7 +18,6 @@ import com.leeloo.tbe.UseCases;
 import com.leeloo.tbe.book.Book;
 import com.leeloo.tbe.isbn.LookupService;
 import com.leeloo.tbe.repository.BookshelfRepository;
-import com.leeloo.tbe.rest.jsonpojos.Message;
 import com.leeloo.tbe.rest.jsonpojos.NewBook;
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 import com.leeloo.tbe.rest.jsonpojos.UiBookMapper;

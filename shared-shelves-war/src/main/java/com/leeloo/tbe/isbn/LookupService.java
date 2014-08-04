@@ -38,13 +38,13 @@ public class LookupService {
 		uiBook.description = desc.text().trim();
 		
 		Element language = doc.getElementById("ctl00_main_frame_ctrlproduct_lblLanguage");
-		if( language.text().trim().equals("espanja")){
+		if(language.text().trim().equals("espanja")){
 			uiBook.language="es";
 		}
-		else if( language.text().trim().equals("suomi")){
+		else if(language.text().trim().equals("suomi")){
 			uiBook.language="fi";
 		}			
-		else if( language.text().trim().equals("englanti")){
+		else if(language.text().trim().equals("englanti")){
 			uiBook.language="en";
 		}
 		else {

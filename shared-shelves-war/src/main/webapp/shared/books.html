@@ -7,7 +7,7 @@
 	    <div class = "description line" ng-bind = "book.authors"></div>
 	    <div class = "description hideForSmall">
 	    	<div ng-show="book.description.length >200">{{book.description.substring(0,200)}}
-	    		<a href ="/#/Book/{{book.id}}" >[more]</a>	    		
+	    		<a href ="/#/Book/{{book.id}}" >[{{texts.bookshelf.more[lang]}}]</a>	    		
 	    	</div>
 	    	<div ng-show="book.description.length <=200">{{book.description}}</div>
 	    </div>

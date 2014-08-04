@@ -1,8 +1,18 @@
 var cities = ["Akaa","Alajärvi","Alavus","Espoo","Forssa","Haapajärvi","Haapavesi","Hamina","Hanko","Harjavalta","Haukipudas","Heinola","Helsinki","Huittinen","Hyvinkää","Hämeenlinna","Iisalmi","Ikaalinen","Imatra","Joensuu","Juankoski","Jyväskylä","Jämsä","Järvenpää","Kaarina","Kajaani","Kalajoki","Kankaanpää","Kannus","Karkkila","Kaskinen","Kauhajoki","Kauhava","Kauniainen","Kemi","Kemijärvi","Kerava","Keuruu","Kitee","Kiuruvesi","Kokemäki","Kokkola","Kotka","Kouvola","Kristiinankaupunki","Kuhmo","Kuopio","Kurikka","Kuusamo","Lahti","Laitila","Lappeenranta","Lapua","Lieksa","Lohja","Loimaa","Loviisa","Maarianhamina","Mikkeli","Mänttä-Vilppula","Naantali","Nilsiä","Nivala","Nokia","Nurmes","Närpiö","Orimattila","Orivesi","Oulainen","Oulu","Outokumpu","Paimio","Parainen","Parkano","Pieksämäki","Pietarsaari","Pori","Porvoo","Pudasjärvi","Pyhäjärvi","Raahe","Raasepori","Raisio","Rauma","Riihimäki","Rovaniemi","Saarijärvi","Salo","Sastamala","Savonlinna","Seinäjoki","Siuntio","Somero","Suonenjoki","Tampere","Tornio","Turku","Ulvila","Uusikaarlepyy","Uusikaupunki","Vaasa","Valkeakoski","Vantaa","Varkaus","Viitasaari","Virrat","Ylivieska","Ylöjärvi","Ähtäri","Äänekoski"];
 var prices = [1,2,3,5,7,8,9,10];
 
+var loadTexts = function(scope, cookieStore, textsServices){
+	var language = cookieStore.get('ss_lang');
+    console.log("language -> "+language);
+    if(language == undefined || language == ''){
+    	language = 0;
+    }
+    scope.lang = language;
+    scope.texts = textsServices.getTexts();
+};
+
 angular.module('tbeControllers').controller(
-  'bookshelfController', function ($scope, $location,services) {
+  'bookshelfController', function ($scope, $location, $cookieStore,services,textsServices) {
 
     var getAllBooks = function() {
       $scope.loading= true;
@@ -25,12 +35,13 @@ angular.module('tbeControllers').controller(
     	        	  $scope.loading= false;
     	              $scope.books = result;
     	          });
-        };
+    };
+    loadTexts($scope, $cookieStore, textsServices);
     getAllBooks();
   });
 
 angular.module('tbeControllers').controller(
-		  'mybooksController', function ($scope, $location,services) {
+		  'mybooksController', function ($scope, $location, $cookieStore,services,textsServices) {
 
 	var getUserBooks = function() {
 		$scope.loading= true;
@@ -39,13 +50,15 @@ angular.module('tbeControllers').controller(
 		        	  $scope.loading= false;
 		              $scope.books = result;
 		          });
-	    };
-	 getUserBooks();
+    };
+    
+    loadTexts($scope, $cookieStore, textsServices);
+	getUserBooks();	 
   });
 
 
 angular.module('tbeControllers')
-	.controller('addBookController', function ($scope, $location, services, isbnSearchServices) {
+	.controller('addBookController', function ($scope, $location, $cookieStore, services, isbnSearchServices,textsServices) {
 		$scope.cities = cities;
 		$scope.prices = prices;
 		
@@ -90,12 +103,14 @@ angular.module('tbeControllers')
 				}); 
 	    };
 	    $scope.searching = false;
+	    
+	    loadTexts($scope, $cookieStore, textsServices);
 	    resetAddButton();
 	}
 );
 
 angular.module('tbeControllers')
-	.controller('bookController', function ($scope, $stateParams, services,textsServices) {
+	.controller('bookController', function ($scope, $stateParams, $cookieStore, services,textsServices) {
 			
 		var getBook = function(bookId) {
 			$scope.loading= true;
@@ -172,9 +187,26 @@ angular.module('tbeControllers')
 	    $scope.startedSending = false;
 	    $scope.sendingInProcess= false;
 	    $scope.sent = false;
+
+	    loadTexts($scope, $cookieStore, textsServices);
 	    
-	    $scope.texts = textsServices.getTexts("en");
-	    
-		getBook(bookId);
+	    getBook(bookId);
 	}
 );
+
+
+angular.module('tbeControllers')
+.controller('faqController', function ($scope, $stateParams, $cookieStore, services,textsServices) {
+	loadTexts($scope, $cookieStore, textsServices);
+});
+
+angular.module('tbeControllers')
+.controller('languageController', function ($scope, $cookieStore) {
+	$scope.setLanguage= function(language) {
+		$scope.$parent.lang=language;
+		$cookieStore.put('ss_lang',language);			
+	};
+	
+    
+});
+
