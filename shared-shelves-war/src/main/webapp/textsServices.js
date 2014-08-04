@@ -43,6 +43,7 @@ var texts = {
     		changesSaved: ["Changes saved", "Muutokset tallennettu", ""],
     		removeBtn: ["Remove", "Poista", ""],
     		removedFromBookshelf:["Removed from bookshelf", "Poistettu kirjahyllystä", ""],
+    		interested:["Interested?", "Kiinnostunut?", ""],
     		letOwnerKnowBtn:["Let the owner know!", "Kerro omistajalle!", ""],
     		emailSentToOwner:["Email sent to book's owner", "Kirjan omistajalle on lähetetty sähköposti", ""],
     		checkInboxForCopy: ["Check your inbox for a copy", "Löydät kopion sähköpostistasi", ""]
