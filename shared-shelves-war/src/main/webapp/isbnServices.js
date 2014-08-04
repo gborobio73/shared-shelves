@@ -35,38 +35,49 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
                             	  
                             };
                             if (result.data.totalItems== 1)
-                            {
-                              var selfLink = result.data.items[0].selfLink;
-                              return $http.get(selfLink)
-                                .then(function(result) {
-                                  var volumeInfo = result.data.volumeInfo;
-                                  book.title = volumeInfo.title;
-                                  book.subtitle = volumeInfo.subtitle;
-                                  book.description = removeHtml(volumeInfo.description);
-                                  book.authors = volumeInfo.authors;
-                                  book.publisherDate = volumeInfo.publisherDate;
-                                  book.language = volumeInfo.language;
-                                  book.pageCount = volumeInfo.pageCount;
-                                  book.categories = volumeInfo.categories;
-                                  if (volumeInfo.imageLinks) {
-                                	  book.hasImage = true;
-                                	  book.imageUrl = volumeInfo.imageLinks.thumbnail;
-                                  }
-                                  else{
-                                	  book.hasImage = false;
-                                	  book.imageUrl= "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
-                                  }
-                                  
-                                  if (volumeInfo.industryIdentifiers[1]) {
-                                    book.isbn = volumeInfo.industryIdentifiers[1].identifier;
-                                  }
-                                  else{
-                                    book.isbn = volumeInfo.industryIdentifiers[0].identifier;
-                                  }
-                                  book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn;                                   
-                                  book.ownedByCurrentUser = true;
-                                  return book;
-                                });
+                            {                              
+		                    	  var selfLink = result.data.items[0].selfLink;
+		                          return $http.get(selfLink)
+		                          	.then(function(result) {                                    	
+										  var volumeInfo = result.data.volumeInfo;
+										  if(volumeInfo.language == 'fi'){
+											  var searchUrl ="/rest/books/search/"+isbnNoHyphens;
+											  return $http.get(searchUrl).then(
+				                          			function(result) {
+				                          				return result.data;
+				                          			},
+				                          			function (error){
+				                          				return book;
+			                          			});
+										  }else{
+											  book.title = volumeInfo.title;
+											  book.subtitle = volumeInfo.subtitle;
+											  book.description = removeHtml(volumeInfo.description);
+											  book.authors = volumeInfo.authors;
+											  book.publisherDate = volumeInfo.publisherDate;
+											  book.language = volumeInfo.language;
+											  book.pageCount = volumeInfo.pageCount;
+											  book.categories = volumeInfo.categories;
+											  if (volumeInfo.imageLinks) {
+												  book.hasImage = true;
+												  book.imageUrl = volumeInfo.imageLinks.thumbnail;
+											  }
+											  else{
+												  book.hasImage = false;
+												  book.imageUrl= "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
+											  }
+											  
+											  if (volumeInfo.industryIdentifiers[1]) {
+											    book.isbn = volumeInfo.industryIdentifiers[1].identifier;
+											  }
+											  else{
+											    book.isbn = volumeInfo.industryIdentifiers[0].identifier;
+											  }
+											  book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn;                                   
+											  book.ownedByCurrentUser = true;
+											  return book;
+										  }										  
+		                            });
                             }
                             else{
                             	//could not find the book
