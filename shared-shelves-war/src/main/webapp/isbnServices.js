@@ -41,7 +41,7 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
 		                          	.then(function(result) {                                    	
 										  var volumeInfo = result.data.volumeInfo;
 										  if(volumeInfo.language == 'fi'){
-											  var searchUrl ="/rest/books/search/"+isbnNoHyphens;
+											  var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
 											  return $http.get(searchUrl).then(
 				                          			function(result) {
 				                          				return result.data;
@@ -81,7 +81,7 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
                             }
                             else{
                             	//could not find the book
-                            	var searchUrl ="/rest/books/search/"+isbnNoHyphens;
+                            	var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
                             	return $http.get(searchUrl).then(
                         			function(result) {
                         				return result.data;

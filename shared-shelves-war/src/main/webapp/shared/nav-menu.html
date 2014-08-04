@@ -22,8 +22,8 @@
       <ul class="nav navbar-nav navbar-left">
       	<li><a href="/#/AddBook"><span class="glyphicon glyphicon-plus"></span> {{texts.menu.addBook[lang]}}</a></li>
         <li><a href="/#/MyBooks"><span class="glyphicon glyphicon-book"></span> {{texts.menu.myBooks[lang]}}</a></li>
+        <li><a href="" ng-controller = "languageController" ng-click="setLanguage(1)"><img alt="" src="../img/fi.png" style = "width: 20px;"></a></li>
     	<li><a href="" ng-controller = "languageController" ng-click="setLanguage(0)"><img alt="" src="../img/uk.jpg" style = "width: 20px;"></a></li>
-	   	<li><a href="" ng-controller = "languageController" ng-click="setLanguage(1)"><img alt="" src="../img/fi.png" style = "width: 20px;"></a></li>               	   	
       </ul>  
       <ul class="nav navbar-nav navbar-right" ng-controller = 'userDataController'>      
       	<li><a href="/#/FAQ#top"><span class="glyphicon glyphicon-question-sign"></span></a></li>      	      

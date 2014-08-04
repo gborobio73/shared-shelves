@@ -158,7 +158,7 @@ public class BookshelfApi {
     }
     
     @GET
-    @Path("/search/{isbn}")
+    @Path("/search/fi/{isbn}")
     @Produces({ MediaType.APPLICATION_JSON })
     public Response searchBook(@PathParam("isbn") String isbn) {
     	if (!userService.isUserLoggedIn()) {
