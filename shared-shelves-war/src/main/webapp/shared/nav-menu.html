@@ -8,9 +8,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/#/Bookshelf">Shared Shelves</a>
+      <a class="navbar-brand" href="/#/Bookshelf" ng-click="b=''">Shared Shelves</a>
       <form class="navbar-form navbar-left" role="search">
-      	<div class="form-group" style="padding-left: 15px;"">    
+      	<div class="form-group" style="padding-left: 15px;">    
         	<input type="search" class="form-control search-box" ng-model="b" placeholder="Author, title, lang, city ..."/>
         </div>
       </form>       
@@ -22,8 +22,8 @@
       <ul class="nav navbar-nav navbar-left">
       	<li><a href="/#/AddBook"><span class="glyphicon glyphicon-plus"></span> {{texts.menu.addBook[lang]}}</a></li>
         <li><a href="/#/MyBooks"><span class="glyphicon glyphicon-book"></span> {{texts.menu.myBooks[lang]}}</a></li>
-        <li><a href="" ng-controller = "languageController" ng-click="setLanguage(1)"><img alt="" src="../img/fi.png" style = "width: 20px;"></a></li>
-    	<li><a href="" ng-controller = "languageController" ng-click="setLanguage(0)"><img alt="" src="../img/uk.jpg" style = "width: 20px;"></a></li>
+        <li><a href="" ng-controller = "languageController" ng-click="setLanguage(0)"><img alt="" src="../img/uk.jpg" style = "width: 20px;"></a></li>
+        <li><a href="" ng-controller = "languageController" ng-click="setLanguage(1)"><img alt="" src="../img/fi.png" style = "width: 20px;"></a></li>    	
       </ul>  
       <ul class="nav navbar-nav navbar-right" ng-controller = 'userDataController'>      
       	<li><a href="/#/FAQ#top"><span class="glyphicon glyphicon-question-sign"></span></a></li>      	      

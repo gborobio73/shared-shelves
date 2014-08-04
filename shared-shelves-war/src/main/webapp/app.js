@@ -46,7 +46,7 @@ tbeApp.factory('httpRequestInterceptor', function ($location, $q) {
   return {
         responseError: function(rejection) {
           if (rejection.status === 401) {
-                window.location = "./login";
+                window.location = "/login";
             }
             return $q.reject(rejection);
         }
