@@ -3,7 +3,6 @@ var prices = [1,2,3,5,7,8,9,10];
 
 var loadTexts = function(scope, cookieStore, textsServices){
 	var language = cookieStore.get('ss_lang');
-    console.log("language -> "+language);
     if(language == undefined || language == ''){
     	language = 0;
     }
