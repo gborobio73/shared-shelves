@@ -3,10 +3,8 @@
 	float: left;
 	padding-top: 15px;
 	display: inline-block;
-	background: #FEFEFE;
 	z-index: 100;
 	height: 40px;		
-	opacity: 0.8;
 	padding-left: 15px;
 }
 .menu-lang a{
