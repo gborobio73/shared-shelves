@@ -36,7 +36,7 @@ angular.module('tbeControllers').controller(
     	          });
     };
     loadTexts($scope, $cookieStore, textsServices);
-    getAllBooks();
+    getAllBooks();    
   });
 
 angular.module('tbeControllers').controller(
@@ -203,9 +203,9 @@ angular.module('tbeControllers')
 .controller('languageController', function ($scope, $cookieStore) {
 	$scope.setLanguage= function(language) {
 		$scope.$parent.lang=language;
+		$scope.$parent.showLanguages=false;
+		
 		$cookieStore.put('ss_lang',language);			
-	};
-	
-    
+	};    
 });
 
