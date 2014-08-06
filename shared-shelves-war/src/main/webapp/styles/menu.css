@@ -45,8 +45,9 @@
 	}
 	.navbar-left{
 		padding-left: 0px;
+		padding-right: 2px ;
 	}
 	.menu-link{
-		padding-left: 0px  !important;;
+		padding-left: 0px !important;
 	}
  }
