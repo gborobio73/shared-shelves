@@ -20,16 +20,27 @@
 	text-decoration: none;
 }
 
+#home-icon{
+	display: none;
+	padding-left: 2px;
+	padding-right: 20px;
+	padding-top:20px;
+}
+
 @media only screen and (max-width : 380px) {
     /* Smartphone view: 2 tile */
     .navbar-brand{
-		padding-left: 2px;
+		/*padding-left: 2px;
 		padding-right: 5px;
-		/*display:none;*/
+		padding-top: 20px;*/
+		display:none;
+	}
+	#home-icon{
+		display: inline;		
 	}
 	.search-box{
 		margin-left: 10px;
-		width: 140px !important;
+		/*width: 140px !important;*/
 	}
  }
 
