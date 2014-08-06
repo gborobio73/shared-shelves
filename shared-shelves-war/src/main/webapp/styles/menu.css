@@ -20,6 +20,19 @@
 	text-decoration: none;
 }
 
+@media only screen and (max-width : 380px) {
+    /* Smartphone view: 2 tile */
+    .navbar-brand{
+		padding-left: 2px;
+		padding-right: 5px;
+		/*display:none;*/
+	}
+	.search-box{
+		margin-left: 10px;
+		width: 110px !important;
+	}
+ }
+
 /* menu bar colapsed*/
 @media only screen and (max-width : 768px) {
       /* 768px is menu colapse point*/
@@ -40,8 +53,8 @@
 	.search-box{
 		width: 150px;
 	}
-	.navbar-brand{
-		font-size: 14px;
+	.navbar-brand{		
+		font-size: 12/14px;
 	}
 	.navbar-left{
 		padding-left: 0px;
