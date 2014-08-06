@@ -2,7 +2,8 @@
     <img ng-show= "loading" style ="padding-top: 5%;" src="../img/ajax-loader-big.gif" style="float: center;"/>
 	<div class="box" ng-repeat="book in books | filter:b" >
 	  <div class="pin" >
-	    <a href="/#/Book/{{book.id}}"><img ng-src="{{book.imageUrl}}"/></a> 
+	    <a href="/#/Book/{{book.id}}"><img ng-src="{{book.imageUrl}}"/></a>
+	    <!--  <div class = "description line" ng-click="showBookDetails(book)">Click here</div>--> 
 	    <div class = "description line">{{book.title}}</div>      
 	    <div class = "description line" ng-bind = "book.authors"></div>
 	    <div class = "description hideForSmall">

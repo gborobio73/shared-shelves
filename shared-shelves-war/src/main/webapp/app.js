@@ -1,5 +1,5 @@
 var tbeApp = angular.module('tbe', 
-  ['ui.router', 'ui.bootstrap', 'ngCookies', 
+  ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngStorage',
   'tbeControllers', 'tbeServices', 'tbeDirectives',
   ]);
 

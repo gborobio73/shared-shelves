@@ -11,7 +11,7 @@ var loadTexts = function(scope, cookieStore, textsServices){
 };
 
 angular.module('tbeControllers').controller(
-  'bookshelfController', function ($scope, $location, $cookieStore,services,textsServices) {
+  'bookshelfController', function ($scope, $location, $localStorage,services,textsServices) {
 
     var getAllBooks = function() {
       $scope.loading= true;
@@ -29,6 +29,10 @@ angular.module('tbeControllers').controller(
     	        	  $scope.loading= false;
     	              $scope.books = result;
     	          });
+    };
+    
+    $scope.showBookDetails= function(book){
+    	console.log(JSON.stringify(book));
     };
 
     getAllBooks();    
