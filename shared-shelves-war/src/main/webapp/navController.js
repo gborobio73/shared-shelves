@@ -1,3 +1,12 @@
+var loadTexts = function(scope, cookieStore, textsServices){
+	var language = cookieStore.get('ss_lang');
+    if(language == undefined || language == ''){
+    	language = 0;
+    }
+    scope.lang = language;
+    scope.texts = textsServices.getTexts();
+};
+
 angular.module('tbeControllers')
 .controller('navController', function ($scope, $cookieStore, $timeout, services, textsServices) {
 	$scope.setLanguage= function(language) {

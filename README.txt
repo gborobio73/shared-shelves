@@ -17,3 +17,21 @@ angular.element($0).scope()
 
 debug in (check which ip has the laptop assigned)
 --address=192.168.0.10 --port=8080 --disable_update_check /Users/Gon/Projects/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/virtual-is-viral-war
+
+angular route with params:
+  .state('Book', {
+      //url: '/Book/:bookId',
+      templateUrl: 'partials/Book.html',
+      controller: 'bookController'
+  })
+      
+  var getBook = function(bookId) {
+      $scope.loading= true;
+        services.getBook(bookId).then(
+        function(book) {
+          [...]
+          }); 
+      };
+        
+  var bookId = $stateParams.bookId;
+    

@@ -1,17 +1,8 @@
 var cities = ["Akaa","Alajärvi","Alavus","Espoo","Forssa","Haapajärvi","Haapavesi","Hamina","Hanko","Harjavalta","Haukipudas","Heinola","Helsinki","Huittinen","Hyvinkää","Hämeenlinna","Iisalmi","Ikaalinen","Imatra","Joensuu","Juankoski","Jyväskylä","Jämsä","Järvenpää","Kaarina","Kajaani","Kalajoki","Kankaanpää","Kannus","Karkkila","Kaskinen","Kauhajoki","Kauhava","Kauniainen","Kemi","Kemijärvi","Kerava","Keuruu","Kitee","Kiuruvesi","Kokemäki","Kokkola","Kotka","Kouvola","Kristiinankaupunki","Kuhmo","Kuopio","Kurikka","Kuusamo","Lahti","Laitila","Lappeenranta","Lapua","Lieksa","Lohja","Loimaa","Loviisa","Maarianhamina","Mikkeli","Mänttä-Vilppula","Naantali","Nilsiä","Nivala","Nokia","Nurmes","Närpiö","Orimattila","Orivesi","Oulainen","Oulu","Outokumpu","Paimio","Parainen","Parkano","Pieksämäki","Pietarsaari","Pori","Porvoo","Pudasjärvi","Pyhäjärvi","Raahe","Raasepori","Raisio","Rauma","Riihimäki","Rovaniemi","Saarijärvi","Salo","Sastamala","Savonlinna","Seinäjoki","Siuntio","Somero","Suonenjoki","Tampere","Tornio","Turku","Ulvila","Uusikaarlepyy","Uusikaupunki","Vaasa","Valkeakoski","Vantaa","Varkaus","Viitasaari","Virrat","Ylivieska","Ylöjärvi","Ähtäri","Äänekoski"];
 var prices = [1,2,3,5,7,8,9,10];
 
-var loadTexts = function(scope, cookieStore, textsServices){
-	var language = cookieStore.get('ss_lang');
-    if(language == undefined || language == ''){
-    	language = 0;
-    }
-    scope.lang = language;
-    scope.texts = textsServices.getTexts();
-};
-
 angular.module('tbeControllers').controller(
-  'bookshelfController', function ($scope, $location, $localStorage,services,textsServices) {
+  'bookshelfController', function ($scope, $location, $sessionStorage,services) {
 
     var getAllBooks = function() {
       $scope.loading= true;
@@ -32,14 +23,15 @@ angular.module('tbeControllers').controller(
     };
     
     $scope.showBookDetails= function(book){
-    	console.log(JSON.stringify(book));
+    	$sessionStorage.book =book;
+    	$location.path('/Book');    	
     };
 
     getAllBooks();    
   });
 
 angular.module('tbeControllers').controller(
-		  'mybooksController', function ($scope, $location, $cookieStore,services,textsServices) {
+		  'mybooksController', function ($scope,services) {
 
 	var getUserBooks = function() {
 		$scope.loading= true;
@@ -55,7 +47,7 @@ angular.module('tbeControllers').controller(
 
 
 angular.module('tbeControllers')
-	.controller('addBookController', function ($scope, $location, $cookieStore, services, isbnSearchServices,textsServices) {
+	.controller('addBookController', function ($scope, services, isbnSearchServices) {
 		$scope.cities = cities;
 		$scope.prices = prices;
 		
@@ -106,22 +98,24 @@ angular.module('tbeControllers')
 );
 
 angular.module('tbeControllers')
-	.controller('bookController', function ($scope, $stateParams, $cookieStore, services,textsServices) {
-			
-		var getBook = function(bookId) {
+	.controller('bookController', function ($scope, $sessionStorage, $location, $anchorScroll, services) {
+		
+		var getBook = function() {
 			$scope.loading= true;
-	    	services.getBook(bookId).then(
-				function(book) {
-					var locatedInIdx = $.inArray(book.location, cities);
-					var priceIdx = $.inArray(book.price, prices);
-					$scope.book= book;
-					$scope.bookLocation =cities[locatedInIdx];					  
-					$scope.bookPrice=prices[priceIdx];
-					$scope.loading = false;
-	        }); 
+			var book = $sessionStorage.book;
+			if(book == undefined){
+				$location.path('/Bookshelf');
+			}
+			else{
+				var locatedInIdx = $.inArray(book.location, cities);
+				var priceIdx = $.inArray(book.price, prices);
+				$scope.book= book;
+				$scope.bookLocation =cities[locatedInIdx];					  
+				$scope.bookPrice=prices[priceIdx];
+				$scope.loading = false;
+			}
 	    };
-		    
-		var bookId = $stateParams.bookId;
+		
 		
 		$scope.removeBook = function(bookId) {
 			$scope.startedRemoving = true;
@@ -184,6 +178,6 @@ angular.module('tbeControllers')
 	    $scope.sendingInProcess= false;
 	    $scope.sent = false;
 	    
-	    getBook(bookId);
+	    getBook();
 	}
 );

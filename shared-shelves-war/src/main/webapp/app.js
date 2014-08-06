@@ -30,7 +30,7 @@ tbeApp.config(function($stateProvider, $urlRouterProvider) {
       controller: 'addBookController'
     })
     .state('Book', {
-      url: '/Book/:bookId',
+      url: '/Book',
       templateUrl: 'partials/Book.html',
       controller: 'bookController'
     })

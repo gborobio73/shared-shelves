@@ -4,8 +4,8 @@
 	<div class="panel panel-default">
 	  <div class="panel-body" ng-hide = "loading" >
 			<form class="form-horizontal" role="form">		  	 
-			  	<div book-info></div>		
-			  	<div class="form-group">
+			  	<div book-info ></div>		
+			  	<div class="form-group" >
 			  		<hr>				  	
 				  	<div ng-show = "book.ownedByCurrentUser" >
 				  		<div class="col-sm-offset-2 col-sm-10">
@@ -37,3 +37,9 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    	$('body').scrollTop(0);
+    });
+</script>
