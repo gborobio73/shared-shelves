@@ -19,3 +19,34 @@
 	color: #000;
 	text-decoration: none;
 }
+
+/* menu bar colapsed*/
+@media only screen and (max-width : 768px) {
+      /* 768px is menu colapse point*/
+	.search-box{
+		width: 150px;
+	}
+	.add-book-panel{
+		padding-top: 15%;
+	}
+	.menu-lang a{
+		margin-right: 20px;
+	}	
+ }
+ 
+ /*891 px overlapping*/
+ @media only screen and (max-width : 891px) {
+     
+	.search-box{
+		width: 150px;
+	}
+	.navbar-brand{
+		font-size: 14px;
+	}
+	.navbar-left{
+		padding-left: 0px;
+	}
+	.menu-link{
+		padding-left: 0px  !important;;
+	}
+ }

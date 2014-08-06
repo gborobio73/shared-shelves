@@ -22,12 +22,7 @@ angular.module('tbeControllers').controller(
           }); 
     };
     
-    $scope.getAllBooks = function() {
-  		$scope.b='';
-      	getAllBooks();
-    };
-    
-	$scope.getUserBooks = function() {
+    $scope.getUserBooks = function() {
   		$scope.loading= true;
       	services.getUserBooks().then(
     	          function(result) {
@@ -35,7 +30,7 @@ angular.module('tbeControllers').controller(
     	              $scope.books = result;
     	          });
     };
-    loadTexts($scope, $cookieStore, textsServices);
+
     getAllBooks();    
   });
 
@@ -50,8 +45,7 @@ angular.module('tbeControllers').controller(
 		              $scope.books = result;
 		          });
     };
-    
-    loadTexts($scope, $cookieStore, textsServices);
+        
 	getUserBooks();	 
   });
 
@@ -103,7 +97,6 @@ angular.module('tbeControllers')
 	    };
 	    $scope.searching = false;
 	    
-	    loadTexts($scope, $cookieStore, textsServices);
 	    resetAddButton();
 	}
 );
@@ -186,26 +179,7 @@ angular.module('tbeControllers')
 	    $scope.startedSending = false;
 	    $scope.sendingInProcess= false;
 	    $scope.sent = false;
-
-	    loadTexts($scope, $cookieStore, textsServices);
 	    
 	    getBook(bookId);
 	}
 );
-
-
-angular.module('tbeControllers')
-.controller('faqController', function ($scope, $stateParams, $cookieStore, services,textsServices) {
-	loadTexts($scope, $cookieStore, textsServices);
-});
-
-angular.module('tbeControllers')
-.controller('languageController', function ($scope, $cookieStore) {
-	$scope.setLanguage= function(language) {
-		$scope.$parent.lang=language;
-		$scope.$parent.showLanguages=false;
-		
-		$cookieStore.put('ss_lang',language);			
-	};    
-});
-
