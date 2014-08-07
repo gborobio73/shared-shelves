@@ -3,18 +3,26 @@
  
 <head>
   <!-- jasmine -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/jasmine.js"></script>
+  <script src="jasmine-standalone-1.3.1/lib/jasmine-1.3.1/jasmine.js"></script>
   <!-- jasmine's html reporting code and css -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/jasmine-html.js"></script>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.0.0/jasmine.css" rel="stylesheet" />
+  <script src="jasmine-standalone-1.3.1/lib/jasmine-1.3.1/jasmine-html.js"></script>
+  <link href="jasmine-standalone-1.3.1/lib/jasmine-1.3.1/jasmine.css" rel="stylesheet" />
   <!-- angular itself -->
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+  <script src="../main/webapp/scripts/angular.js"></script>
+  <script src="../main/webapp/scripts/angular-ui-router.js"></script>
+  <script src="../main/webapp/scripts/angular-cookies.js"></script>
+  <script src="../main/webapp/scripts/jquery.cookie.js"></script>
+  <script src="../main/webapp/scripts/ui-bootstrap-tpls-0.11.0.min.js"></script>
+  <script src="../main/webapp/scripts/ngStorage.js"></script>
+  
   <!-- angular's testing helpers -->
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular-mocks.js"></script>
+  <script src="angular-mocks.js"></script>
   <!-- your angular app code -->
+  <script src="../main/webapp/app.js"></script>
   <script src="app.js"></script>
   <!-- your Jasmine specs (tests) -->
   <script src="specs.js"></script>
+  <script src="sharedshelvesSpecs.js"></script>
 </head>
 <body>
   <!-- bootstrap jasmine! -->
