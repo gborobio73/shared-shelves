@@ -18,11 +18,15 @@ angular.module('tbeControllers')
 	
 	$scope.toggleLanguageMenu= function() {		
 		$scope.showLanguages=!$scope.showLanguages;
-		$timeout(function(){
-			$scope.showLanguages=false;
+		
+		if($scope.laguageTimeout != undefined){
+			$timeout.cancel($scope.laguageTimeout);
 		}
-		, 5000);
-	}; 
+		$scope.laguageTimeout = $timeout(
+			function(){
+				$scope.showLanguages=false;
+			}, 5000);
+	};  
 	
 	var getConnectedUser = function(){
 	        services.getUser().then(

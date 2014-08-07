@@ -31,7 +31,7 @@ angular.module('tbeControllers').controller(
   });
 
 angular.module('tbeControllers').controller(
-		  'mybooksController', function ($scope,services) {
+		  'mybooksController', function ($scope, $location, $sessionStorage, services) {
 
 	var getUserBooks = function() {
 		$scope.loading= true;
@@ -40,6 +40,11 @@ angular.module('tbeControllers').controller(
 		        	  $scope.loading= false;
 		              $scope.books = result;
 		          });
+    };
+    
+    $scope.showBookDetails= function(book){
+    	$sessionStorage.book =book;
+    	$location.path('/Book');    	
     };
         
 	getUserBooks();	 
