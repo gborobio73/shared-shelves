@@ -1,28 +1,33 @@
-angular.module('tbeDirectives').directive('navMenu', function() {
+'use strict';
+
+angular.module('tbe.directives', [])
+
+.directive('navMenu',[ function() {
     return {
       templateUrl: 'shared/nav-menu.html'
     };
-});
+}])
 
-angular.module('tbeDirectives').directive('bookInfo', function() {
+.directive('bookInfo', [function() {
     return {
       templateUrl: 'shared/book-info.html'
     };
-});
+}])
 
-angular.module('tbeDirectives').directive('errorLabels', function() {
+.directive('errorLabels', [function() {
     return {
       templateUrl: 'shared/error-labels.html'
     };
-});
+}])
 
-angular.module('tbeDirectives').directive('books', function() {
+.directive('books', [function() {
     return {
       templateUrl: 'shared/books.html'
     };
-});
-angular.module('tbeDirectives').directive('faqDetails', function() {
+}])
+
+.directive('faqDetails', [function() {
     return {
       templateUrl: 'shared/faq-details.html'
     };
-});
+}]);

@@ -1,4 +1,6 @@
-angular.module('tbeServices').factory('isbnSearchServices', function($http, $http) {
+'use strict';
+
+angular.module('tbe.services', []).factory('isbnSearchServices', [ '$http', function($http) {
     var isbnSearchServices = new Object();
     
     function removeHtml(description)
@@ -94,4 +96,4 @@ angular.module('tbeServices').factory('isbnSearchServices', function($http, $htt
         };
 
     return isbnSearchServices; 
-});
+}]);

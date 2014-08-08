@@ -1,13 +1,11 @@
+'use strict';
+
 var tbeApp = angular.module('tbe', 
   ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngStorage',
-  'tbeControllers', 'tbeServices', 'tbeDirectives',
-  ]);
-
-angular.module('tbeControllers', []);
-angular.module('tbeServices', []);
-angular.module('tbeDirectives', []);
-
-tbeApp.config(function($stateProvider, $urlRouterProvider) {
+  'tbe.controllers', 'tbe.services', 'tbe.directives',
+  ])
+ 
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url
   $urlRouterProvider.otherwise("/Bookshelf");
@@ -39,9 +37,9 @@ tbeApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'partials/faq.html',
       controller: ''
     });
-});
+}])
 
-tbeApp.factory('httpRequestInterceptor', function ($location, $q) {
+.factory('httpRequestInterceptor', function ($location, $q) {
   
   return {
         responseError: function(rejection) {
@@ -52,8 +50,6 @@ tbeApp.factory('httpRequestInterceptor', function ($location, $q) {
         }
       };
 
-});
- 
-tbeApp.config(function ($httpProvider) {
+}).config(function ($httpProvider) {
   $httpProvider.interceptors.push('httpRequestInterceptor');
 });

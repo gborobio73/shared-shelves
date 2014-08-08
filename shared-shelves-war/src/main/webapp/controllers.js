@@ -1,41 +1,46 @@
+'use strict';
+
 var cities = ["Akaa","Alajärvi","Alavus","Espoo","Forssa","Haapajärvi","Haapavesi","Hamina","Hanko","Harjavalta","Haukipudas","Heinola","Helsinki","Huittinen","Hyvinkää","Hämeenlinna","Iisalmi","Ikaalinen","Imatra","Joensuu","Juankoski","Jyväskylä","Jämsä","Järvenpää","Kaarina","Kajaani","Kalajoki","Kankaanpää","Kannus","Karkkila","Kaskinen","Kauhajoki","Kauhava","Kauniainen","Kemi","Kemijärvi","Kerava","Keuruu","Kitee","Kiuruvesi","Kokemäki","Kokkola","Kotka","Kouvola","Kristiinankaupunki","Kuhmo","Kuopio","Kurikka","Kuusamo","Lahti","Laitila","Lappeenranta","Lapua","Lieksa","Lohja","Loimaa","Loviisa","Maarianhamina","Mikkeli","Mänttä-Vilppula","Naantali","Nilsiä","Nivala","Nokia","Nurmes","Närpiö","Orimattila","Orivesi","Oulainen","Oulu","Outokumpu","Paimio","Parainen","Parkano","Pieksämäki","Pietarsaari","Pori","Porvoo","Pudasjärvi","Pyhäjärvi","Raahe","Raasepori","Raisio","Rauma","Riihimäki","Rovaniemi","Saarijärvi","Salo","Sastamala","Savonlinna","Seinäjoki","Siuntio","Somero","Suonenjoki","Tampere","Tornio","Turku","Ulvila","Uusikaarlepyy","Uusikaupunki","Vaasa","Valkeakoski","Vantaa","Varkaus","Viitasaari","Virrat","Ylivieska","Ylöjärvi","Ähtäri","Äänekoski"];
 var prices = [1,2,3,5,7,8,9,10];
 
-angular.module('tbeControllers').controller(
-  'bookshelfController', function ($scope, $location, $sessionStorage,services) {
+var loadTexts = function(scope, cookieStore, textsServices){
+	var language = cookieStore.get('ss_lang');
+    if(language == undefined || language == ''){
+    	language = 0;
+    }
+    scope.lang = language;
+    scope.texts = textsServices.getTexts();
+};
 
-    var getAllBooks = function() {
-      $scope.loading= true;
-      services.getAllBooks().then(
-        function(result) {
-          $scope.loading= false;
-          $scope.books = result;          
-          }); 
-    };
-    
-    $scope.getUserBooks = function() {
-  		$scope.loading= true;
-      	services.getUserBooks().then(
-    	          function(result) {
-    	        	  $scope.loading= false;
-    	              $scope.books = result;
-    	          });
-    };
-    
-    $scope.showBookDetails= function(book){
-    	$sessionStorage.book =book;
-    	$location.path('/Book');    	
-    };
 
-    getAllBooks();    
-  });
+angular.module('tbe.controllers', [])
+	.controller('bookshelfController',['$scope', '$location', '$sessionStorage','restServices',	function ($scope, $location, $sessionStorage,restServices) {
 
-angular.module('tbeControllers').controller(
-		  'mybooksController', function ($scope, $location, $sessionStorage, services) {
+		var getAllBooks = function() {
+	      $scope.b=''; 
+	      $scope.loading= true;
+	      restServices.getAllBooks().then(
+	        function(result) {
+	          $scope.loading= false;
+	          $scope.books = result;          
+	          }); 
+	    };
+	    
+	    $scope.showBookDetails= function(book){
+	    	$scope.loading= false;
+	    	$sessionStorage.book =book;    	
+	    	$location.path('/Book');    	
+	    };
+	    
+	   getAllBooks();	   
+  }])
+
+  .controller('mybooksController', ['$scope', '$location', '$sessionStorage', 'restServices',function ($scope, $location, $sessionStorage, restServices) {
 
 	var getUserBooks = function() {
 		$scope.loading= true;
-	  	services.getUserBooks().then(
+		$scope.books='';
+		restServices.getUserBooks().then(
 		          function(result) {
 		        	  $scope.loading= false;
 		              $scope.books = result;
@@ -43,16 +48,15 @@ angular.module('tbeControllers').controller(
     };
     
     $scope.showBookDetails= function(book){
+    	$scope.loading= false;
     	$sessionStorage.book =book;
     	$location.path('/Book');    	
-    };
-        
+    };    
 	getUserBooks();	 
-  });
+  }])
 
 
-angular.module('tbeControllers')
-	.controller('addBookController', function ($scope, services, isbnSearchServices) {
+  .controller('addBookController', ['$scope', 'restServices', 'isbnSearchServices', function ($scope, restServices, isbnSearchServices) {
 		$scope.cities = cities;
 		$scope.prices = prices;
 		
@@ -86,7 +90,7 @@ angular.module('tbeControllers')
 	    	$scope.inProcess = true;
 	    	book.location = $scope.bookLocation;
 	    	book.price = $scope.bookPrice;
-	    	services.addToBookshelf(book).then(
+	    	restServices.addToBookshelf(book).then(
 				function(result) {
 		          $scope.inProcess = false;
 		          $scope.success = true;
@@ -100,15 +104,14 @@ angular.module('tbeControllers')
 	    
 	    resetAddButton();
 	}
-);
+  ])
 
-angular.module('tbeControllers')
-	.controller('bookController', function ($scope, $sessionStorage, $location, $anchorScroll, services) {
+  .controller('bookController', ['$scope', '$sessionStorage', '$location', '$anchorScroll', 'restServices', function ($scope, $sessionStorage, $location, $anchorScroll, restServices) {
 		
 		var getBook = function() {
 			$scope.loading= true;
 			var book = $sessionStorage.book;
-			if(book == undefined){
+			if(book == undefined || book == ''){
 				$location.path('/Bookshelf');
 			}
 			else{
@@ -119,14 +122,14 @@ angular.module('tbeControllers')
 				$scope.bookPrice=prices[priceIdx];
 				$scope.loading = false;
 			}
-	    };
-		
+	    };		
 		
 		$scope.removeBook = function(bookId) {
 			$scope.startedRemoving = true;
 			$scope.removingInProcess = true;
-			services.removeBook(bookId).then(
+			restServices.removeBook(bookId).then(
 		        function(result) {
+		        	$sessionStorage.book ='';
 		        	$scope.removingInProcess = false;
 			        $scope.removed = true;	        	
 		          },
@@ -141,7 +144,7 @@ angular.module('tbeControllers')
 			$scope.savingInProcess = true;			
 			book.location = $scope.bookLocation;
 	    	book.price = $scope.bookPrice;
-			services.saveBook(book).then(
+	    	restServices.saveBook(book).then(
 		        function(result) {		        	
 		        	$scope.savingInProcess = false;
 			        $scope.saved = true;	
@@ -155,7 +158,7 @@ angular.module('tbeControllers')
 	    $scope.sendMessageToOwner= function(bookId) {
 	    	$scope.startedSending = true;
 			$scope.sendingInProcess = true;			
-			services.sendMessageToOwner(bookId).then(
+			restServices.sendMessageToOwner(bookId).then(
 					function(result) {		        	
 						$scope.sendingInProcess = false;
 						$scope.sent = true;	
@@ -185,4 +188,45 @@ angular.module('tbeControllers')
 	    
 	    getBook();
 	}
-);
+  ])
+  .controller('navController', ['$scope', '$cookieStore', '$timeout', '$location','restServices', 'textsServices', function ($scope, $cookieStore, $timeout, $location, restServices, textsServices) {
+	
+	$scope.setLanguage= function(language) {
+		$scope.$parent.lang=language;
+		$scope.showLanguages=false;
+		
+		$cookieStore.put('ss_lang',language);			
+	};  
+	
+	$scope.toggleLanguageMenu= function() {		
+		$scope.showLanguages=!$scope.showLanguages;
+		
+		if($scope.laguageTimeout != undefined){
+			$timeout.cancel($scope.laguageTimeout);
+		}
+		$scope.laguageTimeout = $timeout(
+			function(){
+				$scope.showLanguages=false;
+			}, 5000);
+	};  	
+    
+	var getConnectedUser = function(){
+		restServices.getUser().then(
+	          function(result) {
+	            $scope.user = result;
+	          });
+	      };
+      
+	var getLogoutUrl = function(){
+		restServices.getLogoutUrl().then(
+	        function(result) {
+	          $scope.logoutURL = result.logoutURL;
+	        });
+	};
+	
+	loadTexts($scope.$parent, $cookieStore, textsServices);
+	
+	getConnectedUser();
+	getLogoutUrl();
+	  
+  }]);

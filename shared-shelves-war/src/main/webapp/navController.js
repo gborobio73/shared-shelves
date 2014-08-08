@@ -1,3 +1,5 @@
+'use strict';
+
 var loadTexts = function(scope, cookieStore, textsServices){
 	var language = cookieStore.get('ss_lang');
     if(language == undefined || language == ''){
@@ -7,8 +9,8 @@ var loadTexts = function(scope, cookieStore, textsServices){
     scope.texts = textsServices.getTexts();
 };
 
-angular.module('tbeControllers')
-.controller('navController', function ($scope, $cookieStore, $timeout, services, textsServices) {
+angular.module('tbe.controllers', [])
+.controller('navController', ['$scope', '$cookieStore', '$timeout', 'services', 'textsServices', function ($scope, $cookieStore, $timeout, services, textsServices) {
 	$scope.setLanguage= function(language) {
 		$scope.$parent.lang=language;
 		$scope.showLanguages=false;
@@ -47,5 +49,5 @@ angular.module('tbeControllers')
 	getConnectedUser();
 	getLogoutUrl();
 	  
-});
+}]);
 

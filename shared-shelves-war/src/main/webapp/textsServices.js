@@ -1,4 +1,4 @@
-angular.module('tbeServices').factory('textsServices', function($http, $http) {
+angular.module('tbe.services', []).factory('textsServices',['$http', function( $http) {
     var textsServices = new Object();
     
     textsServices.getTexts = function(){             
@@ -6,7 +6,7 @@ angular.module('tbeServices').factory('textsServices', function($http, $http) {
         };
 
     return textsServices; 
-});
+}]);
 
 var texts = {
 		menu:{
