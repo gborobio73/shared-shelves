@@ -1,7 +1,7 @@
 <div class="wrap" >
     <img ng-show= "loading" style ="padding-top: 5%;" src="../img/ajax-loader-big.gif" style="float: center;"/>
 	<div class="box" ng-repeat="book in books | filter:b" >
-	  <div class="pin" >
+	  <div class="pin" ng-controller = "bookDetailController">
 	    <a href="" ng-click="showBookDetails(book)"><img ng-src="{{book.imageUrl}}"/></a>
 	    <div class = "description line">{{book.title}}</div>      
 	    <div class = "description line" ng-bind = "book.authors"></div>

@@ -26,12 +26,6 @@ angular.module('tbe.controllers', [])
 	          }); 
 	    };
 	    
-	    $scope.showBookDetails= function(book){
-	    	$scope.loading= false;
-	    	$sessionStorage.book =book;    	
-	    	$location.path('/Book');    	
-	    };
-	    
 	   getAllBooks();	   
   }])
 
@@ -47,14 +41,16 @@ angular.module('tbe.controllers', [])
 		          });
     };
     
-    $scope.showBookDetails= function(book){
-    	$scope.loading= false;
-    	$sessionStorage.book =book;
-    	$location.path('/Book');    	
-    };    
 	getUserBooks();	 
   }])
 
+  .controller('bookDetailController',['$scope','$sessionStorage','$location', function ($scope, $sessionStorage, $location) {
+	    $scope.showBookDetails= function(book){
+	    	$scope.loading= false;
+	    	$sessionStorage.book =book;    	
+	    	$location.path('/Book');    	
+	    };
+  }])
 
   .controller('addBookController', ['$scope', 'restServices', 'isbnSearchServices', function ($scope, restServices, isbnSearchServices) {
 		$scope.cities = cities;
