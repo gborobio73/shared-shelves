@@ -2,6 +2,7 @@
 
 var books = [{"id":"5418393301680128","ownedByCurrentUser":true,"created":"Aug 8, 2014 12:22:08 PM","title":"The Great Gatsby","description":"some description","authors":["F. Scott Fitzgerald"],"language":"English","pageCount":"210","categories":["Fiction / Classics"],"hasImage":true,"imageUrl":"http:...","isbn":"9781847492586","location":"Turku","price":3}];
 var userBooks = [{"id":"2","ownedByCurrentUser":true,"created":"Aug 8, 2014 12:22:08 PM","title":"Zero","description":"some description","authors":["Gon"],"language":"English","pageCount":"210","categories":["Fiction / Classics"],"hasImage":true,"imageUrl":"http:...","isbn":"9781847492586","location":"Turku","price":3}];
+
 function mockRestServices($q, restServices){
 	spyOn(restServices, 'getUserBooks').andCallFake(function() {	    	  
 		var deferred = $q.defer();
@@ -15,18 +16,6 @@ function mockRestServices($q, restServices){
 	});	
 };
 
-function injectController($scope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices){
-	
-	var ctrl = $controller('bookshelfController', {
-	    $scope: $scope,
-	    $location: $location, 
-	    $sessionStorage: $sessionStorage,
-	    restServices: restServices
-	    
-	});
-	return ctrl;
-};
-
 function resolvePromises($rootScope){
 	$rootScope.$digest();
 }
@@ -37,8 +26,6 @@ describe('Controller tests', function() {
 	  beforeEach(function (){
 	    module('tbe.controllers', 'ui.router', 'ui.bootstrap', 'ngCookies', 'ngStorage', 'tbe.services');
 	  });	 
-
-	  
 	  
 	  it('should load all books', function() {
 		  inject(function($rootScope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices) {
@@ -46,7 +33,13 @@ describe('Controller tests', function() {
 		      
 		      mockRestServices($q, restServices)
 
-		      injectController($scope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices);
+		      $controller('bookshelfController', {
+				    $scope: $scope,
+				    $location: $location, 
+				    $sessionStorage: $sessionStorage,
+				    restServices: restServices
+				    
+		      });
 		  
 		      resolvePromises($rootScope);		      
 		  });
@@ -64,9 +57,14 @@ describe('Controller tests', function() {
 				
 				mockRestServices($q, restServices);
 				  
-				injectController($scope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices);
-				  
-				
+				//inject controller  
+				$controller('bookNavController', {
+				    $scope: $scope,
+				    $location: $location, 
+				    $sessionStorage: $sessionStorage,
+				    restServices: restServices
+				    
+				});
 				
 				sessionStorage = $sessionStorage;				 
 		  });

@@ -17,7 +17,6 @@ angular.module('tbe.controllers', [])
 	.controller('bookshelfController',['$scope', '$location', '$sessionStorage','restServices',	function ($scope, $location, $sessionStorage,restServices) {
 
 		var getAllBooks = function() {
-	      $scope.b=''; 
 	      $scope.loading= true;
 	      restServices.getAllBooks().then(
 	        function(result) {
@@ -31,9 +30,9 @@ angular.module('tbe.controllers', [])
 
   .controller('mybooksController', ['$scope', '$location', '$sessionStorage', 'restServices',function ($scope, $location, $sessionStorage, restServices) {
 
-	var getUserBooks = function() {
+	var getUserBooks = function() {		
 		$scope.loading= true;
-		$scope.books='';
+		$scope.books=[{}];
 		restServices.getUserBooks().then(
 		          function(result) {
 		        	  $scope.loading= false;
@@ -44,7 +43,7 @@ angular.module('tbe.controllers', [])
 	getUserBooks();	 
   }])
 
-  .controller('bookDetailController',['$scope','$sessionStorage','$location', function ($scope, $sessionStorage, $location) {
+  .controller('bookNavController',['$scope','$sessionStorage','$location', function ($scope, $sessionStorage, $location) {
 	    $scope.showBookDetails= function(book){
 	    	$scope.loading= false;
 	    	$sessionStorage.book =book;    	
