@@ -29,10 +29,9 @@ angular.module('tbe.controllers', [])
   }])
 
   .controller('mybooksController', ['$scope', '$location', '$sessionStorage', 'restServices',function ($scope, $location, $sessionStorage, restServices) {
-
+	
 	var getUserBooks = function() {		
-		$scope.loading= true;
-		$scope.books=[{}];
+		$scope.loading= true;		
 		restServices.getUserBooks().then(
 		          function(result) {
 		        	  $scope.loading= false;
