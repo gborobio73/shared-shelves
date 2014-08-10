@@ -50,6 +50,8 @@ var tbeApp = angular.module('tbe',
         }
       };
 
-}).config(function ($httpProvider) {
+})
+
+.config(function ($httpProvider) {
   $httpProvider.interceptors.push('httpRequestInterceptor');
 });

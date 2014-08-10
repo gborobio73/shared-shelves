@@ -27,7 +27,7 @@ describe('Controller tests', function() {
 	    module('tbe.controllers', 'ui.router', 'ui.bootstrap', 'ngCookies', 'ngStorage', 'tbe.services');
 	  });	 
 	  
-	  it('should load all books', function() {
+	  it('Bookshelf ctrl should load all books', function() {
 		  inject(function($rootScope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices) {
 		      $scope = $rootScope.$new();
 		      
@@ -38,7 +38,6 @@ describe('Controller tests', function() {
 				    $location: $location, 
 				    $sessionStorage: $sessionStorage,
 				    restServices: restServices
-				    
 		      });
 		  
 		      resolvePromises($rootScope);		      
@@ -47,9 +46,29 @@ describe('Controller tests', function() {
 		  expect($scope.loading).toBe(false);	    
 		  expect($scope.books).toBe(books);
 	  });
-	  	  
 	  
-	  it('should set book in session storage', function() {
+	  it('Bookshelf ctrl should get user books', function() {		  
+			 inject(function($rootScope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices) {
+					$scope = $rootScope.$new();
+					
+					mockRestServices($q, restServices);
+					//inject controller  
+					$controller('mybooksController', {
+					    $scope: $scope,
+					    $location: $location, 
+					    $sessionStorage: $sessionStorage,
+					    restServices: restServices
+					    
+					});
+					  
+					resolvePromises($rootScope);
+			    });
+			  
+			  expect($scope.loading).toBe(false);	    
+			  expect($scope.books).toBe(userBooks);		  
+		  });	
+	  
+	  it('BookNav ctrl should set book in session storage', function() {
 		  var sessionStorage={};
 		  var selectedBook = {"id":"4792528117170176","ownedByCurrentUser":false,"created":"Aug 3, 2014 4:33:44 PM","title":"Lasisilmä","description":"Taru tahtoo ...","authors":["Johanna Sinisalo"],"language":"Finnish","pageCount":"329","hasImage":true,"imageUrl":"http:....jpg","isbn":"9518511020","location":"Turku","price":3};
 		  inject(function($rootScope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices) {
@@ -75,25 +94,86 @@ describe('Controller tests', function() {
 		  expect(sessionStorage.book).toBe(selectedBook);		  
 	  });
 	  
-	  it('should get user books', function() {		  
-			 inject(function($rootScope, $controller, $q, _$timeout_, $location, $sessionStorage, restServices) {
-					$scope = $rootScope.$new();
-					
-					mockRestServices($q, restServices);
-					//inject controller  
-					$controller('mybooksController', {
-					    $scope: $scope,
-					    $location: $location, 
-					    $sessionStorage: $sessionStorage,
-					    restServices: restServices
-					    
-					});
-					  
-					resolvePromises($rootScope);
-			    });
-			  
-			  expect($scope.loading).toBe(false);	    
-			  expect($scope.books).toBe(userBooks);		  
-		  });	
+	  it('AddBook ctrl should reset add botton', function() {
+		  inject(function($rootScope, $controller, $q, _$timeout_, restServices, isbnSearchServices) {
+				$scope = $rootScope.$new();
+				
+				$controller('addBookController', {  $scope: $scope, restServices: restServices, isbnSearchServices: isbnSearchServices	});
+		  });
+		  
+		  expect($scope.searching).toBe(false);
+		  expect($scope.startedAdding).toBe(false);
+		  expect($scope.inProcess).toBe(false);
+		  expect($scope.success).toBe(false);	
+	  });
+	  
+	  it('AddBook ctrl should find book', function() {
+		  var book = {"id":"4","ownedByCurrentUser":true,"created":"","title":"The Great Gatsby","description":"some description","authors":["F. Scott Fitzgerald"],"language":"en","pageCount":"210","categories":["Fiction / Classics"],"hasImage":true,"imageUrl":"http:...","isbn":"9781847492586","location":"","price":0};
+		  inject(function($rootScope, $controller, $q, _$timeout_, restServices, isbnSearchServices) {
+				$scope = $rootScope.$new();
+				
+				spyOn(isbnSearchServices, 'searchBookInfoByISBN').andCallFake(function() {	    	  
+					var deferred = $q.defer();
+				    deferred.resolve(book);
+				    return deferred.promise;   
+				});
+				
+				$controller('addBookController', {  $scope: $scope, restServices: restServices, isbnSearchServices: isbnSearchServices	});
+				
+				$scope.searchBookInfoByISBN('9781847492586');
+				
+				resolvePromises($rootScope);
+		  });
+		  
+		  expect($scope.searching).toBe(false);
+		  expect($scope.bookFound).toBe(true);
+		  expect($scope.bookLocation).toBe('Turku');
+		  expect($scope.book).toBe(book);
+		  expect($scope.bookPrice).toBe(3);		  
+	  });
+	  
+	  it('AddBook ctrl should not find book', function() {
+		  var notFoundBook = {"title":"", "subtitle":"", "description":"", "authors":[], "publisherDate":"", "language":"", "pageCount":"", "categories":[], "hasImage":"", "imageUrl":"", "isbn":"", "amazonLink":"", "price":"", "location":"" };
+		  inject(function($rootScope, $controller, $q, _$timeout_, restServices, isbnSearchServices) {
+				$scope = $rootScope.$new();
+				
+				spyOn(isbnSearchServices, 'searchBookInfoByISBN').andCallFake(function() {	    	  
+					var deferred = $q.defer();
+				    deferred.resolve(notFoundBook);
+				    return deferred.promise;   
+				});
+				
+				$controller('addBookController', {  $scope: $scope, restServices: restServices, isbnSearchServices: isbnSearchServices	});
+				
+				$scope.searchBookInfoByISBN('9781847492586');
+				
+				resolvePromises($rootScope);
+		  });
+		  
+		  expect($scope.searching).toBe(false);
+		  expect($scope.bookFound).toBe(false);
+		  expect($scope.bookLocation).toBe('Turku');
+		  expect($scope.book).toBe(notFoundBook);
+		  expect($scope.bookPrice).toBe(3);		  
+	  });
+	  
+	  it('AddBook ctrl should add book to bookshelf', function() {
+		  inject(function($rootScope, $controller, $q, _$timeout_, restServices, isbnSearchServices) {
+				$scope = $rootScope.$new();
+				
+				$controller('addBookController', {  $scope: $scope, restServices: restServices, isbnSearchServices: isbnSearchServices	});
+				
+				spyOn(restServices, 'addToBookshelf').andCallFake(function() {	    	  
+					var deferred = $q.defer();
+				    deferred.resolve('Ok');
+				    return deferred.promise;   
+				});
+				var book = {"id":"4","ownedByCurrentUser":true,"created":"","title":"The Great Gatsby","description":"some description","authors":["F. Scott Fitzgerald"],"language":"en","pageCount":"210","categories":["Fiction / Classics"],"hasImage":true,"imageUrl":"http:...","isbn":"9781847492586","location":"","price":0};
+				$scope.addToBookshelf(book);
+		  });
+		  
+		  expect($scope.inProcess).toBe(false);
+		  expect($scope.success).toBe(true);	
+	  });
 });
 
