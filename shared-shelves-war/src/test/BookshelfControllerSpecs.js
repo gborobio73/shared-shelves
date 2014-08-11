@@ -157,7 +157,10 @@ describe('Controller tests', function() {
 		  expect($scope.bookPrice).toBe(3);		  
 	  });
 	  
-	  it('AddBook ctrl should add book to bookshelf', function() {
+	  it('AddBook ctrl should add book to bookshelf with location, price', function() {
+		  var book = {"id":"4","ownedByCurrentUser":true,"created":"","title":"The Great Gatsby","description":"some description","authors":["F. Scott Fitzgerald"],"language":"en","pageCount":"210","categories":["Fiction / Classics"],"hasImage":true,"imageUrl":"http:...","isbn":"9781847492586","location":"","price":0};
+		  var location = 'Rovaniemi';
+		  var price = 6;
 		  inject(function($rootScope, $controller, $q, _$timeout_, restServices, isbnSearchServices) {
 				$scope = $rootScope.$new();
 				
@@ -168,12 +171,39 @@ describe('Controller tests', function() {
 				    deferred.resolve('Ok');
 				    return deferred.promise;   
 				});
-				var book = {"id":"4","ownedByCurrentUser":true,"created":"","title":"The Great Gatsby","description":"some description","authors":["F. Scott Fitzgerald"],"language":"en","pageCount":"210","categories":["Fiction / Classics"],"hasImage":true,"imageUrl":"http:...","isbn":"9781847492586","location":"","price":0};
+				$scope.bookLocation = location;
+				$scope.bookPrice = price;
 				$scope.addToBookshelf(book);
+				
+				resolvePromises($rootScope);
 		  });
 		  
 		  expect($scope.inProcess).toBe(false);
 		  expect($scope.success).toBe(true);	
+		  expect(book.location).toBe(location);
+		  expect(book.price).toBe(price);
+	  });
+	  
+	  it('AddBook ctrl adding book fails', function() {
+
+		  inject(function($rootScope, $controller, $q, _$timeout_, restServices, isbnSearchServices) {
+				$scope = $rootScope.$new();
+				
+				$controller('addBookController', {  $scope: $scope, restServices: restServices, isbnSearchServices: isbnSearchServices	});
+				
+				spyOn(restServices, 'addToBookshelf').andCallFake(function() {	    	  
+					var deferred = $q.defer();
+				    deferred.reject('Something went wrong');
+				    return deferred.promise;   
+				});
+				
+				var book = {};
+				$scope.addToBookshelf(book);
+				resolvePromises($rootScope);
+		  });
+		  
+		  expect($scope.inProcess).toBe(false);
+		  expect($scope.addFailed).toBe(true);	
 	  });
 });
 
