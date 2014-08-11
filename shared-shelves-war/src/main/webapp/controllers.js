@@ -90,7 +90,6 @@ angular.module('tbe.controllers', [])
 		          $scope.success = true;
 				},
 				function (error){
-					console.log('failed');
 					$scope.inProcess = false;
 					$scope.addFailed = true;
 				}); 

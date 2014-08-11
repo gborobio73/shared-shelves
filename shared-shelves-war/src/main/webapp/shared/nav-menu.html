@@ -25,7 +25,7 @@
       	<li><a href="/#/AddBook" class ="menu-link"><span class="glyphicon glyphicon-plus"></span> {{$parent.texts.menu.addBook[lang]}}</a></li>
         <li><a href="/#/MyBooks" ng-click="$parent.b=''" class ="menu-link"><span class="glyphicon glyphicon-book"></span> {{$parent.texts.menu.myBooks[lang]}}</a></li>
         <li><a href="" ng-click ="toggleLanguageMenu()" class ="menu-link"><span class="glyphicon glyphicon-bullhorn"></span> {{$parent.texts.menu.lang[lang]}}</a></li>	
-		<div class = "menu-lang" ng-show = "showLanguages == true">
+		<div class = "menu-lang show-hide" ng-show = "showLanguages == true">
 			<a href="" ng-click="setLanguage(0)">en</a>
 	   		<a href="" ng-click="setLanguage(1)">fi</a>
 	   		<a href="" ng-click="setLanguage(2)">es</a>
