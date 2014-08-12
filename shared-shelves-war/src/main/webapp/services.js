@@ -128,6 +128,7 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 				                          				return book;
 			                          			});
 										  }else{
+											  //Whatever google has
 											  book.title = volumeInfo.title;
 											  book.subtitle = volumeInfo.subtitle;
 											  book.description = removeHtml(volumeInfo.description);
@@ -195,7 +196,7 @@ var texts = {
     	book:{
     		title:["Title", "Nimi", "Título"],
     		cover:["Cover", "Kansikuva", "Portada"],
-    		couldNotFindCover:["Could not find an proper cover","Sopivaa kansikuvaa ei löytynyt", "No encontré ninguna portada adecuada"],
+    		couldNotFindCover:["Could not find an proper cover","Sopivaa kansikuvaa ei löytynyt", "No se encontró ninguna portada adecuada"],
     		search:["Search","Etsi", "Busca"],
     		forACoverAndCopyImage:["for a cover and copy image URL here","kansikuva ja kopioi kuvan url-osoite tähän", "una portada y copia aquí la URL de la imagen"],
     		authors:["Authors", "Kirjoittajat", "Autores"],
