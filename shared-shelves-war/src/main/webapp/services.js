@@ -176,7 +176,7 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 }]);
 
 function buildWithGBooks(book, volumeInfo){
-	cosole.log('building with whatever google has');
+	console.log('building with whatever google has');
 	book.title = volumeInfo.title;
 	book.subtitle = volumeInfo.subtitle;
 	book.description = removeHtml(volumeInfo.description);
@@ -204,6 +204,16 @@ function buildWithGBooks(book, volumeInfo){
 	book.ownedByCurrentUser = true;	
 }
 
+function removeHtml(description)
+{
+	if(description == undefined){
+		return "";
+	}else{
+		var tmp = document.createElement("DIV");
+		tmp.innerHTML = description;
+		return tmp.textContent || tmp.innerText || "";
+	}
+}
 var texts = {
 		menu:{
 			addBook:["Add book", "Lisää kirja", "Añadir libro"],
