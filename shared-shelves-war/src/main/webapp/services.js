@@ -125,48 +125,48 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 				                          				return result.data;
 				                          			},
 				                          			function (error){
-				                          				return book;
+				                          				//Whatever google has
+														buildWithGBooks(book, volumeInfo);											  
+														return book;
 			                          			});
-										  }else{
+										  }
+										  else if(volumeInfo.language == 'es'){
+											  var searchUrl ="/rest/books/search/es/"+isbnNoHyphens;
+											  return $http.get(searchUrl).then(
+				                          			function(result) {
+				                          				return result.data;
+				                          			},
+				                          			function (error){
+				                          				//Whatever google has
+														buildWithGBooks(book, volumeInfo);											  
+														return book;
+			                          			});
+										  }
+										  else{
 											  //Whatever google has
-											  book.title = volumeInfo.title;
-											  book.subtitle = volumeInfo.subtitle;
-											  book.description = removeHtml(volumeInfo.description);
-											  book.authors = volumeInfo.authors;
-											  book.publisherDate = volumeInfo.publisherDate;
-											  book.language = volumeInfo.language;
-											  book.pageCount = volumeInfo.pageCount;
-											  book.categories = volumeInfo.categories;
-											  if (volumeInfo.imageLinks) {
-												  book.hasImage = true;
-												  book.imageUrl = volumeInfo.imageLinks.thumbnail;
-											  }
-											  else{
-												  book.hasImage = false;
-												  book.imageUrl= "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
-											  }
-											  
-											  if (volumeInfo.industryIdentifiers[1]) {
-											    book.isbn = volumeInfo.industryIdentifiers[1].identifier;
-											  }
-											  else{
-											    book.isbn = volumeInfo.industryIdentifiers[0].identifier;
-											  }
-											  book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn;                                   
-											  book.ownedByCurrentUser = true;
+											  buildWithGBooks(book, volumeInfo);											  
 											  return book;
 										  }										  
 		                            });
                             }
                             else{
-                            	//could not find the book
+                            	//could not find the book, lets try finland!
                             	var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
                             	return $http.get(searchUrl).then(
                         			function(result) {
                         				return result.data;
                         			},
                         			function (error){
-                        				return book;
+                        				//let's try spain!
+                        				searchUrl ="/rest/books/search/es/"+isbnNoHyphens;
+                        				return $http.get(searchUrl).then(
+                                    			function(result) {
+                                    				return result.data;
+                                    			},
+                                    			function (error){
+                                    				//NOT FOUND!!
+                                    				return book;
+                                    			}); 
                         			}); 
                             }                            
                         });
@@ -174,6 +174,35 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 
     return isbnSearchServices; 
 }]);
+
+function buildWithGBooks(book, volumeInfo){
+	cosole.log('building with whatever google has');
+	book.title = volumeInfo.title;
+	book.subtitle = volumeInfo.subtitle;
+	book.description = removeHtml(volumeInfo.description);
+	book.authors = volumeInfo.authors;
+	book.publisherDate = volumeInfo.publisherDate;
+	book.language = volumeInfo.language;
+	book.pageCount = volumeInfo.pageCount;
+	book.categories = volumeInfo.categories;
+	if (volumeInfo.imageLinks) {
+		book.hasImage = true;
+		book.imageUrl = volumeInfo.imageLinks.thumbnail;
+	}
+	else{
+		book.hasImage = false;
+		book.imageUrl= "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
+	}
+	  
+	if (volumeInfo.industryIdentifiers[1]) {
+		book.isbn = volumeInfo.industryIdentifiers[1].identifier;
+	}
+	else{
+		book.isbn = volumeInfo.industryIdentifiers[0].identifier;
+	}
+	book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn;                                   
+	book.ownedByCurrentUser = true;	
+}
 
 var texts = {
 		menu:{
@@ -220,3 +249,5 @@ var texts = {
 			more:["more", "lisää", "más"],			
 		}
  };
+
+

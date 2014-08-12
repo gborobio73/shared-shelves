@@ -6,7 +6,7 @@ import org.jsoup.select.Elements;
 
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 
-public class EsLookupService {
+public class EsLookupService implements ILookupService{
 
 	public UiBook findBook(String isbn) throws Exception
 	{

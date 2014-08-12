@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 
-public class FiLookupService {
+public class FiLookupService implements ILookupService{
 	
 	public UiBook findBook(String isbn) throws Exception
 	{

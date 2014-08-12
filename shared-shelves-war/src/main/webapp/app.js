@@ -1,7 +1,7 @@
 'use strict';
 
 var tbeApp = angular.module('tbe', 
-  ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngStorage', 'ngAnimate',
+  ['ui.router', 'ui.bootstrap', 'ngCookies', 'ngStorage',
   'tbe.controllers', 'tbe.services', 'tbe.directives',
   ])
  
