@@ -34,23 +34,9 @@ public class EsLookupService {
 				  .timeout(7000)
 				  .post();
 		
-		CasadelLibroParser parser = new CasadelLibroParser();
-		parser.parse(doc);
-		
-		UiBook uiBook = new UiBook();		
-		uiBook.ownedByCurrentUser=true;		
-		uiBook.title = parser.getTitle();
-		uiBook.authors = parser.getAuthors();
-		uiBook.description = parser.getDescription();
-		uiBook.language=parser.getLanguage();
-		uiBook.pageCount = parser.getPageCount();
-		uiBook.imageUrl = parser.getImageLink();		
-		uiBook.hasImage=parser.hasImage();		
-		uiBook.isbn = isbn;
-		uiBook.categories= parser.getCategories();
-		return uiBook;
-	}
-		
+		UiBookBuilder builder = new UiBookBuilder(new CasadelLibroParser(doc,  isbn));	
+		return builder.build();		
+	}		
 }
 
 

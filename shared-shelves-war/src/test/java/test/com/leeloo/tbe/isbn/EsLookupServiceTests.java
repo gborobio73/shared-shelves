@@ -27,7 +27,7 @@ public class EsLookupServiceTests {
 			assertEquals("es", book.language);
 			assertEquals("320", book.pageCount);
 			assertEquals(0, book.price);
-			assertNull(book.subtitle);
+			assertTrue(book.subtitle.isEmpty());
 			assertTrue(book.ownedByCurrentUser);
 		} catch (Exception e)		{
 			fail(e.getMessage());
@@ -52,7 +52,7 @@ public class EsLookupServiceTests {
 			assertEquals("es", book.language);
 			assertEquals("272", book.pageCount);
 			assertEquals(0, book.price);
-			assertNull(book.subtitle);
+			assertTrue(book.subtitle.isEmpty());
 			assertTrue(book.ownedByCurrentUser);
 		} catch (Exception e)		{
 			fail(e.getMessage());

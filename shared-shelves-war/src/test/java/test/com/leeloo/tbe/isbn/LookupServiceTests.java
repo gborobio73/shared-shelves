@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.leeloo.tbe.isbn.LookupService;
+import com.leeloo.tbe.isbn.FiLookupService;
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 
 public class LookupServiceTests {
@@ -12,14 +12,14 @@ public class LookupServiceTests {
 	@Test
 	public void findBook_bookInFinnish_findsBook()
 	{
-		LookupService service = new LookupService();
+		FiLookupService service = new FiLookupService();
 		String isbn = "9524831635";
 		try {
 			UiBook book = service.findBook(isbn );
 			
 			assertEquals("Nauravat vainajat", book.title);
 			assertEquals("Pablo Tusset",book.authors.get(0));
-			//assertNotNull(book.categories);
+			assertTrue(book.categories.size() == 0);
 			assertNotNull(book.description);
 			assertTrue(book.hasImage);
 			assertNotNull(book.imageUrl);
@@ -27,24 +27,23 @@ public class LookupServiceTests {
 			assertEquals("fi", book.language);
 			assertEquals("207", book.pageCount);
 			assertEquals(0, book.price);
-			assertNull(book.subtitle);
+			assertTrue(book.subtitle.isEmpty());
 			assertTrue(book.ownedByCurrentUser);
 		} catch (Exception e)		{
 			fail(e.getMessage());
-			//System.out.println(e.getMessage());
 		}
 	}
 	@Test
 	public void findBook_bookNoImageAndSubtitle_findsBook()
 	{
-		LookupService service = new LookupService();
+		FiLookupService service = new FiLookupService();
 		String isbn = "9788408094173";
 		try {
 			UiBook book = service.findBook(isbn );
 			
 			assertEquals("Nido vacio", book.title);
 			assertEquals("Alicia Giménez-Bartlett",book.authors.get(0));
-			//assertNotNull(book.categories);
+			assertTrue(book.categories.size() == 0);
 			assertNotNull(book.description);
 			assertFalse(book.hasImage);
 			assertEquals("http://books.google.fi/googlebooks/images/no_cover_thumb.gif", book.imageUrl);
@@ -55,16 +54,15 @@ public class LookupServiceTests {
 			assertEquals("Un caso de Petra Delicado", book.subtitle);
 		} catch (Exception e)		{
 			fail(e.getMessage());
-			//System.out.println(e.getMessage());
 		}
 	}
 	@Test
 	public void findBook_DoesNotFindTheBook()
 	{
-		LookupService service = new LookupService();
+		FiLookupService service = new FiLookupService();
 		String isbn = "9788497597210";
 		try {
-			UiBook book = service.findBook(isbn );
+			service.findBook(isbn );
 			fail("Should have thrown book not found exception");
 			
 		} catch (Exception e)		{
