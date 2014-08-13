@@ -95,88 +95,49 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
              isbnNoHyphens = isbn.replace(/-/g,"");
              var isbnUrlSearch = 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbnNoHyphens;
              return $http.get(isbnUrlSearch)
-                       .then(function(result) {
-                            var book = {
-                              "title":"",
-                              "subtitle":"",
-                              "description":"",
-                              "authors":[],
-                              "publisherDate":"",
-                              "language":"",
-                              "pageCount":"",
-                              "categories":[],
-                              "hasImage":"",
-                              "imageUrl":"",
-                              "isbn":"",
-                              "amazonLink":"",
-                              "price":"",
-                              "location":""                            	  
-                            };
-                            if (result.data.totalItems== 1)
-                            {                              
-		                    	  var selfLink = result.data.items[0].selfLink;
-		                          return $http.get(selfLink)
-		                          	.then(function(result) {                                    	
-										  var volumeInfo = result.data.volumeInfo;
-										  if(volumeInfo.language == 'fi'){
-											  var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
-											  return $http.get(searchUrl).then(
-				                          			function(result) {
-				                          				return result.data;
-				                          			},
-				                          			function (error){
-				                          				//Whatever google has
-														buildWithGBooks(book, volumeInfo);											  
-														return book;
-			                          			});
-										  }
-										  else if(volumeInfo.language == 'es'){
-											  var searchUrl ="/rest/books/search/es/"+isbnNoHyphens;
-											  return $http.get(searchUrl).then(
-				                          			function(result) {
-				                          				return result.data;
-				                          			},
-				                          			function (error){
-				                          				//Whatever google has
-														buildWithGBooks(book, volumeInfo);											  
-														return book;
-			                          			});
-										  }
-										  else{
-											  //Whatever google has
-											  buildWithGBooks(book, volumeInfo);											  
-											  return book;
-										  }										  
-		                            });
-                            }
-                            else{
-                            	//could not find the book, lets try finland!
-                            	var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
-                            	return $http.get(searchUrl).then(
-                        			function(result) {
-                        				return result.data;
-                        			},
-                        			function (error){
-                        				//let's try spain!
-                        				searchUrl ="/rest/books/search/es/"+isbnNoHyphens;
-                        				return $http.get(searchUrl).then(
-                                    			function(result) {
-                                    				return result.data;
-                                    			},
-                                    			function (error){
-                                    				//NOT FOUND!!
-                                    				return book;
-                                    			}); 
-                        			}); 
-                            }                            
-                        });
+				   .then(function(result) {                            
+				        if (result.data.totalItems== 1)
+				        {                              
+							  var selfLink = result.data.items[0].selfLink;
+							  return $http.get(selfLink)
+							  	.then(function(result) {                                    	
+									  var volumeInfo = result.data.volumeInfo;
+									  if(volumeInfo.description!=null && volumeInfo.description.length >0 && 
+											  volumeInfo.imageLinks != null && volumeInfo.authors != null){
+										  //gbooks has it!
+									  return buildWithGBooks(volumeInfo);											  											  
+								  }else{
+									  var searchUrl ="/rest/books/search/"+volumeInfo.language+"/"+isbnNoHyphens;
+									  return $http.get(searchUrl).then(
+							      			function(result) {
+							      				return result.data;
+							      			},
+							      			function (error){
+							      				//Whatever google has
+												return buildWithGBooks(volumeInfo);											  														
+							  			});											  
+								  };
+						});
+				    }
+				    else{
+				    	//could not find the book, lets try search
+				    	var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
+				    	return $http.get(searchUrl).then(
+							function(result) {
+								return result.data;
+							},
+							function (error){
+								return createBook();                                    	
+							}); 
+				    }                            
+				});
         };
 
     return isbnSearchServices; 
 }]);
 
-function buildWithGBooks(book, volumeInfo){
-	console.log('building with whatever google has');
+function buildWithGBooks(volumeInfo){
+	var book = createBook();
 	book.title = volumeInfo.title;
 	book.subtitle = volumeInfo.subtitle;
 	book.description = removeHtml(volumeInfo.description);
@@ -202,6 +163,27 @@ function buildWithGBooks(book, volumeInfo){
 	}
 	book.amazonLink="http://www.amazon.co.uk/gp/search?index=books&linkCode=qs&keywords="+book.isbn;                                   
 	book.ownedByCurrentUser = true;	
+	return book;
+}
+
+function createBook(){
+	var book = {
+            "title":"",
+            "subtitle":"",
+            "description":"",
+            "authors":[],
+            "publisherDate":"",
+            "language":"",
+            "pageCount":"",
+            "categories":[],
+            "hasImage":"",
+            "imageUrl":"",
+            "isbn":"",
+            "amazonLink":"",
+            "price":"",
+            "location":""                            	  
+          };
+	return book;
 }
 
 function removeHtml(description)

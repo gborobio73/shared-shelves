@@ -16,6 +16,7 @@ import com.leeloo.tbe.TbeUser;
 import com.leeloo.tbe.TbeUserService;
 import com.leeloo.tbe.UseCases;
 import com.leeloo.tbe.book.Book;
+import com.leeloo.tbe.common.TbeLogger;
 import com.leeloo.tbe.isbn.EsLookupService;
 import com.leeloo.tbe.isbn.FiLookupService;
 import com.leeloo.tbe.repository.BookshelfRepository;

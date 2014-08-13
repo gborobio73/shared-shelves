@@ -21,7 +21,7 @@ public class EsLookupService implements ILookupService{
 				  .post();			
 		
 		Elements elm = searchResult.select("a.title-link.searchResult");		
-		if(elm == null){
+		if(elm == null || elm.isEmpty()){
 			throw new Exception(String.format("Casadellibro does not have the book isbn %s", isbn));
 		}		
 		String productlink = elm.attr("href");

@@ -72,13 +72,13 @@ public class CasadelLibroParser implements IHtmlParser {
 	private void parseTitle() throws Exception {
 		Elements titleElement = document.getElementsByClass("book-header-2-title");		
 		if(titleElement.isEmpty()) 
-			throw new Exception(String.format("Casadellibro product page does not contain class book-header-2-title; cannot parse TITLE. ISBN %", isbn));		
+			throw new Exception(String.format("Casadellibro product page does not contain class book-header-2-title; cannot parse TITLE. ISBN %s", isbn));		
 		title = titleElement.first().ownText().trim();
 	}
 	
 	private void parseAuthors() throws Exception {
 		Elements authorContainer = document.getElementsByClass("book-header-2-subtitle");
-		if(authorContainer.isEmpty()) throw new Exception(String.format("Casadellibro product page does not contain class book-header-2-subtitle; cannot parse AUTHOR. ISBN %", isbn));
+		if(authorContainer.isEmpty()) throw new Exception(String.format("Casadellibro product page does not contain class book-header-2-subtitle; cannot parse AUTHOR. ISBN %s", isbn));
 		Element author = authorContainer.select("a[href]").first();
 		authors = Arrays.asList(author.text().trim());
 	}
@@ -86,12 +86,13 @@ public class CasadelLibroParser implements IHtmlParser {
 	private void parseDescription() {
 		Elements container = document.getElementsByClass("book-header-2-info");
 		Element descriptionHtml = container.select("div.right > p").first();
-		
-		description = descriptionHtml.text().trim();
-				
-		if (descriptionHtml.text().indexOf("...") >0 ){
-			description = descriptionHtml.text().substring(0, descriptionHtml.text().indexOf("...")).trim();
-		}
+		if(descriptionHtml != null){
+			description = descriptionHtml.text().trim();
+					
+			if (descriptionHtml.text().indexOf("...") >0 ){
+				description = descriptionHtml.text().substring(0, descriptionHtml.text().indexOf("...")).trim();
+			}
+		}	
 	}	
 	
 	private void parseLanguageAndPageCount() {
