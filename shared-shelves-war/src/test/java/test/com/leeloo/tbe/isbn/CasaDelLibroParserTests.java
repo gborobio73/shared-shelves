@@ -32,7 +32,7 @@ public class CasaDelLibroParserTests {
 	public void CasaDelLibroParser_document_parsesTitle() {
 		String title = parser.getTitle();
 		
-		assertEquals("EL MAESTRO DE ESGRIMA (PDL ED. 6E)", title);	
+		assertEquals("El maestro de esgrima (pdl ed. 6e)", title);	
 	}
 	
 	@Test

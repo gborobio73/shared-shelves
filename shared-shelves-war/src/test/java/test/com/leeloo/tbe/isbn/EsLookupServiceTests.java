@@ -17,7 +17,7 @@ public class EsLookupServiceTests {
 		try {
 			UiBook book = service.findBook(isbn );
 			
-			assertEquals("EL MAESTRO DE ESGRIMA (PDL ED. 6E)", book.title);
+			assertEquals("El maestro de esgrima (pdl ed. 6e)", book.title);
 			assertEquals("ARTURO PEREZ-REVERTE",book.authors.get(0));
 			assertNotNull(book.categories);
 			assertNotNull(book.description);
@@ -42,7 +42,7 @@ public class EsLookupServiceTests {
 		try {
 			UiBook book = service.findBook(isbn );
 			
-			assertEquals("EL GUARDIAN ENTRE EL CENTENO", book.title);
+			assertEquals("El guardian entre el centeno", book.title);
 			assertEquals("J.D. SALINGER",book.authors.get(0));
 			assertNotNull(book.categories);
 			assertNotNull(book.description);

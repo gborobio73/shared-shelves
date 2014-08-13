@@ -19,21 +19,14 @@ public class TbeEmail {
 
 	public String getMessage() {
 		StringBuilder message = new StringBuilder(255);
-		
-		message.append(String.format("Hello %s,",book.owner.getName()));
-		message.append(System.lineSeparator());
-		message.append(System.lineSeparator());
-		message.append(String.format("I am contacting you regarding your book '%s' with the price of %s euros.", book.title, book.price));
-		message.append(System.lineSeparator());
-		message.append(System.lineSeparator());
-		message.append(String.format("Please, contact me by replying to this email."));
-		message.append(System.lineSeparator());
-		message.append(System.lineSeparator());
-		message.append(String.format("Thank you,"));
-		message.append(System.lineSeparator());
-		message.append(System.lineSeparator());
-		message.append(String.format("%s (via Shared Shelves)", currentUser.getName()));
-		
+		message.append("<html><head><title>Shared Shelves</title></head>");
+		message.append("<body style =\"font:14px 'Lucida Sans', sans-serif;\">");
+		message.append(String.format("<p>Hello %s,</p>",book.owner.getName()));		
+		message.append(String.format("<p>I am contacting you regarding your book '%s' with the price of %s euros.</p>", book.title, book.price));
+		message.append(String.format("<p>Please, contact me by replying to this email.</p>"));
+		message.append(String.format("<p>Thank you,</p>"));
+		message.append(String.format("<p>%s (via <a href=\"http://www.sharedshelves.net\">Shared Shelves</a>)</p>", currentUser.getName()));
+		message.append("</body></html>");
 		return message.toString();
 	}
 
