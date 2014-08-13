@@ -72,8 +72,9 @@ public class CasadelLibroParser implements IHtmlParser {
 	private void parseTitle() throws Exception {
 		Elements titleElement = document.getElementsByClass("book-header-2-title");		
 		if(titleElement.isEmpty()) 
-			throw new Exception(String.format("Casadellibro product page does not contain class book-header-2-title; cannot parse TITLE. ISBN %s", isbn));		
-		title = titleElement.first().ownText().trim();
+			throw new Exception(String.format("Casadellibro product page does not contain class book-header-2-title; cannot parse TITLE. ISBN %s", isbn));
+		String ucaseTitle = titleElement.first().ownText().trim();		
+		title = ucaseTitle.substring(0, 1) + ucaseTitle.substring(1, ucaseTitle.length()).toLowerCase();
 	}
 	
 	private void parseAuthors() throws Exception {
