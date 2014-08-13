@@ -239,7 +239,25 @@ var texts = {
     	},
     	bookshelf:{
 			more:["more", "lisää", "más"],			
-		}
+		},
+    	faq:{
+    		whyHeader:["Why this app?", "Miksi tämä sovellus?", "¿Porqué esta app?"],
+			whyText:["I think books are to be read. As I have a lot of them, someone else might want to read those same books as well. Books are expensive here in Finland and the selection of, for example, Spanish books is small. I also think this is a nice way to meet other people.", "Minusta kirjat on tarkoitettu luettavaksi. Koska minulla on niitä aika paljon, joku muukin voisi haluta lukea ne. Suomessa kirjat ovat kalliita ja valikoima suppea esimerkiksi espanjankielisten kirjojen kohdalla. Lisäksi tämä on minusta kiva tapa tavata muita ihmisiä.", "Soy de la opinión que los libros son para ser leídos y me gustaría que los míos fueran leídos por otras personas. Otro motivo es que los libros son caros aquí en Finlandia y es difícil encontrar libros en otros idiomas."],
+			howDoesWorkHeader:["How does this work?", "Miten tämä toimii?", "¿Cómo funciona?"],
+			howDoesWorkTextPart1:["You can add your books to the bookshelf by clicking \"Add book\". Insert the", "Voit lisätä haluamasi kirjat hyllyyn painamalla \"Lisää kirja\". Kirjoita", "Puedes añadir tus libros a la librería haciendo click en \"Añadir Libro\". Introduce el"],
+			howDoesWorkTextPart2:["(with or without hyphens) and the book information will be imported. Sometimes the information cannot be found but I am constantly working to improve the search.", "(väliviivoilla tai ilman) ja kirjan tiedot lisätään automaattisesti. Välillä tietoja ei löydy, mutta työskentelen jatkuvasti haun parantamiseksi.", "(con o sin guiones) y se importará la información sobre el libro. A veces no se encuentra información, pero estoy mejorando la búsqueda constantemente."],
+			whatIfInterestedHeader:["What if I am interested in a book?", "Mitä jos olen kiinnostunut tietystä kirjasta?", "¿Y si me interesa algún libro?"],
+			whatIfInterestedText:["Just click the button \"Let the owner know!\" and an email will be sent to both you and the owner. You can take it from there.", "Paina vain \"Kerro omistajalle!\" -nappia ja sähköposti lähetetään sekä sinulle että omistajalle. Voitte sopia jatkosta itse.", "Solo tienes que hacer click en \"Díselo al dueño!\" y se os enviará un email a los dos. A partir de ahí depende de vosotros."],
+			whatSoldBookHeader:["What do I do once I have sold a book?", "Mitä teen, kun olen myynyt kirjan?", "¿Qué hago una vez he vendido un libro?"],
+			whatSoldBookText:["Please remove it from the bookshelf, as it is not available anymore.", "Koska kirjaa ei ole saatavilla enää, ole ystävällinen ja poista se hyllyltä.", "Por favor, elimínalo de la librería ya que no está disponible."],
+			whatGoogleAccHeader: ["What do you do with my Google account?","Mihin Google-tiliäni käytetään?","¿Qué haces con mi cuenta de Google?"],
+			whatGoogleAccText: ["It provides a secure way to identify you and to send you emails. Nothing else.","Se tarjoaa turvallisen tavan tunnistaa sinut ja lähettää sinulle sähköpostia. Ei mitään muuta.","Me permite identificarte de manera segura y enviarte emails. Nada más."],
+			isItFreeHeader:["Is this app for free?","Onko tämä sovellus ilmainen?","¿Es la app gratis?"],
+			isItFreeText:["Yep.","Jep.","Sip."],
+			iHaveSuggestionsHeader:["What if I have some suggestions?","Mitä jos minulla on sovellukseen liittyviä ehdotuksia?","¿Y si tengo alguna sugerencia?"],
+			iHaveSuggestionsText:["Contact me at the email below.","Lähetä viesti alla näkyvään sähköpostiosoitteeseen.","Puedes contactar conmigo en el email más abajo."],
+			thanksText:["A big THANK YOU to Erika, Aleksandr, Anri and Lauri for helping me building this app.","ISO KIITOS Erikalle, Aleksanderille, Anrille ja Laurille avusta tämän sovelluksen kanssa.","MUCHAS GRACIAS a Erika, Aleksandr, Anri y Lauri por ayudarme a construir esta  app."]
+    	}
  };
 
 

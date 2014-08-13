@@ -1,45 +1,45 @@
-<div class="container-fluid" id = "top">
+<div class="container-fluid">
 	<div class="panel panel-info">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">FAQ</h3>
 	  </div>
 	  <div class="panel-body">
-	  	<h4 class="panel-title">Why this app?</h4>
+	  	<h4 class="panel-title">{{texts.faq.whyHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	  		I think books are to be read. As I have a lot of them, someone else might want to read those same books as well. Books are expensive here in Finland and the selection of, for example, Spanish books is small. I also think this is a nice way to meet other people.
+	  		{{texts.faq.whyText[lang]}}
 	  	</div>
-	  	<h4 class="panel-title">How does this work?</h4>
+	  	<h4 class="panel-title">{{texts.faq.howDoesWorkHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	    	You can add your books to the bookshelf by clicking "Add book". Insert the <a href="" ng-click="showImage = !showImage">ISBN</a> (with or without hyphens) and the book information will be imported. Sometimes the information cannot be found but I am constantly working to improve the search.
+	  		{{texts.faq.howDoesWorkTextPart1[lang]}} <a href="" ng-click="showImage = !showImage">ISBN</a> {{texts.faq.howDoesWorkTextPart2[lang]}}
 	    	<div ng-show="showImage">
 	    		<img src ="../img/ISBN.png"/ style = "width: 75%;">
 	    	</div>
 	    </div>
-	    <h4 class="panel-title">What if I am interested in a book?</h4>
+	    <h4 class="panel-title">{{texts.faq.whatIfInterestedHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	    	Just click the button "Let the owner know!" and an email will be sent to both you and the owner. You can take it from there.
+	    	{{texts.faq.whatIfInterestedText[lang]}}
 	    </div>
-	    <h4 class="panel-title">What do I do once I have sold a book?</h4>
+	    <h4 class="panel-title">{{texts.faq.whatSoldBookHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	    	Please remove it from the bookshelf, as it is not available anymore.
+	    	{{texts.faq.whatSoldBookText[lang]}}
 	  	</div>
-	  	<h4 class="panel-title">What do you do with my Google account?</h4>
+	  	<h4 class="panel-title">{{texts.faq.whatGoogleAccHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	    	It provides a secure way to identify you and to send you emails. Nothing else.
+	    	{{texts.faq.whatGoogleAccText[lang]}}
 	  	</div>	
-	  	<h4 class="panel-title">Is this app for free?</h4>
+	  	<h4 class="panel-title">{{texts.faq.isItFreeHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	    	Yep.
+	    	{{texts.faq.isItFreeText[lang]}}
 	  	</div>	  	
-	  	<h4 class="panel-title">What if I have some suggestions?</h4>
+	  	<h4 class="panel-title">{{texts.faq.iHaveSuggestionsHeader[lang]}}</h4>
 	  	<div class="panel-body">
-	    	Contact me at the email below.
+	    	{{texts.faq.iHaveSuggestionsText[lang]}}
 	  	</div>
 	  </div>	  	
 	</div>	
 	<div class="panel panel-success">
 		<div class="panel-body">
-	    	A big THANK YOU to Erika, Aleksandr, Anri and Lauri for helping me building this app.
+	    	{{texts.faq.thanksText[lang]}}
 	  	</div>
 	</div>
 </div>
