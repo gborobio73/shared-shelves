@@ -13,7 +13,7 @@ import com.leeloo.tbe.isbn.AdlibrisParser;
 public class AdlibrisParserIntegrationTests {
 
 	@Test
-	public void AdlibrisParser_parse_shouldParseOneLineDescriptionAndAuthr() {
+	public void AdlibrisParser_parse_shouldParseOneLineDescriptionAndAuthor() {
 		String isbn = "9789524831635";
 		try {
 			AdlibrisParser parser = parseHtml(isbn);

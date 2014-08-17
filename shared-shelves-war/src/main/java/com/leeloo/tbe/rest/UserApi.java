@@ -34,7 +34,7 @@ public class UserApi {
 
         if (currentUser != null) {
             Gson gson = new Gson();
-            UiUser tbeUser = new UiUser(currentUser.getUserId(),currentUser.getNickname());
+            UiUser tbeUser = new UiUser(currentUser.getNickname());
 
             return Response.ok().entity(gson.toJson(tbeUser)).build();
         } else {

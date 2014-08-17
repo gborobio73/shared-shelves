@@ -92,8 +92,8 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
     }
     
     isbnSearchServices.searchBookInfoByISBN = function(isbn){
-             isbnNoHyphens = isbn.replace(/-/g,"");
-             var isbnUrlSearch = 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbnNoHyphens;
+             var isbnClean = isbn.replace(/-/g,"").replace(/\s+/g, '');
+             var isbnUrlSearch = 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbnClean;
              return $http.get(isbnUrlSearch)
 				   .then(function(result) {                            
 				        if (result.data.totalItems== 1)
@@ -107,7 +107,7 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 										  //gbooks has it!
 									  return buildWithGBooks(volumeInfo);											  											  
 								  }else{
-									  var searchUrl ="/rest/books/search/"+volumeInfo.language+"/"+isbnNoHyphens;
+									  var searchUrl ="/rest/books/search/"+volumeInfo.language+"/"+isbnClean;
 									  return $http.get(searchUrl).then(
 							      			function(result) {
 							      				return result.data;
@@ -121,7 +121,7 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 				    }
 				    else{
 				    	//could not find the book, lets try search
-				    	var searchUrl ="/rest/books/search/fi/"+isbnNoHyphens;
+				    	var searchUrl ="/rest/books/search/fi/"+isbnClean;
 				    	return $http.get(searchUrl).then(
 							function(result) {
 								return result.data;

@@ -9,7 +9,7 @@ public class TbeUserService {
 	
 	public TbeUser getCurrentUser()
 	{		
-    	User user = userService.getCurrentUser();
+		User user = userService.getCurrentUser();
     	return new TbeUser(user.getUserId(), user.getNickname(), user.getEmail());
 	}
 

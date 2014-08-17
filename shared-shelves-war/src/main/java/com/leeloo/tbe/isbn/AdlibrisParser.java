@@ -92,7 +92,10 @@ public class AdlibrisParser implements IHtmlParser {
 
 	private void parsePageCount() {
 		Element pageCountHtml = doc.getElementById("ctl00_main_frame_ctrlproduct_lblPages");
-		pageCount = pageCountHtml.text().trim();
+		if(pageCountHtml != null){
+			pageCount = pageCountHtml.text().trim();
+		}
+		
 	}
 
 	private void parseLanguage() {
