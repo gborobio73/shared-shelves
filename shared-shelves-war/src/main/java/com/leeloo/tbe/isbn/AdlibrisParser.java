@@ -2,10 +2,12 @@ package com.leeloo.tbe.isbn;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class AdlibrisParser implements IHtmlParser {
 	private String title="", description="", pageCount = "", language ="", imageLink="", subtitle="", isbn;
@@ -110,13 +112,21 @@ public class AdlibrisParser implements IHtmlParser {
 	}
 
 	private void parseDescription() {
-		Element desc = doc.getElementsByAttributeValue("itemprop", "description").first();
-		description = desc.text().trim();
+		Elements container = doc.getElementsByClass("productDescription");
+		description = container.text().trim();
+		if(description.substring(0, 7).equals("Kuvaus:"))
+		{
+			description = description.substring(description.indexOf("Kuvaus:") + 7).trim();
+		}
 	}
 
 	private void parseAuthor() {
 		Element author = doc.getElementById("ctl00_main_frame_ctrlproduct_rptAuthor_ctl00_linkAuthor");
-		authors = Arrays.asList(author.text().trim());
+		if(author == null){
+			authors = Arrays.asList();
+		}else{
+			authors = Arrays.asList(author.text().trim());
+		}
 	}
 
 	private void parseTitle() throws Exception {
