@@ -3,6 +3,7 @@
 			    <label for="inputTitle" class="col-sm-2 control-label">{{texts.book.title[lang]}}</label>
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.title" id="inputTitle" readonly>
+			      <!-- p class="form-control-static" id="inputTitle">{{book.title}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
@@ -31,54 +32,56 @@
  				<label for="inputAuthors" class="col-sm-2 control-label">{{texts.book.authors[lang]}}</label>
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.authors" id="inputAuthors" readonly>
+			      <!-- p class="form-control-static" id="inputAuthors">{{book.authors.join(', ')}}</p-->
 			    </div>	
 			</div>
 			  <div class="form-group" ng-show = "book.subtitle.length>0">
 			    <label for="inputSubtitle" class="col-sm-2 control-label">{{texts.book.subtitle[lang]}}</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control input-sm" ng-model ="book.subtitle" id="inputSubtitle" readonly>
+			      <!-- p class="form-control-static" id="inputSubtitle">{{book.subtitle}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="inputDescription" class="col-sm-2 control-label" id="desc">{{texts.book.description[lang]}}</label>
 			    <div class="col-sm-10">
-			      <textarea class="form-control" rows="8" ng-model ="book.description" id="inputDescription"></textarea>
+			      <textarea class="form-control" rows="8" ng-model ="book.description" id="inputDescription" ></textarea>
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="inputLanguage" class="col-sm-2 control-label">{{texts.book.language[lang]}}</label>
-			    <div class="col-sm-4">
+			    <div class="col-sm-2">
 			      <input type="text" class="form-control input-sm" ng-model ="book.language" id="inputLanguage" readonly>
+			      <!-- p class="form-control-static" id="inputLanguage">{{book.language}}</p-->
 			    </div>
-			    <label for="inputPageCount" class="col-sm-2 control-label">{{texts.book.pageCount[lang]}}</label>
+			    <label for="inputPageCount" class="col-sm-3 control-label">{{texts.book.pageCount[lang]}}</label>
 			    <div class="col-sm-2">
 			      <input type="text" class="form-control input-sm" ng-model ="book.pageCount" id="inputPageCount" readonly>
+			      <!-- p class="form-control-static" id="inputPageCount">{{book.pageCount}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="inputCategories" class="col-sm-2 control-label">{{texts.book.categories[lang]}}</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control input-sm" ng-model ="book.categories" id="inputCategories" readonly>
+			      <!-- p class="form-control-static" id="inputCategories">{{book.categories.join(', ')}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="inputISBN" class="col-sm-2 control-label">ISBN</label>
 			    <div class="col-sm-10">
-			      <!-- <input type="text" class="form-control input-sm" ng-model ="book.isbn" id="inputISBN" disabled> -->			      
-      				<p class="form-control-static" style = "font-size: 120%;">{{book.isbn}}</p>			      
+			      <p class="form-control-static">{{book.isbn}}</p>			      
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="selectLocation" class="col-sm-2 control-label">{{texts.book.location[lang]}}</label>
 			    <div class="col-sm-4">
-			       <select class="form-control" ng-show="book.ownedByCurrentUser" ng-model="bookLocation" ng-options="city for city in cities" id="selectLocation"></select>
-			       <input type="text" ng-hide="book.ownedByCurrentUser" class="form-control input-sm" ng-model ="book.location" id="selectLocation" readonly>			      
+			       <select class="form-control" ng-disabled="book.ownedByCurrentUser == false" ng-model="bookLocation" ng-options="city for city in cities" id="selectLocation"></select>
 			    </div>
 			  </div>
 			  <div class="form-group">
 			  	<label for="selectPrice" class="col-sm-2 control-label">{{texts.book.price[lang]}} <span class="glyphicon glyphicon-euro"></span></label>
 			    <div class="col-sm-2">
-			       <select class="form-control" ng-show="book.ownedByCurrentUser" ng-model="bookPrice" ng-options="price for price in prices" id="selectPrice"></select>
-			       <input type="text" ng-hide="book.ownedByCurrentUser" class="form-control input-sm" ng-model ="book.price" id="selectPrice" readonly>			       
+			       <select class="form-control" ng-disabled="book.ownedByCurrentUser == false" ng-model="bookPrice" ng-options="price for price in prices" id="selectPrice"></select>			       			      
 			    </div>			    
 			  </div>
