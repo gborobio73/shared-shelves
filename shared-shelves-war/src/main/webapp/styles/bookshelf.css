@@ -24,7 +24,7 @@ body {
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
-    padding: 2px;
+    padding: 1px;
     padding-bottom: 5px;
     background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
     opacity: 1;    
@@ -32,23 +32,27 @@ body {
     -moz-transition: all .2s ease;
     -o-transition: all .2s ease;
     transition: all .2s ease;    
-    height: 565px;
-    font: 12px/18px Arial, sans-serif;
+    /*height: 565px;*/
+    /*height: 480px;*/
+    height: 340px;
+    font: 12px/18px Arial, sans-serif;   
 }
 
 .pin img {
     width: 100%;    
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     margin-bottom: 5px;
     border-bottom: 1px solid #ccc;
-    /*height: 235px;*/
+    height: 215px;
 }
 
 .pin .description{    
     color: #333;
     margin: 0;
     padding-bottom: 5px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;    
 }
 
 .pin .line{
@@ -56,18 +60,23 @@ body {
 }
 .pin .price{
 	color: #333;
-    padding-bottom: 0px;
-    margin-bottom: 0px;    
-    bottom: 25px;
+    bottom: 20px;
+    padding-left: 2px;
 	position: absolute;
+}
+
+.pin .info{
+	bottom: 20px;    
+	position: absolute;
+	padding-left: 60%;
 }
 
 .pin a{
 	font: 12px/18px Arial, sans-serif
 }
-.pin .user {
-    color: #333;
-    margin: 0;
+.pin .author {
+    padding-left: 2px;
+    padding-right: 2px;
 }
 .contact-info {
    font: 10px/13px 'Lucida Sans',sans-serif;

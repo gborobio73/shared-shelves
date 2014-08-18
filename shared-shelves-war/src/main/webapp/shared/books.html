@@ -4,14 +4,18 @@
 	  <div class="pin" ng-controller = "bookNavController">
 	    <a href="" ng-click="showBookDetails(book)"><img ng-src="{{book.imageUrl}}"/></a>
 	    <div class = "description line">{{book.title}}</div>      
-	    <div class = "description line" ng-bind = "book.authors"></div>
-	    <div class = "description hideForSmall">
-	    	<div ng-show="book.description.length >200">{{book.description.substring(0,200)}}
+	    <div class = "description line author" ng-bind = "book.authors"></div>
+	    <!-- div class = "description hideForSmall">
+	    	<div ng-show="book.description.length >130">{{book.description.substring(0,130)}}
 	    		<a href ="" ng-click="showBookDetails(book)">[{{texts.bookshelf.more[lang]}}]</a>	    		
 	    	</div>
-	    	<div ng-show="book.description.length <=200">{{book.description}}</div>
-	    </div>
-	    <div class = "price">{{book.price}} &euro; {{book.location}}</div>	    	    
+	    	<div ng-show="book.description.length <=130">{{book.description}}</div>
+	    </div-->
+	    <div class = "price">{{book.price}} &euro; {{book.location}}</div>
+	    <!-- div class = "info">
+	    	<a href ="" ng-click="showBookDetails(book)">{{texts.bookshelf.more[lang]}}</a>
+	    	<span class="glyphicon glyphicon-zoom-in"></span>
+	    </div-->
 	  </div>
 	</div>
 </div>
