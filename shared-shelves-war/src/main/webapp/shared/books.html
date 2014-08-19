@@ -6,8 +6,8 @@
 	    <div class = "description title">{{book.title}}</div>      
 	    <div class = "description author">{{book.authors.join(', ').substring(0,40)}}</div>
 	    <div class = "description hideForSmall desc">
-	    	<div ng-show="book.title.length + book.authors.join(', ').substring(0,40).length < 46">{{book.description.substring(0,43)}}
-	    		<!--a href ="" ng-click="showBookDetails(book)">[{{texts.bookshelf.more[lang]}}]</a-->	    		
+	    	<div ng-show="(book.title.length <20 && book.authors.join(', ').substring(0,40).length < 20 && book.description.length > 0)">
+	    		{{book.description.substring(0,42)+'...'}}	    		
 	    	</div>
 	    </div>
 	    <div class = "description language">{{book.language}}</div>
