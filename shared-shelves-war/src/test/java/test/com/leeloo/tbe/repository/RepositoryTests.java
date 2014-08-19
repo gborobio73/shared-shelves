@@ -38,7 +38,7 @@ public class RepositoryTests {
 		
 		repository.save(book);
 		
-		Book savedBook = repository.getAll().get(0);
+		Book savedBook = repository.get(book.id);
 		
 		assertEquals(user.getEmail(), savedBook.owner.getEmail());
 		assertEquals(user.getName(), savedBook.owner.getName());
