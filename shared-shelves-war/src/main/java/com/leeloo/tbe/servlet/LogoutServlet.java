@@ -21,7 +21,7 @@ public class LogoutServlet extends HttpServlet {
         sacsid.setMaxAge(0);
         resp.addCookie(sacsid);
         
-        resp.sendRedirect("/login.html");   
+        resp.sendRedirect("/logout.html");   
 	}
 
 }

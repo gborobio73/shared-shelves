@@ -56,16 +56,35 @@ body {
 .pin .title{
 	font-weight: bold;
 }
+
+.pin .author {
+    padding-left: 2px;
+    padding-right: 2px;
+    font: 11px/17px Arial, sans-serif;   
+}
+
+.pin .desc {
+	font: italic 11px/17px Arial, sans-serif;
+	line-height: 100%;
+	margin-top: 5px;
+}
+
 .pin .line{
 	border-bottom: 1px solid #ccc;
 }
+
 .pin .price{
 	color: #333;   
     position: absolute;
 	bottom: 18px;
 	left: 7px;
 }
-
+.pin .language{
+	position: absolute;
+	bottom: 20px;
+	left: 105px;
+	font: italic 10px Arial, sans-serif;
+}
 .pin .info{
 	bottom: 20px;    
 	position: absolute;
@@ -74,11 +93,6 @@ body {
 
 .pin a{
 	font: 12px/18px Arial, sans-serif
-}
-.pin .author {
-    padding-left: 2px;
-    padding-right: 2px;
-    font: 11px/17px Arial, sans-serif;   
 }
 .contact-info {
    font: 10px/13px 'Lucida Sans',sans-serif;
@@ -177,7 +191,20 @@ body {
     	width: 100%;
     }
  }
- @media only screen and (max-width : 1050px) and (min-width : 651px) {
+ @media only screen and (max-width : 860px) and (min-width : 651px){
+    /* Small desktop / ipad view: 5 tiles */
+    body {
+        padding-top: 5%;
+    }
+    .box {
+       width: 20%;
+    }
+    .panel {
+    	width: 70%;
+    }
+ }
+ 
+ @media only screen and (max-width : 1050px) and (min-width : 861px){
     /* Small desktop / ipad view: 6 tiles */
     body {
         padding-top: 5%;

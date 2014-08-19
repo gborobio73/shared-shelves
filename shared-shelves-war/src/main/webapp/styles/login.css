@@ -5,7 +5,7 @@ body {
     background-size: 100%;
  }
 .container-fluid{
- 		padding-top: 10%;
+ 		padding-top: 18%;
  }
  
 .panel {
@@ -23,6 +23,10 @@ body {
 	padding-left: 2%;
 	font-size: 19px;
 }
+
+.small-font {
+	font-size: 12px;
+}
 .footer	{
 	position: absolute;		
 	padding-left: 5%;
@@ -37,6 +41,9 @@ body {
 	}
 	.description	{		
 		font-size: 16px;
+	}
+	.small-font {
+		font-size: 10px;
 	}
    .footer	{
 		font-size: 10px;
@@ -55,7 +62,6 @@ body {
     	background-size: 100%;
  	}
  	.container-fluid{
- 		padding-top: 10%;
  		padding-left: 15%;
  		width: 75%;
  	}

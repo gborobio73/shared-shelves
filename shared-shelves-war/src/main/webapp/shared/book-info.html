@@ -14,7 +14,7 @@
 			    <div class=" col-sm-offset-2 col-sm-10" ng-hide = "(book.hasImage || book.ownedByCurrentUser == false)">			      
 				  <h4><span class="label label-warning" >{{texts.book.couldNotFindCover[lang]}}</span></h4>
 				  <h5>
-				  	<a href ="http://images.google.com/images?q={{book.title}} {{book.authors[0]}}" target="_blank">
+				  	<a  class="btn btn-info btn-xs" href ="http://images.google.com/images?q={{book.title}} {{book.authors[0]}}" target="_blank">
 				  		{{texts.book.search[lang]}}
 				  	</a> {{texts.book.forACoverAndCopyImage[lang]}}
 				  </h5>
