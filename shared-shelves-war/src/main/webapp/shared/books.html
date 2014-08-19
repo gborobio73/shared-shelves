@@ -3,8 +3,8 @@
 	<div class="box" ng-repeat="book in books | filter:b" >
 	  <div class="pin" ng-controller = "bookNavController">
 	    <a href="" ng-click="showBookDetails(book)"><img ng-src="{{book.imageUrl}}"/></a>
-	    <div class = "description line">{{book.title}}</div>      
-	    <div class = "description line author" ng-bind = "book.authors"></div>
+	    <div class = "description title">{{book.title}}</div>      
+	    <div class = "description author">{{book.authors.join(', ').substring(0,45)}}</div>
 	    <!-- div class = "description hideForSmall">
 	    	<div ng-show="book.description.length >130">{{book.description.substring(0,130)}}
 	    		<a href ="" ng-click="showBookDetails(book)">[{{texts.bookshelf.more[lang]}}]</a>	    		
