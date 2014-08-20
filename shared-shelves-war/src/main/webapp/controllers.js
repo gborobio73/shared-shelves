@@ -3,8 +3,8 @@
 var cities = ["Akaa","Alajärvi","Alavus","Espoo","Forssa","Haapajärvi","Haapavesi","Hamina","Hanko","Harjavalta","Haukipudas","Heinola","Helsinki","Huittinen","Hyvinkää","Hämeenlinna","Iisalmi","Ikaalinen","Imatra","Joensuu","Juankoski","Jyväskylä","Jämsä","Järvenpää","Kaarina","Kajaani","Kalajoki","Kankaanpää","Kannus","Karkkila","Kaskinen","Kauhajoki","Kauhava","Kauniainen","Kemi","Kemijärvi","Kerava","Keuruu","Kitee","Kiuruvesi","Kokemäki","Kokkola","Kotka","Kouvola","Kristiinankaupunki","Kuhmo","Kuopio","Kurikka","Kuusamo","Lahti","Laitila","Lappeenranta","Lapua","Lieksa","Lohja","Loimaa","Loviisa","Maarianhamina","Mikkeli","Mänttä-Vilppula","Naantali","Nilsiä","Nivala","Nokia","Nurmes","Närpiö","Orimattila","Orivesi","Oulainen","Oulu","Outokumpu","Paimio","Parainen","Parkano","Pieksämäki","Pietarsaari","Pori","Porvoo","Pudasjärvi","Pyhäjärvi","Raahe","Raasepori","Raisio","Rauma","Riihimäki","Rovaniemi","Saarijärvi","Salo","Sastamala","Savonlinna","Seinäjoki","Siuntio","Somero","Suonenjoki","Tampere","Tornio","Turku","Ulvila","Uusikaarlepyy","Uusikaupunki","Vaasa","Valkeakoski","Vantaa","Varkaus","Viitasaari","Virrat","Ylivieska","Ylöjärvi","Ähtäri","Äänekoski"];
 var prices = [1,2,3,5,7,8,9,10];
 
-var loadTexts = function(scope, cookieStore, textsServices){
-	var language = cookieStore.get('ss_lang');
+var loadTexts = function(scope, localStorage, textsServices){
+	var language = localStorage.ss_lang;
     if(language == undefined || language == ''){
     	language = 0;
     }
@@ -28,7 +28,7 @@ angular.module('tbe.controllers', [])
 	   getAllBooks();	   
   }])
 
-  .controller('mybooksController', ['$scope', '$location', '$sessionStorage', 'restServices',function ($scope, $location, $sessionStorage, restServices) {
+  .controller('mybooksController', ['$scope', 'restServices',function ($scope, restServices) {
 	
 	var getUserBooks = function() {		
 		$scope.loading= true;		
@@ -183,13 +183,13 @@ angular.module('tbe.controllers', [])
 	    getBook();
 	}
   ])
-  .controller('navController', ['$scope', '$cookieStore', '$timeout', '$location','restServices', 'textsServices', function ($scope, $cookieStore, $timeout, $location, restServices, textsServices) {
+  .controller('navController', ['$scope', '$localStorage', '$timeout', '$location','restServices', 'textsServices', function ($scope, $localStorage, $timeout, $location, restServices, textsServices) {
 	
 	$scope.setLanguage= function(language) {
 		$scope.$parent.lang=language;
 		$scope.showLanguages=false;
 		
-		$cookieStore.put('ss_lang',language);			
+		$localStorage.ss_lang =language;			
 	};  
 	
 	$scope.toggleLanguageMenu= function() {		
@@ -218,7 +218,7 @@ angular.module('tbe.controllers', [])
 	        });
 	};
 	
-	loadTexts($scope.$parent, $cookieStore, textsServices);
+	loadTexts($scope.$parent, $localStorage, textsServices);
 	
 	getConnectedUser();
 	getLogoutUrl();

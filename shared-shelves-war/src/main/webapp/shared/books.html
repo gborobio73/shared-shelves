@@ -5,18 +5,7 @@
 	    <a href="" ng-click="showBookDetails(book)"><img ng-src="{{book.imageUrl}}"/></a>
 	    <div class = "description title">{{book.title}}</div>      
 	    <div class = "description author">{{book.authors.join(', ').substring(0,40)}}</div>
-	    <div class = "description hideForSmall desc">
-	    	<div ng-show="(book.title.length <20 && book.authors.join(', ').substring(0,40).length < 20 && book.description.length > 0)">
-	    		{{book.description.substring(0,42)+'...'}}	    		
-	    	</div>
-	    </div>
 	    <div class = "description language">{{book.language}}</div>
-	    <!-- div class = "description hideForSmall">
-	    	<div ng-show="book.description.length >130">{{book.description.substring(0,130)}}
-	    		<a href ="" ng-click="showBookDetails(book)">[{{texts.bookshelf.more[lang]}}]</a>	    		
-	    	</div>
-	    	<div ng-show="book.description.length <=130">{{book.description}}</div>
-	    </div-->
 	    <div class = "price">{{book.price}} &euro; {{book.location}}</div>
 	  </div>
 	</div>

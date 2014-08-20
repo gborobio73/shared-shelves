@@ -60,7 +60,7 @@ body {
 .pin .author {
     padding-left: 2px;
     padding-right: 2px;
-    font: 11px/17px Arial, sans-serif;   
+    font: italic 11px/17px Arial, sans-serif;   
 }
 
 .pin .desc {
@@ -212,23 +212,73 @@ body {
     	width: 70%;
     }
  }
- @media only screen and (max-width : 1290px) and (min-width : 1051px) {
+ 
+ @media only screen and (max-width : 1170px) and (min-width : 1051px) {
+    /* Medium desktop: 7 tiles */
+    .box {
+       width: 14.28%;
+    }   
+ }
+ 
+ @media only screen and (max-width : 1350px) and (min-width : 1171px) {
     /* Medium desktop: 8 tiles */
     .box {
        width: 12.5%;
     }   
  }
 
-@media only screen and (max-width : 1630px) and (min-width : 1291px) {
+ @media only screen and (max-width : 1550px) and (min-width : 1351px) {
+    /* Medium desktop: 9 tiles */
+    .box {
+       width: 11.11%;
+    }   
+ }
+
+@media only screen and (max-width : 1750px) and (min-width : 1551px) {
     /* Big desktop: 10 tiles */
     .box {
        width: 10%;
     }
  }
 
- @media only screen and (min-width : 1631px) {
+ @media only screen and (max-width : 1950px) and (min-width : 1751px) {
+    /* XXL desktop: 11 tiles */
+    .box {
+       width: 9.09%;
+    }
+ }
+ 
+ @media only screen and (max-width : 2150px) and (min-width : 1951px) {
     /* XXL desktop: 12 tiles */
     .box {
-       width: 8.3%;
+       width: 8.33%;
+    }
+ }
+ 
+ @media only screen and (max-width : 2350px) and (min-width : 2150px) {
+    /* XXL desktop: 13 tiles */
+    .box {
+       width: 7.69%;
+    }
+ }
+ 
+ @media only screen and (max-width : 2550px) and (min-width : 2351px) {
+    /* XXL desktop: 14 tiles */
+    .box {
+       width: 7.14%;
+    }
+ }
+ 
+ @media only screen and (max-width : 2750px) and (min-width : 2551px) {
+    /* XXL desktop: 15 tiles */
+    .box {
+       width: 6.67%;
+    }
+ }
+ 
+ @media only screen and (min-width : 2751px) {
+    /* XXL desktop: 16 tiles */
+    .box {
+       width: 6.67%;
     }
  }
