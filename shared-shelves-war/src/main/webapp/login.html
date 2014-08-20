@@ -49,11 +49,7 @@
         $.getJSON("/rest/url",
         function(data){
           $("#login").attr("href", data.loginURL);
-        });
-        
-        var userLang = navigator.language || navigator.userLanguage; 
-        console.log("The language is: " + userLang);
-        localStorage.setItem("language", userLang);
+        });              
     });
 </script>
 
