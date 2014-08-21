@@ -40,7 +40,7 @@ body {
     font: 12px/18px Arial, sans-serif;   
 }
 
-.pin img {
+.pin .cover{
     width: 100%;    
     padding-bottom: 5px;
     margin-bottom: 5px;
@@ -97,6 +97,15 @@ body {
 .panel {
     	width: 50%;
     }
+
+.pin .ajax-loading {
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.33);
+	top: 30%;
+	left: 40%;
+	width: 16px;
+	height: auto;
+}
 
 /* Bootstrap overrides*/
 .control-label{

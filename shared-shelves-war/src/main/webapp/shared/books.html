@@ -2,7 +2,10 @@
     <img ng-show= "loading" style ="padding-top: 5%;" src="../img/ajax-loader-big.gif" style="float: center;"/>
 	<div class="box" ng-repeat="book in books | filter:b" >
 	  <div class="pin" ng-controller = "bookNavController">
-	    <a href="" ng-click="showBookDetails(book)"><img ng-src="{{book.imageUrl}}"/></a>
+	  	<img ng-show= "loadingBook" class ="ajax-loading" ng-src="../img/ajax-loader-small.gif" >
+	    <a href="" ng-click="showBookDetails(book)">
+	    	<img class="cover" ng-src="{{book.imageUrl}}"/>	    	
+	    </a>	    
 	    <div class = "description title">{{book.title}}</div>      
 	    <div class = "description author">{{book.authors.join(', ').substring(0,40)}}</div>
 	    <div class = "description language">{{book.language}}</div>

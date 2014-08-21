@@ -5,7 +5,8 @@ var prices = [1,2,3,5,7,8,9,10];
 
 var loadTexts = function(scope, localStorage, textsServices){
 	var language = localStorage.ss_lang;
-    if(language == undefined || language == ''){
+	
+	if(language == undefined || language == ''){
     	language = 0;
     }
     scope.lang = language;
@@ -44,10 +45,12 @@ angular.module('tbe.controllers', [])
 
   .controller('bookNavController',['$scope','$sessionStorage','$location', function ($scope, $sessionStorage, $location) {
 	    $scope.showBookDetails= function(book){
+	    	$scope.loadingBook=true;
 	    	$scope.loading= false;
 	    	$sessionStorage.book =book;    	
-	    	$location.path('/Book');    	
+	    	$location.path('/Book');
 	    };
+	    $scope.loadingBook=false;
   }])
 
   .controller('addBookController', ['$scope', 'restServices', 'isbnSearchServices', function ($scope, restServices, isbnSearchServices) {
@@ -107,6 +110,7 @@ angular.module('tbe.controllers', [])
 			var book = $sessionStorage.book;
 			if(book == undefined || book == ''){
 				$location.path('/Bookshelf');
+				$scope.loading = false;
 			}
 			else{
 				var locatedInIdx = $.inArray(book.location, cities);
