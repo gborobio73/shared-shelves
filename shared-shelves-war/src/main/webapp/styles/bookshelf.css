@@ -6,8 +6,8 @@ body {
  }
  .wrap {
     overflow: hidden;
-    margin-right: 9%;
-	margin-left: 9%;
+    margin-right: 12%;
+	margin-left: 12%;
 	margin-top: 5%;
  }
  
@@ -235,72 +235,72 @@ body {
  }
  
  @media only screen and (max-width : 1170px) and (min-width : 1051px) {
-    /* Medium desktop: 6 tiles */
+      /* Medium desktop: 5 tiles */
     .box {
-       width: 16.65%;
-    }   
+       width: 20%;
+    } 
  }
  
  @media only screen and (max-width : 1350px) and (min-width : 1171px) {
-     /* Medium desktop: 7 tiles */
+     /* Medium desktop: 6 tiles */
     .box {
-       width: 14.28%;
+       width: 16.65%;
     } 
       
  }
 
  @media only screen and (max-width : 1550px) and (min-width : 1351px) {
-     /* Medium desktop: 8 tiles */
+    /* Medium desktop: 7 tiles */
+    .box {
+       width: 14.28%;
+    } 
+ }
+
+@media only screen and (max-width : 1750px) and (min-width : 1551px) {
+      /* Medium desktop: 8 tiles */
     .box {
        width: 12.5%;
     } 
  }
 
-@media only screen and (max-width : 1750px) and (min-width : 1551px) {
+ @media only screen and (max-width : 1950px) and (min-width : 1751px) {
     /* Medium desktop: 9 tiles */
     .box {
        width: 11.11%;
-    }  
+    } 
  }
-
- @media only screen and (max-width : 1950px) and (min-width : 1751px) {
+ 
+ @media only screen and (max-width : 2150px) and (min-width : 1951px) {
     /* Big desktop: 10 tiles */
     .box {
        width: 10%;
     }
  }
  
- @media only screen and (max-width : 2150px) and (min-width : 1951px) {
+ @media only screen and (max-width : 2350px) and (min-width : 2150px) {
     /* XXL desktop: 11 tiles */
     .box {
        width: 9.09%;
     }
  }
  
- @media only screen and (max-width : 2350px) and (min-width : 2150px) {
-    /* XXL desktop: 12 tiles */
+ @media only screen and (max-width : 2550px) and (min-width : 2351px) {
+     /* XXL desktop: 12 tiles */
     .box {
        width: 8.33%;
     }
  }
  
- @media only screen and (max-width : 2550px) and (min-width : 2351px) {
+ @media only screen and (max-width : 2750px) and (min-width : 2551px) {
     /* XXL desktop: 13 tiles */
     .box {
        width: 7.69%;
     }
  }
  
- @media only screen and (max-width : 2750px) and (min-width : 2551px) {
+ @media only screen and (min-width : 2751px) {
     /* XXL desktop: 14 tiles */
     .box {
        width: 7.14%;
-    }
- }
- 
- @media only screen and (min-width : 2751px) {
-    /* XXL desktop: 15 tiles */
-    .box {
-       width: 6.67%;
     }
  }
