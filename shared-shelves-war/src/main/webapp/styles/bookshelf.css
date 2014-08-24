@@ -99,6 +99,7 @@ body {
 
 .panel {
     	width: 50%;
+    	margin-top: 5%;
     }
 
 .pin .ajax-loading {
@@ -140,7 +141,8 @@ body {
         height: 25px;
     }
     .panel {
-    	width: 100%;
+    	width: 100%;    	
+    	margin-top: 23%;
     }
     .hideForSmall{
     	display:none;
@@ -170,6 +172,7 @@ body {
     }
     .panel {
     	width: 100%;
+    	margin-top: 16%;
     }
     .hideForSmall{
     	display:none;
@@ -200,6 +203,7 @@ body {
     }
     .panel {
     	width: 100%;
+    	margin-top: 14%;
     }
  }
  
@@ -216,11 +220,12 @@ body {
     }
     .panel {
     	width: 70%;
+    	margin-top: 9%;
     }
  }
  
  @media only screen and (max-width : 1050px) and (min-width : 861px){
-    /* Small desktop / ipad view: 6 tiles */
+    /* Small desktop / ipad view: 6 tiles */    
     .wrap {
 	    margin-right: 5%;
 		margin-left: 5%;
@@ -231,6 +236,7 @@ body {
     }
     .panel {
     	width: 70%;
+    	margin-top: 7%;
     }
  }
  
