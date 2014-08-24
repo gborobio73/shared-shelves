@@ -201,6 +201,7 @@ var texts = {
 			addBook:["Add book", "Lisää kirja", "Añadir libro"],
 			myBooks:["My books", "Omat kirjat", "Mis libros"],
 			lang:["Lang", "Kieli", "Idioma"],
+			bookshelf:["Bookshelf", "Kirjahylly", "Librería"],
 		},
     	errorLabels:{
     		somethingWentWrong:["Wops! Something went wrong", "Oops! Jokin meni vikaan", "Vaya! Algo falló."],

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller = "navController">
-  <div class="container-fluid">  
+  <div class="container-fluid container-menu">  
  	<a class="navbar-brand" href="/#/Bookshelf" ng-click="$parent.b=''" id ="home-icon">
    		<span class="glyphicon glyphicon-home"></span>
    	</a>    	    
@@ -19,20 +19,42 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <ul class="nav navbar-nav navbar-left">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+      <ul class="nav navbar-nav visible-xs-block">
       	<li><a href="/#/AddBook" class ="menu-link"><span class="glyphicon glyphicon-plus"></span> {{$parent.texts.menu.addBook[lang]}}</a></li>
         <li><a href="/#/MyBooks" ng-click="$parent.b=''" class ="menu-link"><span class="glyphicon glyphicon-book"></span> {{$parent.texts.menu.myBooks[lang]}}</a></li>
         <li><a href="" ng-click ="toggleLanguageMenu()" class ="menu-link"><span class="glyphicon glyphicon-bullhorn"></span> {{$parent.texts.menu.lang[lang]}}</a></li>
-		<div class = "menu-lang show-hide" ng-show = "showLanguages == true">
-			<a href="" ng-click="setLanguage(0)">en</a>
-	   		<a href="" ng-click="setLanguage(1)">fi</a>
-	   		<a href="" ng-click="setLanguage(2)">es</a>
-		</div>
+		<li class = "menu-lang"  ng-show = "showLanguages == true">
+			<div >
+				<a href="" ng-click="setLanguage(0)">en</a>
+		   		<a href="" ng-click="setLanguage(1)">fi</a>
+		   		<a href="" ng-click="setLanguage(2)">es</a>
+			</div>
+		</li>
+		<li class="divider"></li>
+		<li><a href="/#/FAQ" class ="menu-link"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
+		<li><a href="/logout" class ="menu-link" alt ="Logout"><span class="glyphicon glyphicon-log-out"></span> {{user.name}}</a></li>
       </ul>  
-      <ul class="nav navbar-nav navbar-right">
-      	<li><a href="/#/FAQ" class ="menu-link"><span class="glyphicon glyphicon-question-sign"></span></a></li>      
+      
+      <ul class="nav navbar-nav navbar-right hidden-xs">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle menu-link" ><span class="glyphicon glyphicon-book"></span> {{$parent.texts.menu.bookshelf[lang]}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/#/AddBook" class ="menu-link"><span class="glyphicon glyphicon-plus"></span> {{$parent.texts.menu.addBook[lang]}}</a></li>
+        	<li><a href="/#/MyBooks" ng-click="$parent.b=''" class ="menu-link"><span class="glyphicon glyphicon-book"></span> {{$parent.texts.menu.myBooks[lang]}}</a></li>
+            <li><a href="" ng-click ="toggleLanguageMenu()" class ="menu-link"><span class="glyphicon glyphicon-bullhorn"></span> {{$parent.texts.menu.lang[lang]}}</a></li>
+			<li class = "menu-lang"  ng-show = "showLanguages == true">
+				<div >
+					<a href="" ng-click="setLanguage(0)">en</a>
+			   		<a href="" ng-click="setLanguage(1)">fi</a>
+			   		<a href="" ng-click="setLanguage(2)">es</a>
+				</div>
+			</li>
+			<li class="divider"></li>
+			<li><a href="/#/FAQ" class ="menu-link"><span class="glyphicon glyphicon-question-sign"></span> FAQ</a></li>
+          </ul>
+        </li>
+      	      
       	<li><a href="/logout" class ="menu-link" alt ="Logout"><span class="glyphicon glyphicon-log-out"></span> {{user.name}}</a></li>               
       </ul>      
     </div><!-- /.navbar-collapse -->
