@@ -1,16 +1,14 @@
 body {
     margin: 0;
-    /*background: #EEE;*/
     background-color:#e9eaed;
     font: 12px/18px 'Lucida Sans', sans-serif;
   
  }
  .wrap {
     overflow: hidden;
-    /*margin: 10px;*/
     margin-right: 9%;
 	margin-left: 9%;
-	margin-top: 2%;
+	margin-top: 5%;
  }
  
  .box {
