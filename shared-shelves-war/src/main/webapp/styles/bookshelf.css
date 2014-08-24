@@ -1,13 +1,18 @@
 body {
     margin: 0;
-    background: #EEE;
+    /*background: #EEE;*/
+    background-color:#e9eaed;
     font: 12px/18px 'Lucida Sans', sans-serif;
-    padding-top: 4%;
+  
  }
  .wrap {
     overflow: hidden;
-    margin: 10px;
+    /*margin: 10px;*/
+    margin-right: 9%;
+	margin-left: 9%;
+	margin-top: 2%;
  }
+ 
  .box {
     float: left;
     position: relative;
@@ -118,9 +123,11 @@ body {
 
  @media only screen and (max-width : 380px) {
     /* Smartphone view: 2 tile */
-    body {
-        padding-top: 20%;
-    }
+    .wrap {
+	    margin-right: 1%;
+		margin-left: 1%;
+		margin-top: 23%;
+	 }
     .box {
        width: 50%;
     }
@@ -140,13 +147,16 @@ body {
     .hideForSmall{
     	display:none;
     }    
+    
  }
  
  @media only screen and (max-width : 481px) and (min-width : 380px) {
     /* Smartphone view: 3 tile */
-    body {
-        padding-top: 20%;
-    }
+    .wrap {
+	    margin-right: 1%;
+		margin-left: 1%;
+		margin-top: 16%;
+	 }
     .box {
        width: 33.3%;
     }
@@ -170,12 +180,16 @@ body {
  
  @media only screen and (max-width : 650px) and (min-width : 481px) {
     /* Tablet view: 4 tiles */
-    body {
-        padding-top: 15%;
-    }
+    
+    .wrap {
+	    margin-right: 1%;
+		margin-left: 1%;
+		margin-top: 14%;
+	 }
     .box {
        width: 25%;
     }
+    
     .navbar {
         font-size: 10px;
     }
@@ -190,11 +204,15 @@ body {
     	width: 100%;
     }
  }
+ 
+ 
  @media only screen and (max-width : 860px) and (min-width : 651px){
     /* Small desktop / ipad view: 5 tiles */
-    body {
-        padding-top: 5%;
-    }
+    .wrap {
+	    margin-right: 2%;
+		margin-left: 2%;
+		margin-top: 9%;
+	 }
     .box {
        width: 20%;
     }
@@ -205,9 +223,11 @@ body {
  
  @media only screen and (max-width : 1050px) and (min-width : 861px){
     /* Small desktop / ipad view: 6 tiles */
-    body {
-        padding-top: 5%;
-    }
+    .wrap {
+	    margin-right: 5%;
+		margin-left: 5%;
+		margin-top: 7%;
+	 }
     .box {
        width: 16.65%;
     }
@@ -217,70 +237,71 @@ body {
  }
  
  @media only screen and (max-width : 1170px) and (min-width : 1051px) {
-    /* Medium desktop: 7 tiles */
+    /* Medium desktop: 6 tiles */
     .box {
-       width: 14.28%;
+       width: 16.65%;
     }   
  }
  
  @media only screen and (max-width : 1350px) and (min-width : 1171px) {
-    /* Medium desktop: 8 tiles */
+     /* Medium desktop: 7 tiles */
     .box {
-       width: 12.5%;
-    }   
+       width: 14.28%;
+    } 
+      
  }
 
  @media only screen and (max-width : 1550px) and (min-width : 1351px) {
-    /* Medium desktop: 9 tiles */
+     /* Medium desktop: 8 tiles */
     .box {
-       width: 11.11%;
-    }   
+       width: 12.5%;
+    } 
  }
 
 @media only screen and (max-width : 1750px) and (min-width : 1551px) {
+    /* Medium desktop: 9 tiles */
+    .box {
+       width: 11.11%;
+    }  
+ }
+
+ @media only screen and (max-width : 1950px) and (min-width : 1751px) {
     /* Big desktop: 10 tiles */
     .box {
        width: 10%;
     }
  }
-
- @media only screen and (max-width : 1950px) and (min-width : 1751px) {
+ 
+ @media only screen and (max-width : 2150px) and (min-width : 1951px) {
     /* XXL desktop: 11 tiles */
     .box {
        width: 9.09%;
     }
  }
  
- @media only screen and (max-width : 2150px) and (min-width : 1951px) {
+ @media only screen and (max-width : 2350px) and (min-width : 2150px) {
     /* XXL desktop: 12 tiles */
     .box {
        width: 8.33%;
     }
  }
  
- @media only screen and (max-width : 2350px) and (min-width : 2150px) {
+ @media only screen and (max-width : 2550px) and (min-width : 2351px) {
     /* XXL desktop: 13 tiles */
     .box {
        width: 7.69%;
     }
  }
  
- @media only screen and (max-width : 2550px) and (min-width : 2351px) {
+ @media only screen and (max-width : 2750px) and (min-width : 2551px) {
     /* XXL desktop: 14 tiles */
     .box {
        width: 7.14%;
     }
  }
  
- @media only screen and (max-width : 2750px) and (min-width : 2551px) {
-    /* XXL desktop: 15 tiles */
-    .box {
-       width: 6.67%;
-    }
- }
- 
  @media only screen and (min-width : 2751px) {
-    /* XXL desktop: 16 tiles */
+    /* XXL desktop: 15 tiles */
     .box {
        width: 6.67%;
     }
