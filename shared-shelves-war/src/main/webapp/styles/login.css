@@ -4,13 +4,11 @@ body {
 	background: url(../img/pikkushared.jpg);
     background-size: 100%;
  }
-.container-fluid{
- 		padding-top: 18%;
- }
- 
+
 .panel {
 	width: 100%;
 	opacity: 0.90;
+	margin-top: 18%;
 }
 .subtitle	{
 	padding-left: 2%;
