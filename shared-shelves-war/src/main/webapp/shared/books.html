@@ -6,7 +6,7 @@
 	    <a href="" ng-click="showBookDetails(book)">
 	    	<img class="cover" ng-src="{{book.imageUrl}}"/>	    	
 	    </a>	    
-	    <div class = "description title">{{book.title}}</div>      
+	    <div class = "description title">{{book.title.substring(0,65)}}</div>      
 	    <div class = "description author">{{book.authors.join(', ').substring(0,40)}}</div>
 	    <div class = "description language">{{book.language}}</div>
 	    <div class = "price">{{book.price}} &euro; {{book.location}}</div>

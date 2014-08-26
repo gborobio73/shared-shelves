@@ -32,6 +32,10 @@
 	padding-top: 20px;
 }
 
+.dropdown-menu li a {
+	margin-top: 15px;
+}		
+
 @media only screen and (max-width : 380px) {
     /* Smartphone view: 2 tile */
     .navbar-brand{
