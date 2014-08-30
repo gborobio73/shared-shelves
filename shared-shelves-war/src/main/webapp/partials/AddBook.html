@@ -9,9 +9,11 @@
 		   		<button type="button" class="btn btn-primary btn-sm" ng-click="searchBookInfoByISBN(isbn)">{{texts.addBook.findBook[lang]}}</button>
 		   		<img ng-show = "searching" src="../img/ajax-loader-small.gif"/>
 		   		<div ng-hide = "book.title != ''">
-		   			<h4><span class="label label-warning">{{texts.addBook.couldNotFindBook[lang]}}</span></h4>
-		   			<h4><span class="label label-info">{{texts.addBook.improvingSearch[lang]}}</span></h4>			  		
-		   			<h4><span class="label label-info">{{texts.addBook.tryAgainFewDays[lang]}}</span></h4>
+		   			<br>
+		   			<div class="alert alert-warning" role="alert">
+						<strong>{{texts.addBook.couldNotFindBook[lang]}}</strong><br>
+						{{texts.addBook.improvingSearch[lang]}} {{texts.addBook.tryAgainFewDays[lang]}}
+					</div>					
 				</div>
 			</div>
 		</form>
@@ -25,8 +27,9 @@
 			  	<div class="col-sm-offset-2 col-sm-10">
 			  		<button ng-hide = "startedAdding" type="button" class="btn btn-primary btn-sm" ng-click="addToBookshelf(book)">{{texts.addBook.addToBookshelf[lang]}}</button>				  		
 			  		<img ng-show = "inProcess" src="../img/ajax-loader-small.gif"/>
-		  			<h4><span ng-show = "success" class="label label-success" style="float: left;">{{texts.addBook.addedToBookshelf[lang]}}</span></h4>
-		  			
+		  			<div ng-show = "success" class="alert alert-success" role="alert">
+						<strong>{{texts.addBook.addedToBookshelf[lang]}}</strong>
+					</div>
 		  			<div error-labels ng-show = "addFailed" ></div>			  	
 			  	</div>
 			  </div>

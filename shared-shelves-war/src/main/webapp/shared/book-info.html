@@ -3,7 +3,6 @@
 			    <label for="inputTitle" class="col-sm-2 control-label">{{texts.book.title[lang]}}</label>
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.title" id="inputTitle" readonly>
-			      <!-- p class="form-control-static" id="inputTitle">{{book.title}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
@@ -12,19 +11,21 @@
 			      <img ng-src="{{book.imageUrl}}" alt="..." class="img-thumbnail">			      
 			    </div>		
 			    <div class=" col-sm-offset-2 col-sm-10" ng-hide = "(book.hasImage || book.ownedByCurrentUser == false)">			      
-				  <h4><span class="label label-warning" >{{texts.book.couldNotFindCover[lang]}}</span></h4>
-				  <h5>
+				  <br>
+				  <div class="alert alert-warning" role="alert">
+				  	<strong>{{texts.book.couldNotFindCover[lang]}}</strong><br><br>
 				  	<a  class="btn btn-info btn-xs" href ="http://images.google.com/images?q={{book.title}} {{book.authors[0]}}" target="_blank">
 				  		{{texts.book.search[lang]}}
 				  	</a> {{texts.book.forACoverAndCopyImage[lang]}}
-				  </h5>
-				  <div class="input-group">
-			      	<input type="text" class="form-control input-sm" ng-model ="book.imageUrl" id="inputImageUrl" >
-			       	<span class="input-group-btn">
-				        <button class="btn btn-default btn-sm" type="button" ng-click="book.imageUrl = ''">
-				        	 <span class="glyphicon glyphicon-remove"></span>
-				        </button>
-				   	</span>				   	
+				  	<br>
+				  	<div class="input-group">
+				      	<input type="text" class="form-control input-sm" ng-model ="book.imageUrl" id="inputImageUrl" >
+				       	<span class="input-group-btn">
+					        <button class="btn btn-default btn-sm" type="button" ng-click="book.imageUrl = ''">
+					        	 <span class="glyphicon glyphicon-remove"></span>
+					        </button>
+					   	</span>				   	
+				  	</div>
 				  </div>
 			    </div>	    
 			   </div>
@@ -32,14 +33,12 @@
  				<label for="inputAuthors" class="col-sm-2 control-label">{{texts.book.authors[lang]}}</label>
 			    <div class="col-sm-4">
 			      <input type="text" class="form-control input-sm" ng-model ="book.authors" id="inputAuthors" readonly>
-			      <!-- p class="form-control-static" id="inputAuthors">{{book.authors.join(', ')}}</p-->
 			    </div>	
 			</div>
 			  <div class="form-group" ng-show = "book.subtitle.length>0">
 			    <label for="inputSubtitle" class="col-sm-2 control-label">{{texts.book.subtitle[lang]}}</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control input-sm" ng-model ="book.subtitle" id="inputSubtitle" readonly>
-			      <!-- p class="form-control-static" id="inputSubtitle">{{book.subtitle}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
@@ -52,19 +51,16 @@
 			    <label for="inputLanguage" class="col-sm-2 control-label">{{texts.book.language[lang]}}</label>
 			    <div class="col-sm-2">
 			      <input type="text" class="form-control input-sm" ng-model ="book.language" id="inputLanguage" readonly>
-			      <!-- p class="form-control-static" id="inputLanguage">{{book.language}}</p-->
 			    </div>
 			    <label for="inputPageCount" class="col-sm-3 control-label">{{texts.book.pageCount[lang]}}</label>
 			    <div class="col-sm-2">
 			      <input type="text" class="form-control input-sm" ng-model ="book.pageCount" id="inputPageCount" readonly>
-			      <!-- p class="form-control-static" id="inputPageCount">{{book.pageCount}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
 			    <label for="inputCategories" class="col-sm-2 control-label">{{texts.book.categories[lang]}}</label>
 			    <div class="col-sm-10">
 			      <input type="text" class="form-control input-sm" ng-model ="book.categories" id="inputCategories" readonly>
-			      <!-- p class="form-control-static" id="inputCategories">{{book.categories.join(', ')}}</p-->
 			    </div>
 			  </div>
 			  <div class="form-group">
