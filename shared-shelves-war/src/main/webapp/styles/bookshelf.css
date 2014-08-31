@@ -50,6 +50,10 @@ body {
     height: 215px;
 }
 
+.pin .cover:hover{
+    opacity:0.9;
+}
+
 .pin .description{    
     color: #333;
     margin: 0;
