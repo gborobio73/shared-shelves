@@ -20,7 +20,7 @@ public class EsLookupService implements ILookupService{
 				  .timeout(7000)
 				  .post();			
 		
-		Elements elm = searchResult.select("a.title-link.searchResult");		
+		Elements elm = searchResult.select(".list-pag .mod-list-bigpic .mod-list-item .txt a.title-link");		
 		if(elm == null || elm.isEmpty()){
 			throw new Exception(String.format("Casadellibro does not have the book isbn %s", isbn));
 		}		

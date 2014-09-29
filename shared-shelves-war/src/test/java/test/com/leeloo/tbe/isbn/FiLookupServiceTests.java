@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.leeloo.tbe.isbn.FiLookupService;
 import com.leeloo.tbe.rest.jsonpojos.UiBook;
 
-public class LookupServiceTests {
+public class FiLookupServiceTests {
 
 	@Test
 	public void findBook_bookInFinnish_findsBook()

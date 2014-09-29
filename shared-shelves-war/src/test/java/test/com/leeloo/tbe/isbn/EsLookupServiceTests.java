@@ -63,13 +63,41 @@ public class EsLookupServiceTests {
 	public void findBook_DoesNotFindTheBook()
 	{
 		EsLookupService service = new EsLookupService();
-		String isbn = "9788408094173";
+		String wrongIsbn = "9788408094";
 		try {
-			service.findBook(isbn );
+			service.findBook(wrongIsbn );
 			fail("Should have thrown book not found exception");
 			
 		} catch (Exception e)		{
 			
 		}
-	}	
+	}
+	
+	@Test
+	public void findBook_ShouldFindNidoVacio()
+	{
+		EsLookupService service = new EsLookupService();
+		String isbn = "9788408094173";
+		try {
+			UiBook book = service.findBook(isbn );
+			assertEquals("NIDO VACIO", book.title.toUpperCase());
+			
+		} catch (Exception e)		{
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void findBook_ShouldFindElNeuromante()
+	{
+		EsLookupService service = new EsLookupService();
+		String isbn = "9788445074053";
+		try {
+			UiBook book = service.findBook(isbn );
+			assertEquals("NEUROMANTE", book.title.toUpperCase());
+			
+		} catch (Exception e)		{
+			fail(e.getMessage());
+		}
+	}
 }
