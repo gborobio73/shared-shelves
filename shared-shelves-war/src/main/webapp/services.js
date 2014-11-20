@@ -77,6 +77,18 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
     return textsServices; 
 }])
 
+.factory('scrollServices',[ function() {
+    var scrollServices = new Object();
+    var index =0;
+    scrollServices.setScroll = function(idx){             
+             index = idx;
+        };
+    scrollServices.getScroll = function(){             
+            return index;
+       };
+    return scrollServices; 
+}])
+
 .factory('isbnSearchServices', [ '$http', function($http) {
     var isbnSearchServices = new Object();
     
@@ -229,7 +241,7 @@ var texts = {
     		categories:["Categories", "Kategoriat", "Categorías"],
     		location:["Location", "Sijainti", "Lugar"],
     		price:["Price", "Hinta", "Precio"],
-    		saveChangesBtn:["Save changes", "Tallenna muutokset", "Guardar cambios"],
+    		saveChangesBtn:["Save", "Tallenna", "Guardar"],
     		changesSaved: ["Changes saved.", "Muutokset tallennettu.", "Cambios guardados."],
     		removeBtn: ["Remove", "Poista", "Eliminar"],
     		removedFromBookshelf:["Removed from bookshelf.", "Poistettu kirjahyllystä.", "Eliminado de la librería."],

@@ -1,15 +1,18 @@
-<div class="wrap" >
-    <img ng-show= "loading" style ="padding-top: 5%;" src="../img/ajax-loader-big.gif" style="float: center;"/>
+<div class="wrap" ">
+	<img ng-show= "loading" style ="padding-top: 5%;" src="../img/ajax-loader-big.gif" style="float: center;"/>
 	<div class="box" ng-repeat="book in books | filter:b" >
-	  <div class="pin" ng-controller = "bookNavController">
-	  	<img ng-show= "loadingBook" class ="ajax-loading" ng-src="../img/gif-load.gif" >
-	    <a href="" ng-click="showBookDetails(book)">
-	    	<img class="cover" ng-src="{{book.imageUrl}}"/>	    	
-	    </a>	    
-	    <div class = "description title">{{book.title.substring(0,65)}}</div>      
-	    <div class = "description author">{{book.authors.join(', ').substring(0,40)}}</div>
-	    <div class = "description language">{{book.language}}</div>
-	    <div class = "price">{{book.price}} &euro; {{book.location}}</div>
+        <div class="pin" id = "{{$index}}">
+            <img ng-show= "loadingBook" class ="ajax-loading" ng-src="../img/gif-load.gif" >
+            <a href="" ng-click="showBookDetails(book, $index)" ng-controller ="bookDetailsController">
+            	<img class="cover" ng-src="{{book.imageUrl}}"/>	    	
+            </a>	
+         
+            <div class = "description title">{{book.title.substring(0,65)}}</div>   
+            
+            <div class = "description author">{{book.authors.join(', ').substring(0,40)}}</div>
+            <div class = "description language">{{book.language}}</div>
+            <div class = "price">{{book.price}} &euro; {{book.location}}</div>
+         </div>  
 	  </div>
-	</div>
+	
 </div>

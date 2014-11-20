@@ -15,21 +15,41 @@ var loadTexts = function(scope, localStorage, textsServices){
 
 
 angular.module('tbe.controllers', [])
-	.controller('bookshelfController',['$scope', '$location', '$sessionStorage','restServices',	function ($scope, $location, $sessionStorage,restServices) {
+	.controller('bookshelfController',['$scope', '$location', '$sessionStorage', '$anchorScroll','restServices', 'scrollServices',	
+	                                   function ($scope, $location, $sessionStorage, $anchorScroll, restServices, scrollServices) {
 
 		var getAllBooks = function() {
 	      $scope.loading= true;
 	      restServices.getAllBooks().then(
 	        function(result) {
 	          $scope.loading= false;
-	          $scope.books = result;          
+	          $scope.books = result;     
+	          var scroll = scrollServices.getScroll();
+	          $location.hash(scroll);
+	          $anchorScroll();
 	          }); 
 	    };
-	    
-	   getAllBooks();	   
+	   
+	   getAllBooks();
+	   
   }])
 
-  .controller('mybooksController', ['$scope', 'restServices',function ($scope, restServices) {
+  .controller('bookDetailsController',['$scope', '$location', '$sessionStorage','restServices', 'scrollServices',	
+		                                   function ($scope, $location, $sessionStorage, restServices, scrollServices) {
+
+	  $scope.showBookDetails= function(book, index){
+	    	scrollServices.setScroll(index);
+	    	$location.hash('');
+	        $scope.loadingBook=true;
+	    	$scope.loading= false;
+	    	$sessionStorage.book =book;    	
+	    	$location.path('/Book');
+	    	$scope.loadingBook=false;
+	    };  
+  }])
+  
+  .controller('mybooksController', ['$scope', '$location', '$anchorScroll', 'scrollServices', 'restServices',
+                                    function ($scope,$location, $anchorScroll, scrollServices, restServices) {
 	
 	var getUserBooks = function() {		
 		$scope.loading= true;		
@@ -37,22 +57,16 @@ angular.module('tbe.controllers', [])
 		          function(result) {
 		        	  $scope.loading= false;
 		              $scope.books = result;
+		              var scroll = scrollServices.getScroll();
+			          $location.hash(scroll);
+			          $anchorScroll();
 		          });
     };
-    
+ 
 	getUserBooks();	 
   }])
 
-  .controller('bookNavController',['$scope','$sessionStorage','$location', function ($scope, $sessionStorage, $location) {
-	    $scope.showBookDetails= function(book){
-	    	$scope.loadingBook=true;
-	    	$scope.loading= false;
-	    	$sessionStorage.book =book;    	
-	    	$location.path('/Book');
-	    };
-	    $scope.loadingBook=false;
-  }])
-
+  
   .controller('addBookController', ['$scope', 'restServices', 'isbnSearchServices', function ($scope, restServices, isbnSearchServices) {
 		$scope.cities = cities;
 		$scope.prices = prices;
