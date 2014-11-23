@@ -20,7 +20,7 @@ public class AdlibrisParserIntegrationTests {
 			
 			String description = parser.getDescription();
 			
-			assertTrue(description.contains(" Sakamuran ja Corralesin tutkimuksia? Hän jopa lähettää uhkein eroottisin asein varustetun agentti 69:n sekoittamaan terävän japanilaiskomisarion pasmoja.Samaan aikaan Madrizin keskushallinnon johtaja pääministeri Paquito "));
+			assertTrue(description.contains("jokin tuoksahtaa Kataloniassa"));
 			assertTrue(parser.getAuthors().get(0).equals("Pablo Tusset"));			
 		} catch (Exception e) {
 			fail(e.getMessage());
