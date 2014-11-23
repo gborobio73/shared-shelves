@@ -14,7 +14,7 @@ public class NewBook {
     public String pageCount;
     public List<String> categories;
     public boolean hasImage;
-    public String imageUrl;
+    public String imageUrl =".//img/no_cover.png";
     public String isbn;
     public String location;
     public int price;

@@ -82,7 +82,6 @@ public class AdlibrisParser implements IHtmlParser {
 		Element imageLinkHtml = doc.getElementById("ctl00_main_frame_ctrlproduct_imgProduct_ProductImageNotLinked");
 		if(imageLinkHtml.attr("src").trim().contains("noimage"))
 		{
-			imageLink = "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
 			hasImage=false;
 		}else{
 			imageLink = imageLinkHtml.attr("src").trim();

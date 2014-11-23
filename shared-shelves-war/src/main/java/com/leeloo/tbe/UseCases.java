@@ -12,7 +12,7 @@ public class UseCases {
 	public void addToBookshelf(Book book, TbeUser user) {
 		if (book.imageUrl.trim().isEmpty())
 		{
-			book.imageUrl = "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
+			book.imageUrl = ".//img/no_cover.png";
 		}
 		book.hasImage = true;
 		book.setOwner(user);		

@@ -129,19 +129,19 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
 												return buildWithGBooks(volumeInfo);											  														
 							  			});											  
 								  };
-						});
-				    }
-				    else{
-				    	//could not find the book, lets try search
-				    	var searchUrl ="/rest/books/search/fi/"+isbnClean;
-				    	return $http.get(searchUrl).then(
-							function(result) {
-								return result.data;
-							},
-							function (error){
-								return createBook();                                    	
-							}); 
-				    }                            
+							});
+					    }
+					    else{
+					    	//could not find the book, lets try search
+					    	var searchUrl ="/rest/books/search/fi/"+isbnClean;
+					    	return $http.get(searchUrl).then(
+								function(result) {
+									return result.data;
+								},
+								function (error){
+									return createBook();                                    	
+								}); 
+					    }                            
 				});
         };
 
@@ -164,7 +164,7 @@ function buildWithGBooks(volumeInfo){
 	}
 	else{
 		book.hasImage = false;
-		book.imageUrl= "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
+		book.imageUrl= ".//img/no_cover.png";
 	}
 	  
 	if (volumeInfo.industryIdentifiers[1]) {

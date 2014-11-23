@@ -22,8 +22,10 @@ public class UiBookBuilder {
 		uiBook.description = parser.getDescription();
 		uiBook.language=parser.getLanguage();
 		uiBook.pageCount = parser.getPageCount();
-		uiBook.imageUrl = parser.getImageLink();
 		uiBook.hasImage= parser.hasImage();		
+		if(uiBook.hasImage){
+			uiBook.imageUrl = parser.getImageLink();
+		}
 		uiBook.isbn = parser.getIsbn();
 		uiBook.subtitle = parser.getSubtitle();
 		uiBook.categories = parser.getCategories();

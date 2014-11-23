@@ -46,7 +46,7 @@ public class FiLookupServiceTests {
 			assertTrue(book.categories.size() == 0);
 			assertNotNull(book.description);
 			assertFalse(book.hasImage);
-			assertEquals("http://books.google.fi/googlebooks/images/no_cover_thumb.gif", book.imageUrl);
+			assertTrue(book.imageUrl.length() ==0);
 			assertEquals("9788408094173", book.isbn);
 			assertEquals("es", book.language);
 			assertEquals("395", book.pageCount);

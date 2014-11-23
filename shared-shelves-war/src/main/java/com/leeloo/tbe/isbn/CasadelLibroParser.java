@@ -128,7 +128,6 @@ public class CasadelLibroParser implements IHtmlParser {
 		
 		if(image.attr("src").trim().contains("noimage") || image.attr("src").trim().equals("") || image.attr("src").trim().contains("defecto") )
 		{
-			imageLink = "http://books.google.fi/googlebooks/images/no_cover_thumb.gif";
 			hasImage=false;
 		}
 		else{
