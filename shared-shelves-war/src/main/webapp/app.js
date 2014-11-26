@@ -36,7 +36,12 @@ var tbeApp = angular.module('tbe',
       url: '/FAQ',
       templateUrl: 'partials/faq.html',
       controller: ''
-    });
+    })
+    .state('SFAQ', {
+        url: '/SFAQ',
+        templateUrl: 'partials/standalone-faq.html',
+        controller: 'standaloneFaqCtrl'
+      });
 }])
 
 .factory('httpRequestInterceptor', function ($location, $q) {

@@ -241,4 +241,8 @@ angular.module('tbe.controllers', [])
 	getConnectedUser();
 	getLogoutUrl();
 	  
-  }]);
+  }])
+  .controller('standaloneFaqCtrl', ['$scope', '$localStorage', 'textsServices', function ($scope, $localStorage, textsServices) {
+	  loadTexts($scope, $localStorage, textsServices);
+  }])
+  ;
