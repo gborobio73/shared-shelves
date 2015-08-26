@@ -15,11 +15,15 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
+import com.leeloo.tbe.TbeUser;
+import com.leeloo.tbe.TbeUserService;
 import com.leeloo.tbe.rest.jsonpojos.UiUser;
 
 @Path("user")
 public class UserApi {
 
+	private TbeUserService userService= new TbeUserService();
+	
     @Context
     HttpServletResponse response;
     @Context
@@ -29,17 +33,16 @@ public class UserApi {
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getCurrentUser() throws IOException {
         
-        UserService userService = UserServiceFactory.getUserService();
-        User currentUser = userService.getCurrentUser();
-
+        TbeUser currentUser = userService.getCurrentUser();
+        UiUser tbeUser;
         if (currentUser != null) {
-            Gson gson = new Gson();
-            UiUser tbeUser = new UiUser(currentUser.getNickname());
-
-            return Response.ok().entity(gson.toJson(tbeUser)).build();
+            
+            tbeUser = new UiUser(currentUser.getNickname());
         } else {
-
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+        	tbeUser = new UiUser("guest");
         }
+        Gson gson = new Gson();
+        return Response.ok().entity(gson.toJson(tbeUser)).build();
+        
     }   
 }

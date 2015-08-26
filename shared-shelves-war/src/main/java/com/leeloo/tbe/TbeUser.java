@@ -10,13 +10,15 @@ public class TbeUser {
 	@Id private String userId;
 	private String name;
 	@Index private String email;
+	private String nickname;
 	
 	public TbeUser(){}
 	
-	public TbeUser(String userId, String name, String email) {
+	public TbeUser(String userId, String name, String email, String nickname) {
 		this.userId = userId;
 		this.name= name;
 		this.email= email;
+		this.nickname= nickname;
 	}
 
 	public String getName(){
@@ -25,5 +27,9 @@ public class TbeUser {
 	
 	public String getEmail(){
 		return this.email;
+	}
+
+	public String getNickname() {
+		return this.nickname;
 	}
 }

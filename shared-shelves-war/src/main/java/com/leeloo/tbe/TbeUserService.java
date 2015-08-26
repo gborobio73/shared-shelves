@@ -8,9 +8,12 @@ public class TbeUserService {
 	private UserService userService = UserServiceFactory.getUserService();
 	
 	public TbeUser getCurrentUser()
-	{		
-		User user = userService.getCurrentUser();
-    	return new TbeUser(user.getUserId(), user.getNickname(), user.getEmail());
+	{	
+		if(isUserLoggedIn() ){
+			User user = userService.getCurrentUser();
+			return new TbeUser(user.getUserId(), user.getNickname(), user.getEmail(), user.getNickname());
+		}
+		return new TbeGestUser();
 	}
 
 	public boolean isUserLoggedIn() {

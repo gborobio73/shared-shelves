@@ -35,15 +35,23 @@ public class BookshelfApi {
     @Path("/all")
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getAllBooks() {
-        if (!userService.isUserLoggedIn()) {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
-        } 
-        
         List<UiBook> books = new UiBookMapper().map(repository.getAll(), userService.getCurrentUser());
         
         return Response.ok().entity(gson.toJson(books)).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Response getBook(@PathParam("id") String bookId) {
+    	Book book = repository.get(Long.parseLong(bookId));
+    	if(book == null){
+    		return Response.status(Response.Status.NOT_FOUND).build();
+    	}
+        UiBook uiBook =  new UiBookMapper().map(book, userService.getCurrentUser());
+        return Response.ok().entity(gson.toJson(uiBook)).build();
+    }
+    
     @POST
     @Path("/add")
     @Produces(MediaType.APPLICATION_JSON)
@@ -100,22 +108,6 @@ public class BookshelfApi {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}	    
     }    
-    
-    @GET
-    @Path("/{id}")
-    @Produces({ MediaType.APPLICATION_JSON })
-    public Response getBook(@PathParam("id") String bookId) {
-    	 if (!userService.isUserLoggedIn()) {
-             return Response.status(Response.Status.UNAUTHORIZED).build();
-         } 
-        
-    	Book book = repository.get(Long.parseLong(bookId));
-    	if(book == null){
-    		return Response.status(Response.Status.NOT_FOUND).build();
-    	}
-        UiBook uiBook =  new UiBookMapper().map(book, userService.getCurrentUser());
-        return Response.ok().entity(gson.toJson(uiBook)).build();
-    }
     
     @POST
     @Path("/save")

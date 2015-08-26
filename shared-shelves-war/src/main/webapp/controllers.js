@@ -198,6 +198,11 @@ angular.module('tbe.controllers', [])
 	    $scope.sendingInProcess= false;
 	    $scope.sent = false;
 	    
+	    restServices.isUserLoggedIn().then(function(result){
+	    	$scope.isUserLoggedIn = result;
+	    });
+	    
+	    
 	    getBook();
 	}
   ])

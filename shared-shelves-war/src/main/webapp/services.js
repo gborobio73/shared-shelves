@@ -64,6 +64,14 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
          		return result;
          	});
      };
+     
+     restServices.isUserLoggedIn = function(bookId){
+    	 return $http.get('/rest/user')
+         	.then(function(result) {
+              return result.data.name != 'guest';
+          });
+     };
+     
     return restServices; 
 }])
 
@@ -248,7 +256,9 @@ var texts = {
     		interested:["Interested?", "Kiinnostunut?", "Interesado?"],
     		letOwnerKnowBtn:["Let the owner know!", "Kerro omistajalle!", "Díselo al dueño!"],
     		emailSentToOwner:["Email sent to book's owner.", "Kirjan omistajalle on lähetetty sähköposti.", "Email enviado al dueño."],
-    		checkInboxForCopy: ["Check your inbox for a copy.", "Löydät kopion sähköpostistasi.", "Hay una copia en tu buzón de entrada."]
+    		checkInboxForCopy: ["Check your inbox for a copy.", "Löydät kopion sähköpostistasi.", "Hay una copia en tu buzón de entrada."],
+    		contactOwnerNeedToBe: ["To contact the book owner you need to be", "Ottaaksesi yhteyttä kirjan omistajaan sinun tulee olla", "Para contactar con el dueño del libro necesitas estar"],
+    		loggedIn: ["logged in", "kirjautuneena sisään", "conectado"],
     	},
     	bookshelf:{
 			more:["more", "lisää", "más"],			
