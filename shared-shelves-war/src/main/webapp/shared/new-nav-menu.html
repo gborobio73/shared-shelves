@@ -1,0 +1,70 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<div class ="menu-header">
+  <ul class ="margin">
+      <li>Shared shelves</li>
+      <li><input type="text" class ="search-field" placeholder="search"></li>
+      <li>
+        <button type="button" id="menuButton" >Menu</button>
+        <div class ="menu-options">
+          <ul>
+              <li>Add book</li>
+              <li>My books</li>
+              <li>Lang</li>      
+              <li>FAQ</li>
+              <li>guest</li>
+          </ul>
+        </div>
+      </li>
+  </ul>
+</div>
+
+
+<div style = "background-color: #e9eaed"> </div>
+<style type="text/css">
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-header{
+  background-color: #f8f8f8;
+  border: 1px solid black;
+  height: 40px;
+}
+.menu-options{
+  display: none;
+  border: 1px solid black;
+  position: absolute;
+}
+.menu-header li {
+    float: left;
+}
+.menu-options li{
+   float:none;
+}
+.margin  {
+    margin-left: 15%;
+}
+.search-field{
+  width: 250px;
+}
+</style>
+
+<script>
+$('#menuButton').on('click', function(e) {
+    $('.menu-options').show()
+});
+
+
+$(document).mouseup(function (e)
+{
+    var container = $(".menu-options");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.hide();
+    }
+});
+</script>
