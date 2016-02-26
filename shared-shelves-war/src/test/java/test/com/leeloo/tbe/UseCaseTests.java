@@ -62,7 +62,7 @@ public class UseCaseTests {
 		
 		String userEmail ="me@goops.de";
 		String userName ="Me";
-		TbeUser user = new TbeUser("12", userName, userEmail);
+		TbeUser user = new TbeUser("12", userName, userEmail, "nickname");
 		useCases.addToBookshelf(book, user );	
 		
 		Book savedBook= repository.getAll().get(0);

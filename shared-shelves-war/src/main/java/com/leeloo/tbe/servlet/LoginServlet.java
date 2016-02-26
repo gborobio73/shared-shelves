@@ -15,11 +15,16 @@ public class LoginServlet extends HttpServlet {
     
     UserService userService = UserServiceFactory.getUserService();
     
-    if (userService.isUserLoggedIn()) {
-        resp.sendRedirect("/#/Bookshelf");
+    String queryString = req.getQueryString();
+    String loginURL ="";
+    
+    if (queryString == null) {
+    	loginURL = userService.createLoginURL("/#/Bookshelf");
     } else {
-        resp.sendRedirect("/login.html");
+    	loginURL = userService.createLoginURL("/#/"+queryString);
     }
+    resp.sendRedirect(loginURL);
+  
   }
 
 }

@@ -31,7 +31,7 @@ public class RepositoryTests {
 	public void Repository_save_savesBookWithOwner() {
 		String userEmail ="a@goops.de";
 		String userName ="Me";
-		TbeUser user = new TbeUser("12", userName, userEmail);
+		TbeUser user = new TbeUser("12", userName, userEmail, "nickname");
 		
 		Book book = new Book();
 		book.setOwner(user);
@@ -49,23 +49,23 @@ public class RepositoryTests {
 		String userEmail ="me@domain.de";
 		String userName ="Me";
 		String userId = "34";
-		TbeUser user = new TbeUser(userId, userName, userEmail);
+		TbeUser user = new TbeUser(userId, userName, userEmail, "nickname");
 		
 		Book book = new Book();
 		book.setOwner(user);		
 		repository.save(book);
 		
-		user = new TbeUser("56", "another user", "anotherUser@doamin.com");
+		user = new TbeUser("56", "another user", "anotherUser@doamin.com", "nickname");
 		book = new Book();
 		book.setOwner(user);
 		repository.save(book);
 		
-		user = new TbeUser("78", "yet another user", "yetAnotherUser@doamin.com");
+		user = new TbeUser("78", "yet another user", "yetAnotherUser@doamin.com", "nickname");
 		book = new Book();
 		book.setOwner(user);
 		repository.save(book);
 		
-		int userBooks = repository.getFromUser(new TbeUser(userId, userName, userEmail)).size();
+		int userBooks = repository.getFromUser(new TbeUser(userId, userName, userEmail, "nickname")).size();
 		
 		assertEquals(1, userBooks);		
 	}

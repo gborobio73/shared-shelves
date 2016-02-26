@@ -25,7 +25,7 @@
 			    </div>       
 			    <div class = "description">
 			      	<span class="glyphicon glyphicon-book"></span>
-					Back to <a id ="login" href ="">Shared Shelves</a>.
+					Back to <a href ="/#/Bookshelf">Shared Shelves</a>.
 				</div>
 			    
 			    <div class = "description small-font ">
@@ -41,7 +41,6 @@
         $.getJSON("/rest/url",
         function(data){
           $("#logout").attr("href", data.logoutURL);
-          $("#login").attr("href", data.loginURL);
         });
     });
 </script>

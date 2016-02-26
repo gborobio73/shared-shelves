@@ -18,14 +18,10 @@
   		<div class="panel panel-default">
 	  		<div class="panel-body">
 	  			<div class = "subtitle">Shared Shelves</div>	
-			   	<div class = "description">A marketplace for second hand books in Finland.</div>
-			    <div class = "description">
-			    	<span class="glyphicon glyphicon-user"></span>
-				<a id ="login" href ="">Log in</a> using your Google account.			
-			    </div>       
+			   	<div class = "description">A marketplace for second hand books in Finland.</div>			     
 			    <div class = "description">
 			      	<span class="glyphicon glyphicon-book"></span>
-					Browse the bookshelf.
+					<a href="/#/Bookshelf">Browse</a> the bookshelf.
 				</div>
 			    <div class = "description">
 			    	<span class="glyphicon glyphicon-search"></span>
@@ -36,6 +32,10 @@
 			       	Sell your books, buy someone else's.
 			   	</div>
 			    <div class = "description">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <a href ="/login">Log in</a> using your Google account. 
+                </div>            
+                <div class = "description">
 			        <span class="glyphicon glyphicon-heart"></span>
 			        No transactions online, meet real people.
 			    </div>
@@ -47,15 +47,5 @@
 	    </div>
     </div>
   </body>
-
-<script type="text/javascript">
-    $( window ).load(function() {
-        $.getJSON("/rest/url",
-        function(data){
-          $("#login").attr("href", data.loginURL);
-        });              
-    });
-</script>
-
-  
+ 
 </html>

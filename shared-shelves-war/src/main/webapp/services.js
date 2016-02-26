@@ -26,7 +26,7 @@ angular.module('tbe.services', []).factory('restServices',['$http',  function($h
                         });
         };
 
-        restServices.getLogoutUrl = function(){
+        restServices.getLogInAndOutUrl = function(){
              return $http.get('/rest/url')
                        .then(function(result) {
                             return result.data;
@@ -222,6 +222,7 @@ var texts = {
 			myBooks:["My books", "Omat kirjat", "Mis libros"],
 			lang:["Lang", "Kieli", "Idioma"],
 			bookshelf:["Bookshelf", "Kirjahylly", "Librería"],
+			login:["Log In", "Kirjaudu sisään", "Iniciar sesión"],
 		},
     	errorLabels:{
     		somethingWentWrong:["Wops! Something went wrong.", "Oops! Jokin meni vikaan.", "Vaya! Algo falló."],

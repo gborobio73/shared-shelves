@@ -51,7 +51,13 @@ angular.module('tbe.controllers', [])
   .controller('mybooksController', ['$scope', '$location', '$anchorScroll', 'scrollServices', 'restServices',
                                     function ($scope,$location, $anchorScroll, scrollServices, restServices) {
 	
-	var getUserBooks = function() {		
+	  restServices.isUserLoggedIn().then(function(result){
+	    	if(result !==true){
+	    		window.location = "/login";
+	    	};
+	    });
+	  
+	  var getUserBooks = function() {		
 		$scope.loading= true;		
 		restServices.getUserBooks().then(
 		          function(result) {
@@ -67,9 +73,15 @@ angular.module('tbe.controllers', [])
   }])
 
   
-  .controller('addBookController', ['$scope', 'restServices', 'isbnSearchServices', function ($scope, restServices, isbnSearchServices) {
+  .controller('addBookController', ['$scope', '$location', 'restServices', 'isbnSearchServices', function ($scope, $location, restServices, isbnSearchServices) {
 		$scope.cities = cities;
 		$scope.prices = prices;
+		
+		restServices.isUserLoggedIn().then(function(result){
+	    	if(result !==true){
+	    		window.location = "/login";
+	    	};
+	    });
 		
 		var resetAddButton = function(){
 			$scope.startedAdding = false;
@@ -202,12 +214,20 @@ angular.module('tbe.controllers', [])
 	    	$scope.isUserLoggedIn = result;
 	    });
 	    
+	    restServices.getLogInAndOutUrl().then(
+	    	function(result) {
+	          $scope.logoutURL = result.logoutURL;
+	          $scope.loginURL = result.loginURL;
+        });
 	    
 	    getBook();
 	}
   ])
   .controller('navController', ['$scope', '$localStorage', '$timeout', '$location','restServices', 'textsServices', function ($scope, $localStorage, $timeout, $location, restServices, textsServices) {
 	
+	$scope.addBookURL ="#";
+	$scope.myBooksURL ="#";  
+	  
 	$scope.setLanguage= function(language) {
 		$scope.$parent.lang=language;
 		$scope.showLanguages=false;
@@ -232,19 +252,27 @@ angular.module('tbe.controllers', [])
 	          function(result) {
 	            $scope.user = result;
 	          });
-	      };
+		restServices.isUserLoggedIn().then(function(result){
+	    	$scope.isUserLoggedIn = result;
+	    	if(result === true){
+	    		$scope.addBookURL ="/#/AddBook";
+	    		$scope.myBooksURL ="/#/MyBooks";
+	    	}
+	    });
+	};
       
-	var getLogoutUrl = function(){
-		restServices.getLogoutUrl().then(
+	var getLogInAndOutUrl = function(){
+		restServices.getLogInAndOutUrl().then(
 	        function(result) {
 	          $scope.logoutURL = result.logoutURL;
+	          $scope.loginURL = result.loginURL;
 	        });
 	};
 	
 	loadTexts($scope.$parent, $localStorage, textsServices);
 	
 	getConnectedUser();
-	getLogoutUrl();
+	getLogInAndOutUrl();
 	  
   }])
   .controller('standaloneFaqCtrl', ['$scope', '$localStorage', 'textsServices', function ($scope, $localStorage, textsServices) {

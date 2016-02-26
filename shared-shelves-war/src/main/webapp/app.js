@@ -32,6 +32,11 @@ var tbeApp = angular.module('tbe',
       templateUrl: 'partials/Book.html',
       controller: 'bookController'
     })
+    .state('About', {
+      url: '/About',
+      templateUrl: 'about.html',
+      controller: ''
+    })
   	.state('FAQ', {
       url: '/FAQ',
       templateUrl: 'partials/faq.html',
