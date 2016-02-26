@@ -26,13 +26,14 @@
     <!-- script src="/scripts/jquery.min.js"></script--> 
     <script src="/scripts/jquery.cookie.js"></script>
 
-      <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">    
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
     <!-- Latest compiled and minified JavaScript -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="/styles/bookshelf.css">
     <link rel="stylesheet" type="text/css" href="/styles/menu.css">
@@ -41,15 +42,22 @@
   <body> 
   		<div ui-view autoscroll='true'></div>        
   </body>
-  <div class = "contact-info" style="background-color: #2a2730; height: 55px">
+  <footer class = "contact-info">
   	<hr style="border-top: 1px solid #FFF;">
   	
-  	<div class="margin" style="padding-bottom: 15px;">
-		<span class="col-sm-2" style ="color: #fff;">Leeloo Inc © 2014</span>
-	    <span class="col-sm-3" style ="color: #fff;">
+  	<div class="form-group margin">
+		<label class="col-sm-2 control-label">Leeloo Inc © 2014</label>
+	    <label class="col-sm-4 control-label">
 	    	<span class="glyphicon glyphicon-envelope "></span> leeloo.turku@gmail.com
-	    </span>
-        <span class="col-sm-2 footer-about" ><a href="/#/About" style="color: #fff">About</a></span>
+	    </label>
+        <label class="col-sm-2 control-label"><a href="/#/About">About</a></label>
 	</div>				 
-  </div> 
+  </footer>
+  
+  <script type="text/javascript">
+$(document).ready(function() {
+  $('.tip').tooltip();
+});
+</script> 
 </html>
+

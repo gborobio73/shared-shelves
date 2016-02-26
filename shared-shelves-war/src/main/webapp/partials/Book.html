@@ -32,9 +32,7 @@
                             <div ng-if="isUserLoggedIn == false" style="font-size: 14px;">
                               {{texts.book.contactOwnerNeedToBe[lang]}} <a href="/login?Book">{{texts.book.loggedIn[lang]}}</a>. 
                             </div>
-                            
-                            
-							<img ng-show = "sendingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
+                            <img ng-show = "sendingInProcess" src="../img/ajax-loader-small.gif" style="float: left;"/>
 							<div ng-show = "sent" class="alert alert-success" role="alert">
 							  <strong>{{texts.book.emailSentToOwner[lang]}}</strong> {{texts.book.checkInboxForCopy[lang]}}
 							</div>
