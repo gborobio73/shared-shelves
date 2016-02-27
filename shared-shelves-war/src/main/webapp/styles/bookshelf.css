@@ -106,7 +106,7 @@ body {
 }
 
 .contact-info {
-   font: 10px/13px 'Lucida Sans',sans-serif;
+   font: 12px/15px 'Lucida Sans',sans-serif;
 }
 
 .image-cover{
@@ -127,11 +127,14 @@ body {
 	/*width: 16px;
 	height: auto;*/
 }
-.footer-about{
-	color: #fff; 
+.no-blue-link{
+	color: inherit; 
+	text-decoration: none;
 }
-.footer-about:hover, .footer-about:focus {
-    text-decoration:underline;
+.no-blue-link:hover, .no-blue-link:focus{
+	color: inherit; 
+    text-decoration:underline; 
+    cursor:pointer;  
 }
 
 /* Bootstrap overrides*/
@@ -220,7 +223,7 @@ body {
     .navbar {
         font-size: 10px;
     }
-    a, .navbar-brand {
+    .navbar-nav a, .navbar-brand {
         font-size: 15px;
     }
     input[type="search"]

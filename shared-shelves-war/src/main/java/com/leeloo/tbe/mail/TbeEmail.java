@@ -19,12 +19,12 @@ public class TbeEmail {
 
 	public String getMessage() {
 		StringBuilder message = new StringBuilder(255);
-		message.append("<html><head><title>Shared Shelves</title></head>");
-		message.append("<body style =\"font:14px 'Lucida Sans', sans-serif;\">");
+		message.append("<html><head><title>Shared Shelves</title><meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\"></head>");
+		message.append("<body >");
 		addContentInEnglish(message);
-		message.append("<hr align=\"left\" width=\"50%\">");
+		message.append("<hr>");
 		addContentInFinnish(message);
-		message.append("<hr align=\"left\" width=\"50%\">");
+		message.append("<hr>");
 		addContentInSpanish(message);
 		message.append("</body></html>");
 		return message.toString();
@@ -47,7 +47,7 @@ public class TbeEmail {
 		message.append(String.format("<p>I am contacting you regarding your book '%s' with the price of %s €.</p>", book.title, book.price));
 		message.append("<p>Please, contact me by replying to this email.</p>");
 		message.append("<p>Thank you,</p>");
-		message.append(String.format("<p>%s (via <a href=\"http://www.sharedshelves.net\">Shared Shelves</a>)</p>", currentUser.getName()));
+		message.append(String.format("<p>%s (via Shared Shelves)</p>", currentUser.getName()));
 	}
 	
 	private void addContentInFinnish(StringBuilder message) {
@@ -55,7 +55,7 @@ public class TbeEmail {
 		message.append(String.format("<p>Otan yhteyttä koskien kirjaasi '%s', jonka hinta on %s €.</p>", book.title, book.price));
 		message.append("<p>Ole hyvä ja ota minuun yhteyttä vastaamalla tähän sähköpostiin.</p>");
 		message.append("<p>Kiitos,</p>");
-		message.append(String.format("<p>%s (via <a href=\"http://www.sharedshelves.net\">Shared Shelves</a>)</p>", currentUser.getName()));
+		message.append(String.format("<p>%s (via Shared Shelves)</p>", currentUser.getName()));
 	}
 	
 	private void addContentInSpanish(StringBuilder message) {
@@ -63,6 +63,6 @@ public class TbeEmail {
 		message.append(String.format("<p>Me pongo en contacto contigo por el libro '%s' con precio %s €.</p>", book.title, book.price));
 		message.append("<p>Por favor, contacta conmigo respondiendo a este email.</p>");
 		message.append("<p>Gracias,</p>");
-		message.append(String.format("<p>%s (via <a href=\"http://www.sharedshelves.net\">Shared Shelves</a>)</p>", currentUser.getName()));
+		message.append(String.format("<p>%s (via Shared Shelves)</p>", currentUser.getName()));
 	}
 }

@@ -1,8 +1,20 @@
+* Clean and install (package)
+Macgon:shared-shelves Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn clean install
+
+* Upload to GAE
+Macgon:shared-shelves-ear Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn appengine:update
+
+* source in shared-shelves-war
+
+
+
+
+
 Maven 
 ~/Documents/Tools/apache-maven-3.2.1/bin/mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-grizzly2 \
 -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false \
 -DgroupId=com.leeloo -DartifactId=virtual-is-viral -Dpackage=com.leeloo \
--DarchetypeVersion=2.8
+-DarchetypeVersion=2.8 
 
 Clean:
 ~/Documents/Tools/apache-maven-3.2.1/bin/mvn clean

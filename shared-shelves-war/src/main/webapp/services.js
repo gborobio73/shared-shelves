@@ -279,7 +279,7 @@ var texts = {
 			isItFreeHeader:["Is this app for free?","Onko tämä sovellus ilmainen?","¿Es la app gratis?"],
 			isItFreeText:["Yep.","Jep.","Sip."],
 			iHaveSuggestionsHeader:["What if I have some suggestions?","Mitä jos minulla on sovellukseen liittyviä ehdotuksia?","¿Y si tengo alguna sugerencia?"],
-			iHaveSuggestionsText:["Contact me at the email below.","Lähetä viesti alla näkyvään sähköpostiosoitteeseen.","Puedes contactar conmigo en el email más abajo."],
+			iHaveSuggestionsText:["Contact me at","Lähetä viesti ","Puedes contactar conmigo en"],
 			thanksText:["A big THANK YOU to Erika, Aleksandr, Anri and Lauri for helping me building this app.","ISO KIITOS Erikalle, Aleksanderille, Anrille ja Laurille avusta tämän sovelluksen kanssa.","MUCHAS GRACIAS a Erika, Aleksandr, Anri y Lauri por ayudarme a construir esta  app."]
     	}
  };

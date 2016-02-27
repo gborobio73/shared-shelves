@@ -21,6 +21,11 @@ public class TbeLogger {
         log.warning(errorMessage.toString().substring(0, 1024));
 	}
 	
+	public void info( String message)	{
+			
+        log.info(message);
+	}
+	
 	private StringBuilder buildErrorMessage(String header, TbeUser user, Exception e) {
 		StringBuilder errorMessage = new StringBuilder(255);		
 		errorMessage.append(String.format("%s. User %s",header, user.getEmail()));
