@@ -136,7 +136,10 @@ body {
     text-decoration:underline; 
     cursor:pointer;  
 }
-
+.footer-label{
+	color: white;
+    font-weight: 500;
+}
 /* Bootstrap overrides*/
 .control-label{
 	color: #555;
