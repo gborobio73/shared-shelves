@@ -3,7 +3,7 @@
 	<div class="box" ng-repeat="book in books | filter:b" >
         <div class="pin" id = "{{$index}}">
             <img ng-show= "loadingBook" class ="ajax-loading" ng-src="../img/gif-load.gif" >
-            <a href="" ng-click="showBookDetails(book, $index)" ng-controller ="bookDetailsController">
+            <a href="" ng-click="showBookDetails(book, $index)" ">
             	<img class="cover" ng-src="{{book.imageUrl}}"/>	    	
             </a>	
          

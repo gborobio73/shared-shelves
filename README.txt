@@ -7,9 +7,6 @@ Macgon:shared-shelves-ear Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn appe
 * source in shared-shelves-war
 
 
-
-
-
 Maven 
 ~/Documents/Tools/apache-maven-3.2.1/bin/mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-grizzly2 \
 -DarchetypeGroupId=org.glassfish.jersey.archetypes -DinteractiveMode=false \

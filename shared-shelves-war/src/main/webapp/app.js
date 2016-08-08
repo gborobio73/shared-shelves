@@ -14,32 +14,32 @@ var tbeApp = angular.module('tbe',
   $stateProvider
     .state('Bookshelf', {
       url: '/Bookshelf',
-      templateUrl: 'partials/Bookshelf.html',
+      templateUrl: 'views/Bookshelf.html',
       controller: 'bookshelfController'
     })
     .state('MyBooks', {
       url: '/MyBooks',
-      templateUrl: 'partials/MyBooks.html',
+      templateUrl: 'views/MyBooks.html',
       controller: 'mybooksController'
     })
     .state('AddBook', {
       url: '/AddBook',
-      templateUrl: 'partials/AddBook.html',
+      templateUrl: 'views/AddBook.html',
       controller: 'addBookController'
     })
     .state('Book', {
       url: '/Book',
-      templateUrl: 'partials/Book.html',
+      templateUrl: 'views/Book.html',
       controller: 'bookController'
     })
     .state('FAQ', {
       url: '/FAQ',
-      templateUrl: 'partials/faq.html',
+      templateUrl: 'views/faq.html',
       controller: ''
     })
     .state('SFAQ', {
         url: '/SFAQ',
-        templateUrl: 'partials/standalone-faq.html',
+        templateUrl: 'views/standalone-faq.html',
         controller: 'standaloneFaqCtrl'
       });
 }])

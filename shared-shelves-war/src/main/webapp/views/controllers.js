@@ -34,20 +34,6 @@ angular.module('tbe.controllers', [])
 	   
   }])
 
-  .controller('bookDetailsController',['$scope', '$location', '$sessionStorage','restServices', 'scrollServices',	
-		                                   function ($scope, $location, $sessionStorage, restServices, scrollServices) {
-
-	  $scope.showBookDetails= function(book, index){
-	    	scrollServices.setScroll(index);
-	    	$location.hash('');
-	        $scope.loadingBook=true;
-	    	$scope.loading= false;
-	    	$sessionStorage.book =book;    	
-	    	$location.path('/Book');
-	    	$scope.loadingBook=false;
-	    };  
-  }])
-  
   .controller('mybooksController', ['$scope', '$location', '$anchorScroll', 'scrollServices', 'restServices',
                                     function ($scope,$location, $anchorScroll, scrollServices, restServices) {
 	
