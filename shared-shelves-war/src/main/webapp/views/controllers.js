@@ -117,7 +117,7 @@ angular.module('tbe.controllers', [])
 
   .controller('bookController', ['$scope', '$sessionStorage', '$location', '$anchorScroll', 'restServices', function ($scope, $sessionStorage, $location, $anchorScroll, restServices) {
 		
-		var getBook = function() {
+		var getBook = function(reload) {
 			$scope.loading= true;
 			var book = $sessionStorage.book;
 			if(book == undefined || book == ''){
@@ -127,10 +127,20 @@ angular.module('tbe.controllers', [])
 			else{
 				var locatedInIdx = $.inArray(book.location, cities);
 				var priceIdx = $.inArray(book.price, prices);
-				$scope.book= book;
-				$scope.bookLocation =cities[locatedInIdx];					  
-				$scope.bookPrice=prices[priceIdx];
-				$scope.loading = false;
+				if(reload){
+					restServices.getBook(book.id).then(function(result){
+						$scope.book= result;
+						$sessionStorage.book = result;
+						$scope.bookLocation =cities[locatedInIdx];					  
+						$scope.bookPrice=prices[priceIdx];
+						$scope.loading = false;						
+					});					
+				}else{
+					$scope.book= book;
+					$scope.bookLocation =cities[locatedInIdx];					  
+					$scope.bookPrice=prices[priceIdx];
+					$scope.loading = false;
+				}
 			}
 	    };		
 		
@@ -205,8 +215,8 @@ angular.module('tbe.controllers', [])
 	          $scope.logoutURL = result.logoutURL;
 	          $scope.loginURL = result.loginURL;
         });
-	    
-	    getBook();
+	    var reload= $location.search().reload;
+	    getBook(reload);
 	}
   ])
   .controller('navController', ['$scope', '$localStorage', '$timeout', '$location','restServices', 'textsServices', function ($scope, $localStorage, $timeout, $location, restServices, textsServices) {
