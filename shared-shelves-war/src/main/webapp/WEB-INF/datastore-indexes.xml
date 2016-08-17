@@ -3,5 +3,6 @@
     <datastore-index kind="Book" ancestor="false">
         <property name="owner.email" direction="asc"/>
         <property name="created" direction="desc"/>
+        <property name="imageUrl" direction="asc"/>
     </datastore-index>
 </datastore-indexes>
