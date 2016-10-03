@@ -1,8 +1,8 @@
 * Clean and install (package)
-Macgon:shared-shelves Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn clean install
+folder shared-shelves Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn clean install
 
 * Upload to GAE
-Macgon:shared-shelves-ear Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn appengine:update
+folder shared-shelves-ear Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn appengine:update
 
 * source in shared-shelves-war
 
@@ -20,9 +20,6 @@ Run:
 ~/Documents/Tools/apache-maven-3.2.1/bin/mvn jetty:run
 
 ~/Documents/Tools/apache-maven-3.2.1/bin/mvn jetty:run-war
-
-inspect angular scope
-angular.element($0).scope()
 
 debug in (check which ip has the laptop assigned)
 --address=192.168.0.10 --port=8080 --disable_update_check /Users/Gon/Projects/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/virtual-is-viral-war
