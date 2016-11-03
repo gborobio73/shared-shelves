@@ -38,6 +38,28 @@ angular.module('tbe.directives', [])
     };
 }])
 
+.directive('bookImage', [function() {
+    return {
+      scope: {
+        src: '=',
+        isPin: '='
+      },
+      templateUrl: 'shared/book-image.html',
+      controller: ['$scope', function ($scope) {
+    	  $scope.getImageUrl = function(url){
+//    		  console.log('src: ' +$scope.src);
+//    		  console.log('isPin: ' +$scope.isPin);
+    		  
+    		  if(url.includes('data:image') || url.includes('no_cover')){
+    			  return url;  
+    		  }
+    		  return '/rest/images/' + encodeURIComponent(url);
+    		  
+    	  };
+      }],
+    };
+}])
+
 .directive('faqDetails', [function() {
     return {
       templateUrl: 'shared/faq-details.html'

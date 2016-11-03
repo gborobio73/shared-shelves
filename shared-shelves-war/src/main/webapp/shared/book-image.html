@@ -1,0 +1,8 @@
+<!-- img class="cover" ng-src="{{book.imageUrl}}"/--> <!-- pin book -->
+<!-- img ng-src="{{book.imageUrl}}" alt="..." class="image-cover" --> <!-- book details -->
+
+<img 
+    ng-class="{'cover':isPin, 'image-cover': !isPin}" 
+    ng-src="{{getImageUrl(src)}}"
+    alt="..."
+/>
