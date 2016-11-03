@@ -40,6 +40,7 @@ public class UiBookMapper {
 		return uiBook;
 	}	
 
+	
 	public Book map (NewBook newBook)
 	{
 		Book book = new Book(new Date());
