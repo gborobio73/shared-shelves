@@ -1,15 +1,10 @@
 package com.leeloo.tbe.rest;
 
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -18,28 +13,26 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 
 @Path("images")
 public class ImagesApi {
+	@Context HttpServletRequest requestContext;
+	
 	@GET
     @Path("/{url}")
 	@Produces("image/png")
-    public Response getImageUrl(@Context HttpServletRequest requestContext, @PathParam("url") String url) throws IOException {
+    public Response getImageUrl(@PathParam("url") String url) throws IOException {
     	try {
     		
     		byte[] image = getImage(url); 
 		    return Response.ok(new ByteArrayInputStream(image)).build();		
 			
-		} catch (IOException e) {
-			//return default image
-			
+		} catch (IOException e) {			
 			String noImageCoverUrl = new URL(requestContext.getScheme(), 
 					requestContext.getServerName(),
 					requestContext.getServerPort(), 
 					"/img/no_cover.png").toString();
-			return Response.ok(new ByteArrayInputStream(getImage(noImageCoverUrl))).build();
-			//e.printStackTrace();
+			return Response.ok(new ByteArrayInputStream(getImage(noImageCoverUrl))).build();			
 		}
     }
 	

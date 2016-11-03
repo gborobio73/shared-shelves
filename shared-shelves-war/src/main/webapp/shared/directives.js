@@ -46,10 +46,7 @@ angular.module('tbe.directives', [])
       },
       templateUrl: 'shared/book-image.html',
       controller: ['$scope', function ($scope) {
-    	  $scope.getImageUrl = function(url){
-//    		  console.log('src: ' +$scope.src);
-//    		  console.log('isPin: ' +$scope.isPin);
-    		  
+    	  $scope.getImageUrl = function(url){    		  
     		  if(url.includes('data:image') || url.includes('no_cover')){
     			  return url;  
     		  }
