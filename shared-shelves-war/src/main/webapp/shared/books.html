@@ -4,7 +4,8 @@
         <div class="pin" id = "{{$index}}">
             <img ng-show= "loadingBook" class ="ajax-loading" ng-src="../img/gif-load.gif" >
             <a href="" ng-click="showBookDetails(book, $index)" ">
-            	<book-image src ="book.imageUrl" is-pin="true"/>    	
+            	<!-- book-image src ="book.imageUrl" is-pin="true"/-->   
+                <img class="cover" ng-src="{{book.imageUrl}}"/>     	
             </a>	
          
             <div class = "description title">{{book.title.substring(0,65)}}</div>   

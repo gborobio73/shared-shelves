@@ -1,5 +1,8 @@
 package com.leeloo.tbe.rest.jsonpojos;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +31,7 @@ public class UiBookMapper {
 		uiBook.authors = book.authors;		
 		uiBook.description =book.description; 
 		uiBook.hasImage = book.hasImage;
-		uiBook.imageUrl = book.imageUrl;	
+		uiBook.imageUrl = buildImageURL(book);	
 		uiBook.isbn = book.isbn;
 		uiBook.created = book.created;
 		uiBook.language=getLanguage(book);		
@@ -40,7 +43,6 @@ public class UiBookMapper {
 		return uiBook;
 	}	
 
-	
 	public Book map (NewBook newBook)
 	{
 		Book book = new Book(new Date());
@@ -69,5 +71,13 @@ public class UiBookMapper {
 		
 		return book.language;
 	
+	}
+	
+	private String buildImageURL(Book book) {
+		if(	book.imageUrl.toLowerCase().contains("data:image") || 
+			book.imageUrl.toLowerCase().contains("no_cover")){
+			return book.imageUrl;
+		}
+		return "/images?" + book.imageUrl;
 	}
 }
