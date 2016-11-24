@@ -1,5 +1,7 @@
 * Clean and install (package)
-folder shared-shelves Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn clean install
+folder shared-shelves Gon$ ~/Documents/Tools/apache-maven-3.3.9/bin/mvn clean install
+(old) ~/Documents/Tools/apache-maven-3.2.1/bin/mvn clean install
+
 
 * Upload to GAE
 folder shared-shelves-ear Gon$ ~/Documents/Tools/apache-maven-3.2.1/bin/mvn appengine:update
