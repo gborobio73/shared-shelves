@@ -4,7 +4,7 @@ A web application for selling and buying second hand books in Finland.
 
 Visit [here](http://www.sharedshelves.net). 
 
-Find out more [here](https://gborobio73.github.io/2016/shared-shelves-no-login/).
+Find out more [here](https://gborobio73.github.io/2016/08/01/shared-shelves-no-login/).
 
 ## License
 
